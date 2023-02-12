@@ -1,0 +1,165 @@
+## Enviornment configurations 
+accessionList = "00-helperfiles/accessionList.txt"
+
+## Output directories 
+workspace = "/projects/ddodani_prj/scratch/MCC_calc/Tsementzi/testSnake/"
+sampleDir = "/projects/ddodani_prj/microbiome/meta_analysis/01-rawData/Tsementzi/"
+adapterOut = workspace + "02-adapters/"
+filterOut = workspace + "03-filtering/"
+mergeOut = workspace + "04-merge/"
+filter2Out = workspace + "05-filtering2/"
+poolOut = workspace + "06-pool/"
+chimerasOut = workspace + "07-chimeras/"
+dereplicateOut = workspace + "08-dereplicate/"
+otusOut = workspace + "09-OTUs/"
+
+## Required lists
+samples = []
+fastqc_var = ["html", "zip"]
+reads = ["1", "2"]
+
+## making a list of samples 
+with open(accessionList) as f:
+    for line in f:
+        sample_full = line.split("\n")
+        samples.append(sample_full[0])
+
+rule all:
+    input:
+        otusOut + "output_sortedUnique/"
+
+## Using bbduk to remove adapters. This tool uses a database of known Illumina adapters.
+rule adapter_removal:
+    input: 
+        forwardIn = sampleDir + "{samples}_1.fastq",
+        reverseIn = sampleDir + "{samples}_2.fastq"
+    output:
+        forwardOut = temporary(adapterOut + "{samples}_noAda_1.fastq"),
+        reverseOut = temporary(adapterOut + "{samples}_noAda_2.fastq")
+    threads: 4
+    message: "Removing adapters from forward and backward reads."
+    shell:
+        """
+        bbduk.sh in1={input.forwardIn} in2={input.reverseIn} out1={output.forwardOut} out2={output.reverseOut} \
+        ref=adapters hdist=1 tpe tbo
+        """
+
+## Using SolexaQA++ to remove reads with a phred score less than 17.
+rule filtering:
+    input: 
+        inreads = adapterOut + "{sample}_noAda_1.fastq",
+        outreads = adapterOut + "{sample}_noAda_2.fastq"
+    output:
+        fastq = temporary(filterOut + "{sample}_noAda_1.fastq.trimmed"),
+        fastout = temporary(filterOut + "{sample}_noAda_2.fastq.trimmed")
+    threads: 4
+    message: "Filtering forward and reverse reads."
+    shell: "SolexaQA++ dynamictrim {input.inreads} {input.outreads} -d {filterOut} -h 17"
+
+## Using PEAR to merge reads with a p-value of 0.01
+rule merge:
+    input:
+        read1 = filterOut + "{sample}_noAda_1.fastq.trimmed", 
+        read2 = filterOut + "{sample}_noAda_2.fastq.trimmed"
+    output: res = temporary(mergeOut + "{sample}_merged.fastq.assembled.fastq")
+    params: name = mergeOut + "{sample}_merged.fastq"
+    threads: 4
+    message: "Merging paired end reads"
+    shell: "pear -f {input.read1} -r {input.read2} -o {params.name} -p 0.001"
+
+## Using SolexaQA++ to remove merged reads with a phred score less than 17.
+rule post_merge_filtering:
+    input: read = mergeOut + "{sample}_merged.fastq.assembled.fastq"
+    output:fastq = temporary(filter2Out + "{sample}_merged.fastq.assembled.fastq.trimmed")
+    threads: 4
+    message: "Post merge filtering"
+    shell: "SolexaQA++ dynamictrim {input.read} -d {filter2Out} -h 17"
+
+rule pool:
+    input: reads = expand(filter2Out + "{sample}_merged.fastq.assembled.fastq.trimmed", sample=samples)
+    output: 
+        readsq = temporary(poolOut + "all_merged.fastq"),
+        readsa = temporary(poolOut + "all_merged.fasta")
+    threads: 4
+    message: "Pool all samples"
+    shell:
+        """
+        cat {input.reads} > {output.readsq}
+        seqtk seq -A {output.readsq} > {output.readsa}
+        """
+
+## Using USERACH from QIIME1 to remove chimeras 
+rule chimera_removal:
+    input: readin = poolOut + "all_merged.fasta"
+    output: 
+        usearchOut = directory(chimerasOut + "usearch_checked_chimeras/"),
+        filt = temporary(chimerasOut + "usearch_checked_chimeras/all_merged_chimeras_filtered.fasta"),
+        filt_renamed = chimerasOut + "usearch_checked_chimeras/all_merged_chimeras_filtered_renamed.fasta",
+        chimeras = temporary(chimerasOut + "usearch_checked_chimeras/chimeras.txt")
+    threads: 4
+    message: "Removing chimeras"
+    params:
+        conda_env = "qiime1_uclustv1.2.22"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+        identify_chimeric_seqs.py -i {input.readin} -m usearch61 -o {output.usearchOut} --suppress_usearch61_ref
+        filter_fasta.py -f {input.readin} -o {output.filt} -s {output.chimeras} -n
+        sed 's/\./_/g' {output.filt} > {output.filt_renamed}
+        """
+
+## Using USEARCH to dereplicate and sort by size for faster computation.
+rule dereplicate:
+    input:
+        reads = chimerasOut + "usearch_checked_chimeras/all_merged_chimeras_filtered_renamed.fasta"
+    output:
+        unique = temporary(dereplicateOut + "uniques.fasta"),
+        sorted = dereplicateOut + "seqs_sorted.fasta"
+    threads: 4
+    message: "Dereplicating fasta file and sorting by size"
+    shell:
+        """
+        usearch11.0.667_i86linux32 \
+            -fastx_uniques {input.reads} \
+            -fastaout {output.unique} \
+            -sizeout
+
+        usearch11.0.667_i86linux32 \
+            -sortbysize {output.unique} \
+            -fastaout {output.sorted} \
+            -minsize 2
+        """
+
+##  Using QIIME1 to cluster OTUs with a 97% identity, filter singletons and remove temporary directories
+rule cluster_OTUS:
+    input:
+        reads = dereplicateOut + "seqs_sorted.fasta"
+    output:
+        otus = directory(otusOut + "output_sortedUnique"),
+        biom = otusOut + "output_sortedUnique/otu_table.biom",
+        filtBiom = otusOut + "output_sortedUnique/filtered_sortedUnique_otu.biom"
+    threads: 4
+    message: "Identifying OTUs and filtering singletons"
+    params:
+        para = workspace + "parameters_sortedUnique.txt",
+        conda_env = "qiime1_uclustv1.2.22",
+        adapterDir = adapterOut,
+        filterDir = filterOut,
+        mergeDir = mergeOut,
+        filterDir2 = filter2Out,
+        poolDir = poolOut
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+        pick_de_novo_otus.py -f \
+            -i {input.reads} \
+            -o {output.otus} \
+            -p {params.para} 
+        
+        filter_otus_from_otu_table.py \
+            -i {output.biom} \
+            -o {output.filtBiom} \
+            -n 2
+
+        rm -r {params.adapterDir} {params.filterDir} {params.mergeDir} {params.filterDir2} {params.poolDir} 
+        """
