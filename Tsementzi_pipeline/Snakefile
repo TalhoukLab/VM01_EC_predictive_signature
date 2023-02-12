@@ -2,8 +2,8 @@
 accessionList = "00-helperfiles/accessionList.txt"
 
 ## Output directories 
-workspace = "/projects/ddodani_prj/scratch/MCC_calc/Tsementzi/testSnake/"
-sampleDir = "/projects/ddodani_prj/microbiome/meta_analysis/01-rawData/Tsementzi/"
+workspace = "Tsementzi/"
+sampleDir = "/01-rawData/Tsementzi/"
 adapterOut = workspace + "02-adapters/"
 filterOut = workspace + "03-filtering/"
 mergeOut = workspace + "04-merge/"
