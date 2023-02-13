@@ -15,10 +15,9 @@ otusOut = workspace + "09-OTUs/"
 
 ## Required lists
 samples = []
-fastqc_var = ["html", "zip"]
 reads = ["1", "2"]
 
-## making a list of samples 
+## Making a list of samples 
 with open(accessionList) as f:
     for line in f:
         sample_full = line.split("\n")
