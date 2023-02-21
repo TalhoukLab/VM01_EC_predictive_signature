@@ -1,5 +1,6 @@
 ## Enviornment configurations 
 accessionList = "00-helperfiles/accessionList.txt"
+params = "/00-helperfiles/parameters_sortedUnique.txt"
 
 ## Output directories 
 workspace = "Tsementzi/"
@@ -140,7 +141,7 @@ rule cluster_OTUS:
     threads: 4
     message: "Identifying OTUs and filtering singletons"
     params:
-        para = workspace + "parameters_sortedUnique.txt",
+        para = params,
         conda_env = "qiime1_uclustv1.2.22",
         adapterDir = adapterOut,
         filterDir = filterOut,
