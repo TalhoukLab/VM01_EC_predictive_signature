@@ -1,6 +1,9 @@
 .Rproj.user
 .Rhistory
 .RData
+.DS_Store
 .Ruserdata
-Angel_pipeline/lefse
-Tsementzi_pipeline/lefse
+01-Reproducibility_Replicability/Angel_pipeline/lefse
+01-Reproducibility_Replicability/Angel_pipeline/Rplots
+01-Reproducibility_Replicability/Tsementzi_pipeline/lefse
+01-Reproducibility_Replicability/Tsementzi_pipeline/RResults
