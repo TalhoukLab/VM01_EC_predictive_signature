@@ -102,8 +102,6 @@ rule import_data:
         --input-path {input.manifestFile} \
         --output-path {output.allSeqs} \
         --input-format SingleEndFastqManifestPhred33V2
-
-        rm -r {input.merged}
         """
 
 rule vsearch_dereplicate:
