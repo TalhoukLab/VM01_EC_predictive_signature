@@ -1,0 +1,276 @@
+## imports 
+import os, sys 
+import pandas as pd
+import numpy as np
+
+## Enviornment configurations
+accessionList = "00-helperfiles/Tsementzi_accList.txt"
+classifierqiime = "00-helperfiles/gg-13-8-99-515-806-nb-classifier.qza"
+
+## output directories
+workspace = "Snake/Gressel/Tsementzi/"
+sampleDir = "01-rawData/Tsementzi/"
+trimOut = workspace + "02-trimming/"
+adapterOut = workspace + "03-adapter/"
+mergeOut = workspace + "04-merged/"
+qiimeOut = workspace + "05-qiime/"
+
+## Required lists
+samples = []
+reads = ["1", "2"]
+
+## Making a list of samples 
+with open(accessionList) as f:
+    for line in f:
+        sample_full = line.split("\n")
+        samples.append(sample_full[0])
+
+rule all:
+    threads: 4
+    input:
+        expand(mergeOut + "{samples}.fastq", samples=samples),
+        directory(qiimeOut + "exported-feature-table/")
+
+rule trimming:
+    input:
+        forwardIn = sampleDir + "{samples}_1.fastq",
+        reverseIn = sampleDir + "{samples}_2.fastq"
+    output:
+        readOutGoodF = temporary(trimOut + "{samples}_passed_1.fastq"),
+        readOutGoodR = temporary(trimOut + "{samples}_passed_2.fastq"),
+    threads: 4
+    message: "Trimming ends of reads"
+    params:
+        readOutGood = trimOut + "{samples}_passed",
+        conda_env = "Gressel"
+    shell:
+        """
+        prinseq-lite.pl -fastq {input.forwardIn} -fastq2 {input.reverseIn} \
+        -trim_qual_left 26 \
+        -out_good {params.readOutGood} \
+        -out_bad null
+        """
+
+rule adapter_removal:
+    input:
+        forwardIn = trimOut + "{samples}_passed_1.fastq",
+        reverseIn = trimOut + "{samples}_passed_2.fastq"
+    output:
+        forwardOut = temporary(adapterOut + "{samples}_noAda_1.fastq"),
+        reverseOut = temporary(adapterOut + "{samples}_noAda_2.fastq")
+    threads: 4
+    message: "Removal of adapters using bbduk"
+    shell:
+        """
+        bbduk.sh in1={input.forwardIn} in2={input.reverseIn} out1={output.forwardOut} out2={output.reverseOut} ref=adapters hdist=1 tpe tbo
+        """
+
+rule merge:
+    input:
+        forwardIn = adapterOut + "{samples}_noAda_1.fastq",
+        reverseIn = adapterOut + "{samples}_noAda_2.fastq"
+    output:
+        reads = mergeOut + "{samples}.fastq"
+    threads: 4
+    message: "Merging paired end reads"
+    shell:
+        """
+        pandaseq -F -f {input.forwardIn} -r {input.reverseIn} > {output.reads}
+        """
+
+## Creating a manifest file needed for qiime2
+df = pd.read_csv(accessionList, names=['sample-id'])
+df['absolute-filepath'] = mergeOut + df["sample-id"] + ".fastq"
+df.to_csv(workspace+'manifest.txt', header=True, index=None, sep='\t')
+
+rule import_data:
+    input:
+        merged = expand(mergeOut + "{samples}.fastq", samples=samples),
+        manifestFile = workspace + "manifest.txt"
+    output:
+        allSeqs = qiimeOut + "all_seqs.qza"
+    threads: 4
+    message: "Importing data into qiime2"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime tools import \
+        --type 'SampleData[JoinedSequencesWithQuality]' \
+        --input-path {input.manifestFile} \
+        --output-path {output.allSeqs} \
+        --input-format SingleEndFastqManifestPhred33V2
+        """
+
+rule vsearch_dereplicate:
+    input:
+        allSeqs = qiimeOut + "all_seqs.qza"
+    output:
+        table = qiimeOut + "table.qza",
+        repSeqs = qiimeOut + "rep-seqs.qza"
+    threads: 4
+    message: "VSEARCH dereplicate sequences"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime vsearch dereplicate-sequences \
+        --i-sequences {input.allSeqs} \
+        --o-dereplicated-table {output.table} \
+        --o-dereplicated-sequences {output.repSeqs}
+        """
+
+rule vsearch_Precluster:
+    input:
+        table = qiimeOut + "table.qza",
+        repSeqs = qiimeOut + "rep-seqs.qza"
+    output:
+        tablePreClu = qiimeOut + "table-predn-99.qza",
+        repSeqsPreClu = qiimeOut + "rep-seqs-predn-99.qza"
+    threads: 4
+    message: "VEARCH cluster"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime vsearch cluster-features-de-novo \
+        --i-table {input.table} \
+        --i-sequences {input.repSeqs} \
+        --p-perc-identity 0.99 \
+        --o-clustered-table {output.tablePreClu} \
+        --o-clustered-sequences {output.repSeqsPreClu}
+        """
+
+rule chimera_removal:
+    input:
+        tablePreClu = qiimeOut + "table-predn-99.qza",
+        repSeqsPreClu = qiimeOut + "rep-seqs-predn-99.qza"
+    output:
+        nonChimeras = qiimeOut + "nonchimeras.qza",
+        chimeras = qiimeOut + "chimeras.qza",
+        stats = qiimeOut + "stats.qza"
+    threads: 4
+    message: "Removing chimeras"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime vsearch uchime-denovo \
+        --i-table {input.tablePreClu} \
+        --i-sequences {input.repSeqsPreClu} \
+        --o-chimeras {output.chimeras} \
+        --o-nonchimeras {output.nonChimeras} \
+        --o-stats {output.stats}
+        """
+
+rule filter_chimeras:
+    input:
+        tablePreClu = qiimeOut + "table-predn-99.qza",
+        file = qiimeOut + "nonchimeras.qza"
+    output:
+        tableNoChimeras = qiimeOut + "table-nonchimeric-wo-borderline.qza"
+    threads: 4
+    message: "Removing chimeras"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime feature-table filter-features \
+        --i-table {input.tablePreClu} \
+        --m-metadata-file {input.file} \
+        --o-filtered-table {output.tableNoChimeras}
+        """
+
+rule filter_chimeras_seqs:
+    input:
+        repSeqs = qiimeOut + "rep-seqs.qza",
+        file = qiimeOut + "nonchimeras.qza"
+    output:
+        seqsNoChimeras = qiimeOut + "rep-seqs-nonchimeric-wo-borderline.qza"
+    threads: 4
+    message: "Removing chimeras from seqs"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime feature-table filter-seqs \
+        --i-data {input.repSeqs} \
+        --m-metadata-file {input.file} \
+        --o-filtered-data {output.seqsNoChimeras}
+        """
+
+rule vsearch_cluster:
+    input:
+        tableNoChimeras = qiimeOut + "table-nonchimeric-wo-borderline.qza",
+        seqsNoChimeras = qiimeOut + "rep-seqs-nonchimeric-wo-borderline.qza"
+    output:
+        table = qiimeOut + "table-dn-99.qza",
+        repSeqs = qiimeOut + "rep-seqs-dn-99.qza"
+    threads: 4
+    message: "Clustering using VSEARCH"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime vsearch cluster-features-de-novo \
+        --i-table {input.tableNoChimeras} \
+        --i-sequences {input.seqsNoChimeras} \
+        --p-perc-identity 0.99 \
+        --o-clustered-table {output.table} \
+        --o-clustered-sequences {output.repSeqs}
+        """
+
+rule get_taxonomies:
+    input:
+        repSeqs = qiimeOut + "rep-seqs-dn-99.qza"
+    output:
+        taxTable = qiimeOut + "taxonomy.qza"
+    threads: 4
+    message: "Classifying taxonomies"
+    params:
+        classifier = classifierqiime,
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime feature-classifier classify-sklearn \
+        --i-classifier {params.classifier} \
+        --i-reads {input.repSeqs} \
+        --o-classification {output.taxTable}
+        """
+
+rule export:
+    input:
+        taxTable = qiimeOut + "taxonomy.qza",
+        table = qiimeOut + "table-dn-99.qza"
+    output:
+        exported = directory(qiimeOut + "exported-feature-table/")
+    threads: 4
+    message: "Exporting results"
+    params:
+        conda_env = "qiime2-2022.8"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        qiime tools export --input-path {input.taxTable} \
+        --output-path {output.exported}
+
+        qiime tools export --input-path {input.table} \
+        --output-path {output.exported}
+        """
