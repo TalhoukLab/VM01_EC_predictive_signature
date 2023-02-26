@@ -16,15 +16,12 @@ library(miaViz)
 library(pheatmap)
 library(ggtree)
 
-cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi")
+cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
 for (cohort in cohorts) {
   print(cohort)
-  raw_table <- read_biom(file.path(paste0('~/Desktop/Microbiome/ML-Rep/', cohort, '/Gressel_pipeline/feature-table.biom')))
+  raw_table <- read_biom(file.path(paste0('~/Desktop/R&R/vaginalMicrobiome/Gressel_pipeline/results/', cohort, '_cohort/feature-table.biom')))
   raw_otus <- as.data.frame(as.matrix(biom_data(raw_table)))
-  to_keep <- which((rowSums(raw_otus))>10)
-  raw_otus_filter_otus <- raw_otus[to_keep, ]
-  raw_otus_filter_otus <- raw_otus_filter_otus + 1
-  tax_table <- read.delim(file.path(paste0('~/Desktop/Microbiome/ML-Rep/', cohort, '/Gressel_pipeline/taxonomy.tsv')), header = TRUE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('~/Desktop/R&R/vaginalMicrobiome/Gressel_pipeline/results/', cohort, '_cohort/taxonomy.tsv')), header = TRUE, sep = "\t")
   tax_table <- separate(data = tax_table, col = Taxon , into = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), sep = "\\;")
   rownames(tax_table) <- tax_table$Feature.ID
   tax_table = subset(tax_table, select = -c(Feature.ID, Confidence))
@@ -37,12 +34,12 @@ for (cohort in cohorts) {
   tax_table[is.na(tax_table)] <- " "
   tax_table <- mutate_all(tax_table, .funs=tolower)
   
-  feature_table <- read.delim(file.path(paste0('~/Desktop/Microbiome/ML-part1/', cohort, 'FT.csv')), header = TRUE, sep = ",")
+  feature_table <- read.delim(file.path(paste0('~/Desktop/R&R/vaginalMicrobiome/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
   rownames(feature_table) <- feature_table$sraID
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   feature_table$histology <- as.factor(feature_table$histology)
   feature_table$histology <- relevel(feature_table$histology,"Benign")
-  otus_table <- otu_table(raw_otus_filter_otus, taxa_are_rows = TRUE)
+  otus_table <- otu_table(raw_otus, taxa_are_rows = TRUE)
   tax_table_phy = tax_table(as.matrix(tax_table))
   samples = sample_data(feature_table)
 
