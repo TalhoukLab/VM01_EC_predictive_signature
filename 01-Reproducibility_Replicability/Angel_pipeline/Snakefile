@@ -74,7 +74,7 @@ rule primer_removal:
     shell:
         """
         /home/ddodani/bin/usearch11.0.667_i86linux32 \
-        -fastx_truncate {input.readIn} -stripleft 55 \
+        -fastx_truncate {input.readIn} -stripleft 55 -stripright 55 \
         -fastqout {output.readOut}
         """
 
