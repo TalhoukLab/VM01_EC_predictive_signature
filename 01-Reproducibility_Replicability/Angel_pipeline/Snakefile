@@ -134,7 +134,7 @@ rule cluster_ASVs:
     threads: 4
     message: "Clustering reads into ASVs"
     params:
-        datab = database
+        datab = database,
         adapterDir = adapterOut,
         mergeDir = mergeOut,
         primerDir = primerOut,
