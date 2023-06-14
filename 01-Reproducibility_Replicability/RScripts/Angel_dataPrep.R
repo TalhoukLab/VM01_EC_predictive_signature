@@ -12,10 +12,7 @@ library(OTUtable)
 library(picante)
 library(dplyr)
 library(reshape2)
-library(mia)
-library(miaViz)
 library(pheatmap)
-library(ggtree)
 library(gsubfn)
 library(dplyr)
 
@@ -57,6 +54,7 @@ for(cohort in cohorts){
   tax_table$genus <- gsub("g:", "", gsub("\\[", "",  gsub("\\]", "" ,as.character(tax_table$genus))))
   tax_table <- mutate_all(tax_table, .funs=tolower)
   feature_table <- read.delim(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort,'FT.csv'), header = TRUE, sep = ",")
+  feature_table <- feature_table %>% select(c("sraID", "cohort", "histology"))
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   rownames(feature_table) <- feature_table$sraID
   phylo_tree <- read_tree(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'),'zotus.tree'))

@@ -16,19 +16,14 @@ fncols_antonio <- function(data, cname) {
 }
 
 ## Raw 
-levels <- c("phylum", "class", "order", "family", "genus")
-#pipelines in Angel, Antonio_Walsh, Gressel, Tsementzi
-pipeline <-c("Tsementzi")
+levels <- c("phylum", "class","order", "family", "genus")
+#pipelines in Angel, Antonio_Walsh, Gressel, Tsementzi, InHouse
+pipeline <-c("Angel")
 #training cohorts in Angel, Antonio, Gressel, Tsementzi, Walsh
-training_cohort <- c("Walsh")
+training_cohort <- c("Angel")
 all_cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
 testing_cohorts <- setdiff(all_cohorts,training_cohort)
-if(pipeline == training_cohort){
-  testing_cohorts <- append(testing_cohorts, paste0(pipeline, "_test"))
-}
-if(pipeline == "Antonio" && training_cohort == "Walsh"){
-  testing_cohorts <- append(testing_cohorts, "Walsh_test")
-}
+
 all.MC = vector(mode="list", length=(length(testing_cohorts)*length(levels)))
 all.SC = array(0, dim =  c(length(testing_cohorts), length(levels)))
 colnames(all.SC) <- levels
@@ -39,13 +34,13 @@ for(testing_cohort in testing_cohorts){
       training_cohort <- paste0(training_cohort, "_train")
     }
     print(paste0("tesing cohort: ", testing_cohort, " level: ", level, " training cohort:", training_cohort))
-    train_phylo  <- subset_taxa(eval(parse(text = paste0(training_cohort, "_", pipeline, 'phyloseq_tree'))), c(eval(parse(text=level))!=" " & eval(parse(text=level)) !=""))
-    test_phylo  <- subset_taxa(eval(parse(text = paste0(testing_cohort, "_", pipeline, 'phyloseq_tree'))),  c(eval(parse(text=level))!=" " & eval(parse(text=level)) != ""))
+    train_phylo  <- subset_taxa(eval(parse(text = paste0(training_cohort, "_", pipeline, 'phyloseq_tree_raw'))), c(eval(parse(text=level))!=" " & eval(parse(text=level)) !=""))
+    test_phylo  <- subset_taxa(eval(parse(text = paste0(testing_cohort, "_", pipeline, 'phyloseq_tree_raw'))),  c(eval(parse(text=level))!=" " & eval(parse(text=level)) != ""))
     
-    tab_train <- microbiome::alpha(train_phylo, 
-                                    index = c("observed", "chao1", "diversity_gini_simpson", "diversity_shannon"))
-    tab_test <- microbiome::alpha(test_phylo, 
-                                    index = c("observed", "chao1", "diversity_gini_simpson", "diversity_shannon"))
+    #tab_train <- microbiome::alpha(train_phylo, 
+    #                                index = c("observed", "chao1", "diversity_gini_simpson", "diversity_shannon"))
+    #tab_test <- microbiome::alpha(test_phylo, 
+    #                                index = c("observed", "chao1", "diversity_gini_simpson", "diversity_shannon"))
     
     Train_level_phy <- aggregate_taxa(train_phylo, level = level)
     Test_level_phy <- aggregate_taxa(test_phylo, level = level)
@@ -60,12 +55,12 @@ for(testing_cohort in testing_cohorts){
       otu_test <- fncols_antonio(otu_test_temp, setdiff(names(otu_train_temp), names(otu_test_temp)))
       otu_train <- fncols_antonio(otu_train_temp, setdiff(names(otu_test_temp), names(otu_train_temp)))
     }
-    otu_train <- merge(otu_train, tab_train, by = "row.names")
-    rownames(otu_train) <- otu_train$Row.names
-    otu_train <- subset(otu_train, select = -c(Row.names))
-    otu_test <- merge(otu_test, tab_test, by = "row.names")
-    rownames(otu_test) <- otu_test$Row.names
-    otu_test <- subset(otu_test, select = -c(Row.names))
+    #otu_train <- merge(otu_train, tab_train, by = "row.names")
+    #rownames(otu_train) <- otu_train$Row.names
+    #otu_train <- subset(otu_train, select = -c(Row.names))
+    #otu_test <- merge(otu_test, tab_test, by = "row.names")
+    #rownames(otu_test) <- otu_test$Row.names
+    #otu_test <- subset(otu_test, select = -c(Row.names))
     labels <- Train_level_phy@sam_data$histology
     y <- factor(labels, labels=c("B", "C"))
     set.seed(123)
@@ -98,6 +93,6 @@ data_wide <- as.data.frame(all.SC)
 data_wide$training_cohort <- training_cohort
 data_wide$pipeline <- pipeline
 data_wide <- tibble::rownames_to_column(data_wide, "testing_cohort")
-data_long <- gather(data_wide, level, AUC, phylum:genus, factor_key=TRUE)
-#write.csv(data_long, paste0("~/Desktop/train_", training_cohort, "_pipeline_", pipeline, ".csv"), row.names = FALSE)
+data_long <- gather(data_wide, level, AUC, order:genus, factor_key=TRUE)
+write.csv(data_long, paste0("~/Desktop/train_", training_cohort, "_pipeline_", pipeline, ".csv"), row.names = FALSE)
 

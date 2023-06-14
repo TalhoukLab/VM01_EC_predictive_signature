@@ -1,5 +1,5 @@
 cohorts <- c("Antonio", "Angel", "Gressel", "Tsementzi", "Walsh")
-pipelines <- c("Angel", "Antonio", "Tsementzi", "Gressel")
+pipelines <- c("Angel", "Antonio", "Tsementzi", "Gressel", "InHouse")
 
 for (pipeline in pipelines){
   for(cohort in cohorts){
@@ -28,7 +28,7 @@ for (pipeline in pipelines){
       ps1.meta <- meta(eval(parse(text = paste0(cohort, '_', pipeline, 'phyloseq_raw'))))
     }
     ps1.meta <- subset(ps1.meta, select = c("cohort", "sraID", "histology"))
-    tab$sraID <- ps1.meta$chao1
+    tab$sraID <- ps1.meta$sraID
     tab$histology <- ps1.meta$histology
     tab$cohort <- ps1.meta$cohort
     assign(paste0(cohort, "_", pipeline, "alphaDiversity"),tab,.GlobalEnv)
