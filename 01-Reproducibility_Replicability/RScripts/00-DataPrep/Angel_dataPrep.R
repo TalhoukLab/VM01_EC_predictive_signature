@@ -19,7 +19,7 @@ library(dplyr)
 cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
   print(cohort)
-  raw_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability//Angel_pipeline/results/', cohort, '_cohort'), 'zotutab_raw.txt'), sep = '\t')
+  raw_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'), 'zotutab_raw.txt'), sep = '\t')
   raw_otus <- as.data.frame(as.matrix((raw_table)))
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
@@ -30,7 +30,7 @@ for(cohort in cohorts){
   #CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
   #outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=T))
   
-  tax_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability//Angel_pipeline/results/', cohort, '_cohort'), 'sintax.txt'), header = FALSE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'), 'sintax.txt'), header = FALSE, sep = "\t")
   tax_table$V2 <- gsub("\\s*\\([^\\)]+\\)","",as.character(tax_table$V2))
   tax_table <- separate(data = tax_table, col = V2 , into = c("kingdom", "rest"), sep = "\\,", extra = "merge")
   tax_table$rest <- ifelse(startsWith(tax_table$rest, "p:"), tax_table$rest, paste0("p:,", tax_table$rest))
