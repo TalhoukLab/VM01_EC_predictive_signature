@@ -1,1 +1,150 @@
-,sraID,cohort,histology,Stage,Ethnicity,Age,BMI,Menopausal.status,pH1,SRR7635466,Walsh,Benign,not applicable,white or caucasian,48,29.34,pre-menopausal,5.52,SRR7635470,Walsh,Benign,not applicable,white or caucasian,44,40.92,not collected,3.53,SRR7635478,Walsh,EC,Stage IA,white or caucasian,65,39.45,not collected,5.54,SRR7635481,Walsh,Benign,not applicable,white or caucasian,45,25.27,pre-menopausal,45,SRR7635489,Walsh,EC,Stage IA,white or caucasian,31,47.87,pre-menopausal,56,SRR7635493,Walsh,Benign,not applicable,not collected,72,34.47,post-menopausal,5.57,SRR7635503,Walsh,Benign,not applicable,white or caucasian,71,31.46,post-menopausal,68,SRR7635538,Walsh,Benign,not applicable,white or caucasian,49,29.56,pre-menopausal,59,SRR7635553,Walsh,Benign,not applicable,white or caucasian|american indian,43,28.28,pre-menopausal,4.510,SRR7635563,Walsh,Benign,not applicable,white or caucasian,43,48.34,pre-menopausal,4.511,SRR7635580,Walsh,EC,Stage IVB,"hispanic\, chicana\, mexican or latina",53,39.56,pre-menopausal,5.512,SRR7635581,Walsh,Benign,not applicable,not collected,44,50.77,not collected,513,SRR7635596,Walsh,Benign,not applicable,white or caucasian,50,19.94,post-menopausal,414,SRR7635605,Walsh,EC,Stage IA,white or caucasian,58,24.31,post-menopausal,5.515,SRR7635613,Walsh,Benign,not applicable,white or caucasian,47,32.73,pre-menopausal,5.516,SRR7635627,Walsh,Benign,not applicable,white or caucasian,83,30.41,post-menopausal,5.517,SRR7635629,Walsh,Benign,not applicable,not collected,37,24.34,not collected,618,SRR7635654,Walsh,Benign,not applicable,white or caucasian,53,20.44,pre-menopausal,4.519,SRR7635667,Walsh,Benign,not applicable,white or caucasian,63,36.39,post-menopausal,520,SRR7635683,Walsh,Benign,not applicable,white or caucasian,47,23.01,pre-menopausal,4.521,SRR7635688,Walsh,Benign,not applicable,white or caucasian,46,29.26,pre-menopausal,4.522,SRR7635695,Walsh,Benign,not applicable,white or caucasian,48,32.12,pre-menopausal,5.523,SRR7635708,Walsh,EC,Stage IA,white or caucasian,50,26.98,post-menopausal,4.524,SRR7635731,Walsh,Benign,not applicable,not collected,53,57.13,not collected,4.525,SRR7635743,Walsh,Benign,not applicable,filipino,49,32.81,pre-menopausal,526,SRR7635769,Walsh,Benign,not applicable,white or caucasian,47,40.46,pre-menopausal,5.527,SRR7635793,Walsh,Benign,not applicable,white or caucasian,46,32.34,pre-menopausal,528,SRR7635815,Walsh,Benign,not applicable,not collected,65,31.45,not collected,629,SRR7635825,Walsh,Benign,not applicable,not collected,57,36.18,not collected,5.530,SRR7635839,Walsh,Benign,not applicable,not collected,61,25.23,not collected,4.531,SRR7635851,Walsh,Benign,not applicable,white or caucasian,40,33.95,pre-menopausal,4.532,SRR7635862,Walsh,Benign,not applicable,not collected,36,31.59,not collected,433,SRR7635879,Walsh,Benign,not applicable,white or caucasian,49,36.11,pre-menopausal,4.534,SRR7635891,Walsh,Benign,not applicable,white or caucasian,47,24.02,pre-menopausal,4.535,SRR7635903,Walsh,Benign,not applicable,white or caucasian,67,not collected,post-menopausal,4.536,SRR7635918,Walsh,Benign,not applicable,not collected,46,29.93,not collected,637,SRR7635942,Walsh,Benign,not applicable,not collected,52,23.81,not collected,4.538,SRR7635964,Walsh,Benign,not applicable,white or caucasian,48,19.21,pre-menopausal,439,SRR7635971,Walsh,Benign,not applicable,white or caucasian,51,31.94,pre-menopausal,4.540,SRR7635994,Walsh,ACH,not applicable,white or caucasian,53,38.61,pre-menopausal,441,SRR7636007,Walsh,EC,Stage IA,white or caucasian,31,47.87,pre-menopausal,542,SRR7636010,Walsh,Benign,not applicable,white or caucasian,39,25.37,pre-menopausal,343,SRR7636016,Walsh,EC,Stage IA,white or caucasian,62,33.39,pre-menopausal,644,SRR7636020,Walsh,Benign,not applicable,not collected,40,25.83,not collected,4.545,SRR7636031,Walsh,Benign,not applicable,white or caucasian,52,37.46,pre-menopausal,4.546,SRR7636047,Walsh,Benign,not applicable,white or caucasian,51,50.08,pre-menopausal,5.547,SRR7636084,Walsh,EC,Stage IA,white or caucasian,69,31.73,post-menopausal,548,SRR7636103,Walsh,EC,Stage IA,white or caucasian|american indian,51,36.89,post-menopausal,549,SRR7636117,Walsh,Benign,not applicable,white or caucasian,46,29.05,post-menopausal,550,SRR7636124,Walsh,Benign,not applicable,white or caucasian,51,24.26,pre-menopausal,4.551,SRR7636128,Walsh,ACH,not applicable,white or caucasian,53,42.32,post-menopausal,452,SRR7636151,Walsh,EC,Stage IA,white or caucasian,65,36.41,post-menopausal,5.553,SRR7636156,Walsh,Benign,not applicable,white or caucasian,29,25.82,pre-menopausal,4.554,SRR7636174,Walsh,EC,Stage IA,white or caucasian,39,27.47,pre-menopausal,655,SRR7636179,Walsh,Benign,not applicable,white or caucasian,47,30.93,pre-menopausal,456,SRR7636195,Walsh,Benign,not applicable,white or caucasian,49,24.17,pre-menopausal,557,SRR7636204,Walsh,Benign,not applicable,white or caucasian,51,25.58,pre-menopausal,558,SRR7636214,Walsh,Benign,not applicable,white or caucasian,47,33.13,pre-menopausal,4.559,SRR7636238,Walsh,Benign,not applicable,white or caucasian,53,26.57,post-menopausal,660,SRR7636246,Walsh,Benign,not applicable,white or caucasian,57,57.96,post-menopausal,661,SRR7636247,Walsh,Benign,not applicable,white or caucasian,46,27.11,pre-menopausal,562,SRR7636265,Walsh,EC,Stage IA,white or caucasian,44,29.87,pre-menopausal,not collected63,SRR7636266,Walsh,EC,Stage IA,white or caucasian,58,22.99,post-menopausal,6.564,SRR7636267,Walsh,EC,Stage IA,white or caucasian,48,24.95,pre-menopausal,865,SRR7636277,Walsh,Benign,not applicable,white or caucasian,61,48.01,post-menopausal,5.5-6.066,SRR7636291,Walsh,EC,Stage IA,white or caucasian,55,33.09,post-menopausal,8.0-8.567,SRR7636294,Walsh,EC,Stage IA,not collected,68,29.8,not collected,not collected68,SRR7636307,Walsh,EC,Stage IB,white or caucasian,69,35.56,post-menopausal,5.0-5.569,SRR7636333,Walsh,EC,Stage II,not collected,71,22.17,not collected,8.570,SRR7636348,Walsh,EC,Stage IA,white or caucasian,57,51.95,post-menopausal,not collected71,SRR7636352,Walsh,Benign,not applicable,white or caucasian,57,39.98,post-menopausal,not collected72,SRR7636363,Walsh,EC,Stage IA,white or caucasian,71,40.09,post-menopausal,5.5-6.073,SRR7636367,Walsh,EC,Stage IA,not collected,56,49.42,not collected,8.574,SRR7636374,Walsh,Benign,not applicable,white or caucasian,38,20.34,pre-menopausal,not collected75,SRR7636382,Walsh,EC,Stage IB,white or caucasian,61,34.58,post-menopausal,6.576,SRR7636388,Walsh,EC,Stage IA,white or caucasian,68,42.76,not collected,6.5-777,SRR7636416,Walsh,Benign,not applicable,white or caucasian,49,27.77,pre-menopausal,not collected78,SRR7636423,Walsh,EC,Stage IB,white or caucasian,71,35.25,post-menopausal,7.579,SRR7636435,Walsh,EC,Stage IA,white or caucasian,59,34.16,post-menopausal,6.580,SRR7636439,Walsh,Benign,not applicable,"white or caucasian|black\, african\, or african american",62,48.36,post-menopausal,6.581,SRR7636445,Walsh,EC,Stage IA,white or caucasian,52,36,pre-menopausal,7.5-8.082,SRR7636460,Walsh,EC,Stage IA,white or caucasian,58,28.53,post-menopausal,783,SRR7636473,Walsh,EC,Stage IA,white or caucasian,61,23.18,post-menopausal,not collected84,SRR7636476,Walsh,EC,Stage IA,white or caucasian,64,33.09,post-menopausal,6.585,SRR7636477,Walsh,EC,Stage IB,not collected,66,31.88,not collected,6.586,SRR7636479,Walsh,EC,Stage IA,white or caucasian,61,40.58,post-menopausal,887,SRR7636484,Walsh,Benign,not applicable,not collected,48,22.52,not collected,4.5-5.088,SRR7636503,Walsh,Benign,not applicable,white or caucasian,50,32.94,pre-menopausal,not collected89,SRR7636510,Walsh,EC,Stage IA,not collected,45,24.87,not collected,6.590,SRR7636515,Walsh,Benign,not applicable,white or caucasian,30,26.41,pre-menopausal,5.5-6.091,SRR7636519,Walsh,EC,Stage IA,white or caucasian,78,37.66,post-menopausal,7.592,SRR7636520,Walsh,Benign,not applicable,white or caucasian,43,30.52,pre-menopausal,not collected93,SRR7636521,Walsh,Benign,not applicable,white or caucasian,56,36.66,pre-menopausal,6.0-6.594,SRR7636527,Walsh,EC,Stage IA,white or caucasian,44,41.99,pre-menopausal,795,SRR7636560,Walsh,EC,Stage IIIC1,white or caucasian,80,26.53,post-menopausal,796,SRR7636577,Walsh,Benign,not applicable,white or caucasian,46,21.17,pre-menopausal,6.597,SRR7636580,Walsh,Benign,not applicable,white or caucasian,61,27.73,post-menopausal,6.598,SRR7636587,Walsh,EC,Stage IA,white or caucasian,79,38.53,post-menopausal,not collected99,SRR7636588,Walsh,ACH,not applicable,white or caucasian,56,19.07,pre-menopausal,4.5-5.0100,SRR7636592,Walsh,EC,Stage IA,white or caucasian,69,42.83,post-menopausal,8101,SRR7636596,Walsh,EC,Stage IA,white or caucasian,66,38.68,post-menopausal,6.5102,SRR7636597,Walsh,EC,Stage IA,white or caucasian,59,41.74,post-menopausal,6.5103,SRR7636627,Walsh,EC,Stage IB,white or caucasian,64,42.19,not collected,7.5104,SRR7636634,Walsh,Benign,not applicable,white or caucasian,42,24.24,pre-menopausal,7105,SRR7636635,Walsh,Benign,not applicable,not collected,49,37.09,not collected,not collected106,SRR7636655,Walsh,Benign,not applicable,white or caucasian,41,27.07,pre-menopausal,6.5107,SRR7636664,Walsh,Benign,not applicable,white or caucasian,64,23.89,post-menopausal,7.07108,SRR7636675,Walsh,Benign,not applicable,white or caucasian,41,33.11,pre-menopausal,4.5-5.0109,SRR7636686,Walsh,EC,Stage IA,white or caucasian,59,27.02,post-menopausal,6.5110,SRR7636689,Walsh,EC,Stage IA,white or caucasian,49,29.04,pre-menopausal,6.5111,SRR7636690,Walsh,Benign,not applicable,not collected,57,22.99,not collected,8.5112,SRR7636693,Walsh,EC,Stage IB,white or caucasian,64,38.73,post-menopausal,8.5-9.0113,SRR7636725,Walsh,Benign,not applicable,white or caucasian,59,40.82,post-menopausal,not collected114,SRR7636729,Walsh,Benign,not applicable,white or caucasian,32,30.08,pre-menopausal,6.5-7.0115,SRR7636737,Walsh,Benign,not applicable,white or caucasian,51,20.28,pre-menopausal,6.0-6.5116,SRR7636756,Walsh,Benign,not applicable,chinese,61,25.83,post-menopausal,6.5117,SRR7636763,Walsh,Benign,not applicable,white or caucasian,43,40.36,pre-menopausal,6.5118,SRR7636777,Walsh,EC,Stage IB,white or caucasian,62,41.99,post-menopausal,7.0-7.5119,SRR7636786,Walsh,EC,Stage IB,white or caucasian,64,40.15,pre-menopausal,not collected120,SRR7636790,Walsh,EC,Stage IB,white or caucasian,76,25.35,post-menopausal,not collected121,SRR7636797,Walsh,EC,Stage IA,white or caucasian,79,41.77,post-menopausal,8.5122,SRR7636801,Walsh,EC,Stage IA,white or caucasian,68,32.05,post-menopausal,4.5-5.0123,SRR7636806,Walsh,EC,Stage IIIC1,white or caucasian,67,39.18,post-menopausal,6.5-7124,SRR7636827,Walsh,EC,Stage IA,white or caucasian|american indian,58,36.9,post-menopausal,7125,SRR7636830,Walsh,Benign,not applicable,not collected,39,49.48,not collected,7126,SRR7636849,Walsh,Benign,not applicable,white or caucasian,41,28.71,pre-menopausal,4.5-5.0127,SRR7636851,Walsh,EC,Stage IB,white or caucasian,56,25.98,post-menopausal,not collected128,SRR7636861,Walsh,Benign,not applicable,white or caucasian,67,24.88,post-menopausal,6.5129,SRR7636869,Walsh,EC,Stage IA,white or caucasian,67,37.69,post-menopausal,7.0-8.0130,SRR7636890,Walsh,Benign,not applicable,white or caucasian,64,22.31,post-menopausal,8.5131,SRR7636892,Walsh,Benign,not applicable,not collected,76,21.18,not collected,6.5132,SRR7636895,Walsh,Benign,not applicable,white or caucasian,55,41.17,pre-menopausal,6.5133,SRR7636899,Walsh,ACH,not applicable,white or caucasian,65,43.31,post-menopausal,6.5134,SRR7636900,Walsh,EC,Stage IA,not collected,84,31.27,not collected,not collected135,SRR7636904,Walsh,EC,Stage I,white or caucasian,67,28.05,post-menopausal,6.5136,SRR7636908,Walsh,EC,Stage IIIC1,white or caucasian,58,32.91,post-menopausal,8.5137,SRR7636915,Walsh,Benign,not applicable,white or caucasian,53,34.8,pre-menopausal,6.6138,SRR7636923,Walsh,EC,Stage IA,white or caucasian,72,24.68,post-menopausal,7139,SRR7636927,Walsh,EC,Stage IA,white or caucasian,58,28.33,post-menopausal,8.0-9.0140,SRR7636955,Walsh,EC,Stage IVB,white or caucasian,74,46.31,post-menopausal,7.0-7.5141,SRR7636960,Walsh,EC,Stage IA,white or caucasian,63,39.78,post-menopausal,not collected142,SRR7636969,Walsh,EC,Stage IIIC2,white or caucasian,73,40.82,post-menopausal,7143,SRR7636974,Walsh,EC,Stage IA,white or caucasian,45,86.65,pre-menopausal,6.5-7.0144,SRR7637012,Walsh,Benign,not applicable,not collected,36,25.19,not collected,8.5145,SRR7637020,Walsh,EC,Stage IA,white or caucasian,60,34.2,post-menopausal,not collected146,SRR7637026,Walsh,EC,Stage IA,white or caucasian,61,32.96,post-menopausal,7.2147,SRR7637029,Walsh,EC,Stage IA,white or caucasian,69,28.21,post-menopausal,7.5148,SRR7637032,Walsh,EC,Stage IA,white or caucasian,74,36.7,post-menopausal,6.5149,SRR7637034,Walsh,Benign,not applicable,white or caucasian,54,49.23,post-menopausal,not collected
+"...1","sraID","cohort","histology","Stage","Ethnicity","Age","BMI","Menopausal.status","pH","pHRecoded"
+1,"SRR7635466","Walsh","Benign","not applicable","white or caucasian",48,"29.34","pre-menopausal","5.5",">4.5"
+2,"SRR7635470","Walsh","Benign","not applicable","white or caucasian",44,"40.92","pre-menopausal","3.5","<=4.5"
+3,"SRR7635478","Walsh","EC","Stage IA","white or caucasian",65,"39.45","post-menopausal","5.5",">4.5"
+4,"SRR7635481","Walsh","Benign","not applicable","white or caucasian",45,"25.27","pre-menopausal","4","<=4.5"
+5,"SRR7635489","Walsh","EC","Stage IA","white or caucasian",31,"47.87","pre-menopausal","5",">4.5"
+6,"SRR7635493","Walsh","Benign","not applicable","not collected",72,"34.47","post-menopausal","5.5",">4.5"
+7,"SRR7635503","Walsh","Benign","not applicable","white or caucasian",71,"31.46","post-menopausal","6",">4.5"
+8,"SRR7635538","Walsh","Benign","not applicable","white or caucasian",49,"29.56","pre-menopausal","5",">4.5"
+9,"SRR7635553","Walsh","Benign","not applicable","white or caucasian|american indian",43,"28.28","pre-menopausal","4.5","<=4.5"
+10,"SRR7635563","Walsh","Benign","not applicable","white or caucasian",43,"48.34","pre-menopausal","4.5","<=4.5"
+11,"SRR7635580","Walsh","EC","Stage IVB","hispanic\, chicana\, mexican or latina",53,"39.56","pre-menopausal","5.5",">4.5"
+12,"SRR7635581","Walsh","Benign","not applicable","not collected",44,"50.77","pre-menopausal","5",">4.5"
+13,"SRR7635596","Walsh","Benign","not applicable","white or caucasian",50,"19.94","post-menopausal","4","<=4.5"
+14,"SRR7635605","Walsh","EC","Stage IA","white or caucasian",58,"24.31","post-menopausal","5.5",">4.5"
+15,"SRR7635613","Walsh","Benign","not applicable","white or caucasian",47,"32.73","pre-menopausal","5.5",">4.5"
+16,"SRR7635627","Walsh","Benign","not applicable","white or caucasian",83,"30.41","post-menopausal","5.5",">4.5"
+17,"SRR7635629","Walsh","Benign","not applicable","not collected",37,"24.34","pre-menopausal","6",">4.5"
+18,"SRR7635654","Walsh","Benign","not applicable","white or caucasian",53,"20.44","pre-menopausal","4.5","<=4.5"
+19,"SRR7635667","Walsh","Benign","not applicable","white or caucasian",63,"36.39","post-menopausal","5",">4.5"
+20,"SRR7635683","Walsh","Benign","not applicable","white or caucasian",47,"23.01","pre-menopausal","4.5","<=4.5"
+21,"SRR7635688","Walsh","Benign","not applicable","white or caucasian",46,"29.26","pre-menopausal","4.5","<=4.5"
+22,"SRR7635695","Walsh","Benign","not applicable","white or caucasian",48,"32.12","pre-menopausal","5.5",">4.5"
+23,"SRR7635708","Walsh","EC","Stage IA","white or caucasian",50,"26.98","post-menopausal","4.5","<=4.5"
+24,"SRR7635731","Walsh","Benign","not applicable","not collected",53,"57.13","post-menopausal","4.5","<=4.5"
+25,"SRR7635743","Walsh","Benign","not applicable","filipino",49,"32.81","pre-menopausal","5",">4.5"
+26,"SRR7635769","Walsh","Benign","not applicable","white or caucasian",47,"40.46","pre-menopausal","5.5",">4.5"
+27,"SRR7635793","Walsh","Benign","not applicable","white or caucasian",46,"32.34","pre-menopausal","5",">4.5"
+28,"SRR7635815","Walsh","Benign","not applicable","not collected",65,"31.45","post-menopausal","6",">4.5"
+29,"SRR7635825","Walsh","Benign","not applicable","not collected",57,"36.18","post-menopausal","5.5",">4.5"
+30,"SRR7635839","Walsh","Benign","not applicable","not collected",61,"25.23","post-menopausal","4.5","<=4.5"
+31,"SRR7635851","Walsh","Benign","not applicable","white or caucasian",40,"33.95","pre-menopausal","4.5","<=4.5"
+32,"SRR7635862","Walsh","Benign","not applicable","not collected",36,"31.59","pre-menopausal","4","<=4.5"
+33,"SRR7635879","Walsh","Benign","not applicable","white or caucasian",49,"36.11","pre-menopausal","4.5","<=4.5"
+34,"SRR7635891","Walsh","Benign","not applicable","white or caucasian",47,"24.02","pre-menopausal","4.5","<=4.5"
+35,"SRR7635903","Walsh","Benign","not applicable","white or caucasian",67,"not collected","post-menopausal","4.5","<=4.5"
+36,"SRR7635918","Walsh","Benign","not applicable","not collected",46,"29.93","pre-menopausal","6",">4.5"
+37,"SRR7635942","Walsh","Benign","not applicable","not collected",52,"23.81","post-menopausal","4.5","<=4.5"
+38,"SRR7635964","Walsh","Benign","not applicable","white or caucasian",48,"19.21","pre-menopausal","4","<=4.5"
+39,"SRR7635971","Walsh","Benign","not applicable","white or caucasian",51,"31.94","pre-menopausal","4.5","<=4.5"
+40,"SRR7635994","Walsh","ACH","not applicable","white or caucasian",53,"38.61","pre-menopausal","4","<=4.5"
+41,"SRR7636007","Walsh","EC","Stage IA","white or caucasian",31,"47.87","pre-menopausal","5",">4.5"
+42,"SRR7636010","Walsh","Benign","not applicable","white or caucasian",39,"25.37","pre-menopausal","3","<=4.5"
+43,"SRR7636016","Walsh","EC","Stage IA","white or caucasian",62,"33.39","pre-menopausal","6",">4.5"
+44,"SRR7636020","Walsh","Benign","not applicable","not collected",40,"25.83","pre-menopausal","4.5","<=4.5"
+45,"SRR7636031","Walsh","Benign","not applicable","white or caucasian",52,"37.46","pre-menopausal","4.5","<=4.5"
+46,"SRR7636047","Walsh","Benign","not applicable","white or caucasian",51,"50.08","pre-menopausal","5.5",">4.5"
+47,"SRR7636084","Walsh","EC","Stage IA","white or caucasian",69,"31.73","post-menopausal","5",">4.5"
+48,"SRR7636103","Walsh","EC","Stage IA","white or caucasian|american indian",51,"36.89","post-menopausal","5",">4.5"
+49,"SRR7636117","Walsh","Benign","not applicable","white or caucasian",46,"29.05","post-menopausal","5",">4.5"
+50,"SRR7636124","Walsh","Benign","not applicable","white or caucasian",51,"24.26","pre-menopausal","4.5","<=4.5"
+51,"SRR7636128","Walsh","ACH","not applicable","white or caucasian",53,"42.32","post-menopausal","4","<=4.5"
+52,"SRR7636151","Walsh","EC","Stage IA","white or caucasian",65,"36.41","post-menopausal","5.5",">4.5"
+53,"SRR7636156","Walsh","Benign","not applicable","white or caucasian",29,"25.82","pre-menopausal","4.5","<=4.5"
+54,"SRR7636174","Walsh","EC","Stage IA","white or caucasian",39,"27.47","pre-menopausal","6",">4.5"
+55,"SRR7636179","Walsh","Benign","not applicable","white or caucasian",47,"30.93","pre-menopausal","4","<=4.5"
+56,"SRR7636195","Walsh","Benign","not applicable","white or caucasian",49,"24.17","pre-menopausal","5",">4.5"
+57,"SRR7636204","Walsh","Benign","not applicable","white or caucasian",51,"25.58","pre-menopausal","5",">4.5"
+58,"SRR7636214","Walsh","Benign","not applicable","white or caucasian",47,"33.13","pre-menopausal","4.5","<=4.5"
+59,"SRR7636238","Walsh","Benign","not applicable","white or caucasian",53,"26.57","post-menopausal","6",">4.5"
+60,"SRR7636246","Walsh","Benign","not applicable","white or caucasian",57,"57.96","post-menopausal","6",">4.5"
+61,"SRR7636247","Walsh","Benign","not applicable","white or caucasian",46,"27.11","pre-menopausal","5",">4.5"
+62,"SRR7636265","Walsh","EC","Stage IA","white or caucasian",44,"29.87","pre-menopausal",NA,NA
+63,"SRR7636266","Walsh","EC","Stage IA","white or caucasian",58,"22.99","post-menopausal","6.5",">4.5"
+64,"SRR7636267","Walsh","EC","Stage IA","white or caucasian",48,"24.95","pre-menopausal","8",">4.5"
+65,"SRR7636277","Walsh","Benign","not applicable","white or caucasian",61,"48.01","post-menopausal","5.5-6.0",">4.5"
+66,"SRR7636291","Walsh","EC","Stage IA","white or caucasian",55,"33.09","post-menopausal","8.0-8.5",">4.5"
+67,"SRR7636294","Walsh","EC","Stage IA","not collected",68,"29.8","post-menopausal",NA,NA
+68,"SRR7636307","Walsh","EC","Stage IB","white or caucasian",69,"35.56","post-menopausal","5.0-5.5",">4.5"
+69,"SRR7636333","Walsh","EC","Stage II","not collected",71,"22.17","post-menopausal","8.5",">4.5"
+70,"SRR7636348","Walsh","EC","Stage IA","white or caucasian",57,"51.95","post-menopausal",NA,NA
+71,"SRR7636352","Walsh","Benign","not applicable","white or caucasian",57,"39.98","post-menopausal",NA,NA
+72,"SRR7636363","Walsh","EC","Stage IA","white or caucasian",71,"40.09","post-menopausal","5.5-6.0",">4.5"
+73,"SRR7636367","Walsh","EC","Stage IA","not collected",56,"49.42","post-menopausal","8.5",">4.5"
+74,"SRR7636374","Walsh","Benign","not applicable","white or caucasian",38,"20.34","pre-menopausal",NA,NA
+75,"SRR7636382","Walsh","EC","Stage IB","white or caucasian",61,"34.58","post-menopausal","6.5",">4.5"
+76,"SRR7636388","Walsh","EC","Stage IA","white or caucasian",68,"42.76","post-menopausal","6.5-7",">4.5"
+77,"SRR7636416","Walsh","Benign","not applicable","white or caucasian",49,"27.77","pre-menopausal",NA,NA
+78,"SRR7636423","Walsh","EC","Stage IB","white or caucasian",71,"35.25","post-menopausal","7.5",">4.5"
+79,"SRR7636435","Walsh","EC","Stage IA","white or caucasian",59,"34.16","post-menopausal","6.5",">4.5"
+80,"SRR7636439","Walsh","Benign","not applicable","white or caucasian|black\, african\, or african american",62,"48.36","post-menopausal","6.5",">4.5"
+81,"SRR7636445","Walsh","EC","Stage IA","white or caucasian",52,"36","pre-menopausal","7.5-8.0",">4.5"
+82,"SRR7636460","Walsh","EC","Stage IA","white or caucasian",58,"28.53","post-menopausal","7",">4.5"
+83,"SRR7636473","Walsh","EC","Stage IA","white or caucasian",61,"23.18","post-menopausal",NA,NA
+84,"SRR7636476","Walsh","EC","Stage IA","white or caucasian",64,"33.09","post-menopausal","6.5",">4.5"
+85,"SRR7636477","Walsh","EC","Stage IB","not collected",66,"31.88","post-menopausal","6.5",">4.5"
+86,"SRR7636479","Walsh","EC","Stage IA","white or caucasian",61,"40.58","post-menopausal","8",">4.5"
+87,"SRR7636484","Walsh","Benign","not applicable","not collected",48,"22.52","pre-menopausal","4.5-5.0",">4.5"
+88,"SRR7636503","Walsh","Benign","not applicable","white or caucasian",50,"32.94","pre-menopausal",NA,NA
+89,"SRR7636510","Walsh","EC","Stage IA","not collected",45,"24.87","pre-menopausal","6.5",">4.5"
+90,"SRR7636515","Walsh","Benign","not applicable","white or caucasian",30,"26.41","pre-menopausal","5.5-6.0",">4.5"
+91,"SRR7636519","Walsh","EC","Stage IA","white or caucasian",78,"37.66","post-menopausal","7.5",">4.5"
+92,"SRR7636520","Walsh","Benign","not applicable","white or caucasian",43,"30.52","pre-menopausal",NA,NA
+93,"SRR7636521","Walsh","Benign","not applicable","white or caucasian",56,"36.66","pre-menopausal","6.0-6.5",">4.5"
+94,"SRR7636527","Walsh","EC","Stage IA","white or caucasian",44,"41.99","pre-menopausal","7",">4.5"
+95,"SRR7636560","Walsh","EC","Stage IIIC1","white or caucasian",80,"26.53","post-menopausal","7",">4.5"
+96,"SRR7636577","Walsh","Benign","not applicable","white or caucasian",46,"21.17","pre-menopausal","6.5",">4.5"
+97,"SRR7636580","Walsh","Benign","not applicable","white or caucasian",61,"27.73","post-menopausal","6.5",">4.5"
+98,"SRR7636587","Walsh","EC","Stage IA","white or caucasian",79,"38.53","post-menopausal",NA,NA
+99,"SRR7636588","Walsh","ACH","not applicable","white or caucasian",56,"19.07","pre-menopausal","4.5-5.0",">4.5"
+100,"SRR7636592","Walsh","EC","Stage IA","white or caucasian",69,"42.83","post-menopausal","8",">4.5"
+101,"SRR7636596","Walsh","EC","Stage IA","white or caucasian",66,"38.68","post-menopausal","6.5",">4.5"
+102,"SRR7636597","Walsh","EC","Stage IA","white or caucasian",59,"41.74","post-menopausal","6.5",">4.5"
+103,"SRR7636627","Walsh","EC","Stage IB","white or caucasian",64,"42.19","post-menopausal","7.5",">4.5"
+104,"SRR7636634","Walsh","Benign","not applicable","white or caucasian",42,"24.24","pre-menopausal","7",">4.5"
+105,"SRR7636635","Walsh","Benign","not applicable","not collected",49,"37.09","pre-menopausal",NA,NA
+106,"SRR7636655","Walsh","Benign","not applicable","white or caucasian",41,"27.07","pre-menopausal","6.5",">4.5"
+107,"SRR7636664","Walsh","Benign","not applicable","white or caucasian",64,"23.89","post-menopausal","7.07",">4.5"
+108,"SRR7636675","Walsh","Benign","not applicable","white or caucasian",41,"33.11","pre-menopausal","4.5-5.0",">4.5"
+109,"SRR7636686","Walsh","EC","Stage IA","white or caucasian",59,"27.02","post-menopausal","6.5",">4.5"
+110,"SRR7636689","Walsh","EC","Stage IA","white or caucasian",49,"29.04","pre-menopausal","6.5",">4.5"
+111,"SRR7636690","Walsh","Benign","not applicable","not collected",57,"22.99","post-menopausal","8.5",">4.5"
+112,"SRR7636693","Walsh","EC","Stage IB","white or caucasian",64,"38.73","post-menopausal","8.5-9.0",">4.5"
+113,"SRR7636725","Walsh","Benign","not applicable","white or caucasian",59,"40.82","post-menopausal",NA,NA
+114,"SRR7636729","Walsh","Benign","not applicable","white or caucasian",32,"30.08","pre-menopausal","6.5-7.0",">4.5"
+115,"SRR7636737","Walsh","Benign","not applicable","white or caucasian",51,"20.28","pre-menopausal","6.0-6.5",">4.5"
+116,"SRR7636756","Walsh","Benign","not applicable","chinese",61,"25.83","post-menopausal","6.5",">4.5"
+117,"SRR7636763","Walsh","Benign","not applicable","white or caucasian",43,"40.36","pre-menopausal","6.5",">4.5"
+118,"SRR7636777","Walsh","EC","Stage IB","white or caucasian",62,"41.99","post-menopausal","7.0-7.5",">4.5"
+119,"SRR7636786","Walsh","EC","Stage IB","white or caucasian",64,"40.15","pre-menopausal",NA,NA
+120,"SRR7636790","Walsh","EC","Stage IB","white or caucasian",76,"25.35","post-menopausal",NA,NA
+121,"SRR7636797","Walsh","EC","Stage IA","white or caucasian",79,"41.77","post-menopausal","8.5",">4.5"
+122,"SRR7636801","Walsh","EC","Stage IA","white or caucasian",68,"32.05","post-menopausal","4.5-5.0",">4.5"
+123,"SRR7636806","Walsh","EC","Stage IIIC1","white or caucasian",67,"39.18","post-menopausal","6.5-7",">4.5"
+124,"SRR7636827","Walsh","EC","Stage IA","white or caucasian|american indian",58,"36.9","post-menopausal","7",">4.5"
+125,"SRR7636830","Walsh","Benign","not applicable","not collected",39,"49.48","pre-menopausal","7",">4.5"
+126,"SRR7636849","Walsh","Benign","not applicable","white or caucasian",41,"28.71","pre-menopausal","4.5-5.0",">4.5"
+127,"SRR7636851","Walsh","EC","Stage IB","white or caucasian",56,"25.98","post-menopausal",NA,NA
+128,"SRR7636861","Walsh","Benign","not applicable","white or caucasian",67,"24.88","post-menopausal","6.5",">4.5"
+129,"SRR7636869","Walsh","EC","Stage IA","white or caucasian",67,"37.69","post-menopausal","7.0-8.0",">4.5"
+130,"SRR7636890","Walsh","Benign","not applicable","white or caucasian",64,"22.31","post-menopausal","8.5",">4.5"
+131,"SRR7636892","Walsh","Benign","not applicable","not collected",76,"21.18","post-menopausal","6.5",">4.5"
+132,"SRR7636895","Walsh","Benign","not applicable","white or caucasian",55,"41.17","pre-menopausal","6.5",">4.5"
+133,"SRR7636899","Walsh","ACH","not applicable","white or caucasian",65,"43.31","post-menopausal","6.5",">4.5"
+134,"SRR7636900","Walsh","EC","Stage IA","not collected",84,"31.27","post-menopausal",NA,NA
+135,"SRR7636904","Walsh","EC","Stage I","white or caucasian",67,"28.05","post-menopausal","6.5",">4.5"
+136,"SRR7636908","Walsh","EC","Stage IIIC1","white or caucasian",58,"32.91","post-menopausal","8.5",">4.5"
+137,"SRR7636915","Walsh","Benign","not applicable","white or caucasian",53,"34.8","pre-menopausal","6.6",">4.5"
+138,"SRR7636923","Walsh","EC","Stage IA","white or caucasian",72,"24.68","post-menopausal","7",">4.5"
+139,"SRR7636927","Walsh","EC","Stage IA","white or caucasian",58,"28.33","post-menopausal","8.0-9.0",">4.5"
+140,"SRR7636955","Walsh","EC","Stage IVB","white or caucasian",74,"46.31","post-menopausal","7.0-7.5",">4.5"
+141,"SRR7636960","Walsh","EC","Stage IA","white or caucasian",63,"39.78","post-menopausal",NA,NA
+142,"SRR7636969","Walsh","EC","Stage IIIC2","white or caucasian",73,"40.82","post-menopausal","7",">4.5"
+143,"SRR7636974","Walsh","EC","Stage IA","white or caucasian",45,"86.65","pre-menopausal","6.5-7.0",">4.5"
+144,"SRR7637012","Walsh","Benign","not applicable","not collected",36,"25.19","pre-menopausal","8.5",">4.5"
+145,"SRR7637020","Walsh","EC","Stage IA","white or caucasian",60,"34.2","post-menopausal",NA,NA
+146,"SRR7637026","Walsh","EC","Stage IA","white or caucasian",61,"32.96","post-menopausal","7.2",">4.5"
+147,"SRR7637029","Walsh","EC","Stage IA","white or caucasian",69,"28.21","post-menopausal","7.5",">4.5"
+148,"SRR7637032","Walsh","EC","Stage IA","white or caucasian",74,"36.7","post-menopausal","6.5",">4.5"
+149,"SRR7637034","Walsh","Benign","not applicable","white or caucasian",54,"49.23","post-menopausal",NA,NA
