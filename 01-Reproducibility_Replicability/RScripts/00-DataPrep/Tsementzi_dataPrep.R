@@ -18,7 +18,7 @@ library(dplyr)
 
 ## Making phyloseq objects 
 
-cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 for (cohort in cohorts) {
   print(cohort)
   raw_table <- read_biom(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '_cohort/filtered_sortedUnique_otu.biom')))

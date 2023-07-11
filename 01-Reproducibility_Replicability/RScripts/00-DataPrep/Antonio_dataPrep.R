@@ -15,7 +15,7 @@ library(reshape2)
 library(pheatmap)
 library(stringr)
 
-cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 for (cohort in cohorts) {
   print(cohort)
   raw_table <- read_biom(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '_cohort/test_paired.biom')))

@@ -16,10 +16,10 @@ library(pheatmap)
 library(gsubfn)
 library(dplyr)
 
-cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
   print(cohort)
-  raw_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'), 'zotutab_raw.txt'), sep = '\t')
+  raw_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'), 'zotutab_raw.txt'), sep = '\t')
   raw_otus <- as.data.frame(as.matrix((raw_table)))
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
@@ -30,7 +30,7 @@ for(cohort in cohorts){
   #CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
   #outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=T))
   
-  tax_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'), 'sintax.txt'), header = FALSE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'), 'sintax.txt'), header = FALSE, sep = "\t")
   tax_table$V2 <- gsub("\\s*\\([^\\)]+\\)","",as.character(tax_table$V2))
   tax_table <- separate(data = tax_table, col = V2 , into = c("kingdom", "rest"), sep = "\\,", extra = "merge")
   tax_table$rest <- ifelse(startsWith(tax_table$rest, "p:"), tax_table$rest, paste0("p:,", tax_table$rest))
@@ -54,10 +54,10 @@ for(cohort in cohorts){
   tax_table$genus <- gsub("g:", "", gsub("\\[", "",  gsub("\\]", "" ,as.character(tax_table$genus))))
   tax_table <- mutate_all(tax_table, .funs=tolower)
   feature_table <- read.delim(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort,'FT.csv'), header = TRUE, sep = ",")
-  feature_table <- feature_table %>% select(c("sraID", "cohort", "histology"))
+  #feature_table <- feature_table %>% select(c("sraID", "cohort", "histology"))
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   rownames(feature_table) <- feature_table$sraID
-  phylo_tree <- read_tree(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Angel_pipeline/results/', cohort, '_cohort'),'zotus.tree'))
+  phylo_tree <- read_tree(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'),'zotus.tree'))
   otus_table <- otu_table(otus, taxa_are_rows = TRUE)
   tax_table_phy = tax_table(as.matrix(tax_table))
   samples = sample_data(feature_table)
@@ -72,6 +72,6 @@ for(cohort in cohorts){
   phyloseq_obj <- phyloseq(otu_table(otu_table,  taxa_are_rows = TRUE), tax_table(phyloseq_com), sample_data(phyloseq_com), phy_tree(phyloseq_com))
   phyloseq_lg <- microbiome::transform(phyloseq_obj, 'log10')
   
-  assign(paste0(cohort, "_Angelphyloseq_tree"), phyloseq_lg,.GlobalEnv)
-  assign(paste0(cohort, "_Angelphyloseq_tree_raw"), phyloseq_obj_ne,.GlobalEnv)
+  assign(paste0(cohort, "_Chaophyloseq_tree"), phyloseq_lg,.GlobalEnv)
+  assign(paste0(cohort, "_Chaophyloseq_tree_raw"), phyloseq_obj_ne,.GlobalEnv)
 }

@@ -1,7 +1,7 @@
 ## This script will format the input for Lefse
 pipeline <- "Tsementzi"
 levels <- c("OTU")
-cohorts <- c("Angel", "Antonio", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio","Chao", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
   for(level in levels){
     ## OTU level

@@ -1,6 +1,6 @@
 ## Script for beta diversity metrics Bray-Curtis and Jaccard for Tsementzi pipeline 
 
-cohort <- "Tsementzi" ## Change to either Angel, Antonio, Gressel, Tsementzi, Walsh
+cohort <- "Tsementzi" ## Change to either Chao, Antonio, Gressel, Tsementzi, Walsh
 var <- "histology" ## Change to either histology, age, pH, BMI (age, pH, BMI are only presnet for Antonio, Walsh and Tsementzi)
 
 to_keep <- which((colSums(otu_table(eval(parse(text = paste0(cohort, '_', 'Tsementziphyloseq_tree'))))))>1)
