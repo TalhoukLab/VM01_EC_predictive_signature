@@ -28,7 +28,7 @@ source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00
 source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
 
 cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
-pipelines <- c("Antonio", "Chao", "Tsementzi", "Gressel", "InHouse")
+pipelines <- c("Antonio", "Chao", "Tsementzi", "Gressel", "SOTA")
 
 my_Shannon <- function(x){
   # Ignore zeroes
@@ -44,7 +44,7 @@ my_Shannon <- function(x){
     (-sum(p * log(p)))
   
 }
-sink("~/Desktop/LM.txt")
+#sink("~/Desktop/LM.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
@@ -71,17 +71,18 @@ for (pipeline in pipelines){
     if(cohort=="Antonio" || cohort=="Walsh"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
                         as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) + 
-                        as.factor(ps1.meta$Menopausal.status) + 
-                        as.factor(ps1.meta$pHRecoded)*as.factor(ps1.meta$histology))
+                        as.factor(ps1.meta$Menopausal.status))
     }
     if(cohort == "Tsementzi"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
-                       as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) + 
-                       as.factor(ps1.meta$pHRecoded)*as.factor(ps1.meta$histology))
+                       as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded))
     }
     if(cohort == "Chao"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
                        as.factor(ps1.meta$Menopausal.status))
+    }
+    if(cohort == "Gressel"){
+      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology))
     }
     print(summary(test.sig))
     assign(paste0(cohort, "_", pipeline, "alphaDiversity_sig"),test.sig,.GlobalEnv)
@@ -105,13 +106,13 @@ for (pipeline in pipelines){
   #print(anno_df)
   
 }
-sink()
+#sink()
 
 all_pipelines <- rbind(AntonioalphaDiversity,
                        ChaoalphaDiversity,
                        GresselalphaDiversity,
                        TsementzialphaDiversity,
-                       InHousealphaDiversity)
+                       SOTAalphaDiversity)
 all_pipelines$pipeline <- paste0(all_pipelines$pipeline, "_pipeline")
 bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
   geom_boxplot(aes(fill=histology)) + 
@@ -126,7 +127,4 @@ bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
         legend.key.width = unit(1, 'cm'),
         legend.title = element_text(size=16),   legend.text = element_text(size=16)) 
 bp1
-
-## Need to account for variables such as age, BMI, menopausal status, and pH
-
 
