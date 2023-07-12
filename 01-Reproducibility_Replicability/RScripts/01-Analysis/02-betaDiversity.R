@@ -1,4 +1,3 @@
-## This script is for beta diversity.
 library(patchwork)
 library(microViz)
 ## Chao beta diversity - only use unweighted uniFrac distance with an PCA plot. 
