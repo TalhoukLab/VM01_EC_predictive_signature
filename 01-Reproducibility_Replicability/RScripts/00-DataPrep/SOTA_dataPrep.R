@@ -20,6 +20,8 @@ library(msa)
 library(rRDP)
 library(rRDPData)
 library(seqinr)
+library(PLSDAbatch)
+library(mixOmics)
 
 cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
@@ -27,6 +29,8 @@ for(cohort in cohorts){
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
   otus <- mutate_all(raw_otus,function(x) as.numeric(as.character(x)))
+  otus.res <- PreFL(data = otus)
+  otus <- otus.res$data.filter
   names(otus) = gsub(pattern = "_", replacement = "", x = names(otus))
   rep_seqs <- readDNAStringSet(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otus.fasta')))
   names(rep_seqs) <- sapply(strsplit(names(rep_seqs), ";"), "[", 1)
@@ -117,9 +121,13 @@ for(cohort in cohorts){
   rownames(feature_table) <- feature_table$sraID
   otus_table <- otu_table(otu_copy, taxa_are_rows = TRUE)
   #pred_copy1 <- pred
+  phylo_tree <- read_tree(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '_cohort/test_paired.tree')))
+  rooted_tree <- phangorn::midpoint(phylo_tree)
+  taxa_names(rooted_tree) <- paste0("OTU_", taxa_names(rooted_tree))
+  tree_phy <- phy_tree(rooted_tree)
   tax_table_phy = tax_table(as.matrix(pred_copy1))
   samples = sample_data(feature_table)
-  phyloseq_pre <- phyloseq(otus_table, tax_table_phy, samples)
+  phyloseq_pre <- phyloseq(otus_table, tax_table_phy, samples, tree_phy)
   phyloseq_pre_un <- subset_taxa(phyloseq_pre, is.na(phylum)==FALSE)
   #phyloseq_pre_un1 <- subset_taxa(phyloseq_pre_un, phylum!="cyanobacteria/chloroplast")
   phyloseq_obj_ne <- prune_samples(sample_sums(phyloseq_pre_un) > 1, phyloseq_pre_un)
@@ -130,7 +138,7 @@ for(cohort in cohorts){
   #                          sample_data(phyloseq_obj_ne)) 
   #assign(paste0(cohort, "_InHousephyloseq_tree"), phylo_imputed,.GlobalEnv)
   phylo_raw <- phyloseq(otu_table(otu_copy, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
-                       sample_data(phyloseq_obj_ne))
+                       sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
   
   assign(paste0(cohort, "_SOTAphyloseq_tree_raw"),phylo_raw ,.GlobalEnv)
 }

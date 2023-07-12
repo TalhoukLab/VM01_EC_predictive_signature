@@ -101,7 +101,7 @@ for (pipeline in pipelines){
   all_cohorts_long$log_val <- log(all_cohorts_long$value)
   all_cohorts_long$pipeline <- pipeline
   assign(paste0(pipeline, "alphaDiversity"),all_cohorts_long,.GlobalEnv)
-  anno_df = compare_means(value ~ histology, group.by = c("metric", "cohort"), data = all_cohorts_long, method = "kruskal.test")
+  #anno_df = compare_means(value ~ histology, group.by = c("metric", "cohort"), data = all_cohorts_long, method = "kruskal.test")
   #print(pipeline)
   #print(anno_df)
   

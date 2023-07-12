@@ -588,3 +588,852 @@ Residual standard error: 0.8648 on 124 degrees of freedom
 Multiple R-squared:  0.4508,	Adjusted R-squared:  0.4331 
 F-statistic: 25.45 on 4 and 124 DF,  p-value: 2.112e-15
 
+Run 0 stress 0.06990876 
+Run 1 stress 0.06990876 
+... Procrustes: rmse 4.580775e-06  max resid 1.281904e-05 
+... Similar to previous best
+Run 2 stress 0.06990876 
+... Procrustes: rmse 1.807724e-06  max resid 5.213982e-06 
+... Similar to previous best
+Run 3 stress 0.3718423 
+Run 4 stress 0.06990876 
+... New best solution
+... Procrustes: rmse 1.927594e-06  max resid 5.158031e-06 
+... Similar to previous best
+Run 5 stress 0.06990876 
+... Procrustes: rmse 1.894539e-06  max resid 4.444098e-06 
+... Similar to previous best
+Run 6 stress 0.0710139 
+Run 7 stress 0.06990876 
+... Procrustes: rmse 1.182414e-06  max resid 2.844815e-06 
+... Similar to previous best
+Run 8 stress 0.0710139 
+Run 9 stress 0.06990876 
+... Procrustes: rmse 3.671898e-06  max resid 1.034408e-05 
+... Similar to previous best
+Run 10 stress 0.06990876 
+... Procrustes: rmse 4.616773e-06  max resid 1.166737e-05 
+... Similar to previous best
+Run 11 stress 0.0710139 
+Run 12 stress 0.06990876 
+... Procrustes: rmse 3.330199e-06  max resid 9.290261e-06 
+... Similar to previous best
+Run 13 stress 0.0710139 
+Run 14 stress 0.06990876 
+... Procrustes: rmse 3.947094e-06  max resid 1.151228e-05 
+... Similar to previous best
+Run 15 stress 0.0710139 
+Run 16 stress 0.2199843 
+Run 17 stress 0.2271378 
+Run 18 stress 0.06990876 
+... Procrustes: rmse 2.481229e-06  max resid 7.326719e-06 
+... Similar to previous best
+Run 19 stress 0.1750362 
+Run 20 stress 0.06990876 
+... Procrustes: rmse 1.138751e-06  max resid 2.752479e-06 
+... Similar to previous best
+*** Best solution repeated 9 times
+Run 0 stress 0.1239711 
+Run 1 stress 0.123971 
+... New best solution
+... Procrustes: rmse 0.0005231803  max resid 0.002294377 
+... Similar to previous best
+Run 2 stress 0.1300007 
+Run 3 stress 0.1240505 
+... Procrustes: rmse 0.03550557  max resid 0.1424878 
+Run 4 stress 0.1339443 
+Run 5 stress 0.1234716 
+... New best solution
+... Procrustes: rmse 0.05914177  max resid 0.2615409 
+Run 6 stress 0.1352219 
+Run 7 stress 0.1235061 
+... Procrustes: rmse 0.04971023  max resid 0.2579086 
+Run 8 stress 0.1267452 
+Run 9 stress 0.1243709 
+Run 10 stress 0.1353654 
+Run 11 stress 0.1234716 
+... New best solution
+... Procrustes: rmse 0.0009391602  max resid 0.004292721 
+... Similar to previous best
+Run 12 stress 0.1235322 
+... Procrustes: rmse 0.005151851  max resid 0.01458318 
+Run 13 stress 0.1241346 
+Run 14 stress 0.1331744 
+Run 15 stress 0.12693 
+Run 16 stress 0.1272762 
+Run 17 stress 0.1269293 
+Run 18 stress 0.1309613 
+Run 19 stress 0.123995 
+Run 20 stress 0.1239808 
+*** Best solution repeated 1 times
+Run 0 stress 0.1612692 
+Run 1 stress 0.164623 
+Run 2 stress 0.1652419 
+Run 3 stress 0.164623 
+Run 4 stress 0.1612692 
+... New best solution
+... Procrustes: rmse 0.0001185889  max resid 0.0005383782 
+... Similar to previous best
+Run 5 stress 0.1612692 
+... New best solution
+... Procrustes: rmse 5.70929e-05  max resid 0.0002563565 
+... Similar to previous best
+Run 6 stress 0.2253438 
+Run 7 stress 0.1911722 
+Run 8 stress 0.1986841 
+Run 9 stress 0.164623 
+Run 10 stress 0.164623 
+Run 11 stress 0.1714469 
+Run 12 stress 0.1714469 
+Run 13 stress 0.171447 
+Run 14 stress 0.1911722 
+Run 15 stress 0.1992271 
+Run 16 stress 0.1612692 
+... Procrustes: rmse 9.593367e-05  max resid 0.0004010913 
+... Similar to previous best
+Run 17 stress 0.1714469 
+Run 18 stress 0.2213019 
+Run 19 stress 0.1612692 
+... Procrustes: rmse 2.736832e-05  max resid 9.070146e-05 
+... Similar to previous best
+Run 20 stress 0.1612692 
+... Procrustes: rmse 1.364604e-05  max resid 4.393154e-05 
+... Similar to previous best
+*** Best solution repeated 4 times
+Run 0 stress 0.1197405 
+Run 1 stress 0.1750533 
+Run 2 stress 0.1224096 
+Run 3 stress 0.1224097 
+Run 4 stress 0.1419554 
+Run 5 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 7.634206e-05  max resid 0.0003451563 
+... Similar to previous best
+Run 6 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 3.631356e-05  max resid 0.0001701076 
+... Similar to previous best
+Run 7 stress 0.1418773 
+Run 8 stress 0.1224103 
+Run 9 stress 0.1197405 
+... Procrustes: rmse 3.070127e-05  max resid 0.0001215709 
+... Similar to previous best
+Run 10 stress 0.1224098 
+Run 11 stress 0.1197405 
+... Procrustes: rmse 1.61193e-05  max resid 7.705931e-05 
+... Similar to previous best
+Run 12 stress 0.1197405 
+... Procrustes: rmse 7.069426e-05  max resid 0.0002665646 
+... Similar to previous best
+Run 13 stress 0.1197405 
+... Procrustes: rmse 3.390953e-05  max resid 0.0001454032 
+... Similar to previous best
+Run 14 stress 0.1425848 
+Run 15 stress 0.1425846 
+Run 16 stress 0.1419176 
+Run 17 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 7.143205e-06  max resid 3.335282e-05 
+... Similar to previous best
+Run 18 stress 0.1197405 
+... Procrustes: rmse 5.036212e-05  max resid 0.0001910558 
+... Similar to previous best
+Run 19 stress 0.1727324 
+Run 20 stress 0.1727325 
+*** Best solution repeated 2 times
+Run 0 stress 0.1309325 
+Run 1 stress 0.1309131 
+... New best solution
+... Procrustes: rmse 0.001851175  max resid 0.01560594 
+Run 2 stress 0.1329187 
+Run 3 stress 0.1328519 
+Run 4 stress 0.1329187 
+Run 5 stress 0.1309323 
+... Procrustes: rmse 0.00187484  max resid 0.01578085 
+Run 6 stress 0.1309323 
+... Procrustes: rmse 0.001882143  max resid 0.01592899 
+Run 7 stress 0.1309323 
+... Procrustes: rmse 0.001879767  max resid 0.01589723 
+Run 8 stress 0.1309641 
+... Procrustes: rmse 0.002876942  max resid 0.02133671 
+Run 9 stress 0.1309539 
+... Procrustes: rmse 0.00250653  max resid 0.01987323 
+Run 10 stress 0.1328519 
+Run 11 stress 0.1309131 
+... Procrustes: rmse 2.516418e-06  max resid 2.464883e-05 
+... Similar to previous best
+Run 12 stress 0.1309641 
+... Procrustes: rmse 0.002849346  max resid 0.02087098 
+Run 13 stress 0.1328515 
+Run 14 stress 0.1309651 
+... Procrustes: rmse 0.002876225  max resid 0.02178451 
+Run 15 stress 0.1328515 
+Run 16 stress 0.132914 
+Run 17 stress 0.1328519 
+Run 18 stress 0.1329187 
+Run 19 stress 0.1328519 
+Run 20 stress 0.1329187 
+*** Best solution repeated 1 times
+Run 0 stress 0.01585656 
+Run 1 stress 0.002101763 
+... New best solution
+... Procrustes: rmse 0.1709909  max resid 0.2705595 
+Run 2 stress 0.07108263 
+Run 3 stress 0.01547261 
+Run 4 stress 0.002265859 
+... Procrustes: rmse 0.1343619  max resid 0.2743266 
+Run 5 stress 0.01650882 
+Run 6 stress 0.01572943 
+Run 7 stress 0.02240968 
+Run 8 stress 0.001974287 
+... New best solution
+... Procrustes: rmse 0.02452199  max resid 0.04899395 
+Run 9 stress 0.01595788 
+Run 10 stress 0.0009521558 
+... New best solution
+... Procrustes: rmse 0.249519  max resid 0.5065124 
+Run 11 stress 0.07332398 
+Run 12 stress 0.01546278 
+Run 13 stress 0.002447874 
+Run 14 stress 0.01642295 
+Run 15 stress 0.002420546 
+Run 16 stress 0.04782566 
+Run 17 stress 0.06020245 
+Run 18 stress 0.07332398 
+Run 19 stress 0.04782668 
+Run 20 stress 0.06020255 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    13: no. of iterations >= maxit
+     7: stress ratio > sratmax
+Run 0 stress 0.1336374 
+Run 1 stress 0.1336379 
+... Procrustes: rmse 0.0007171645  max resid 0.003349332 
+... Similar to previous best
+Run 2 stress 0.1422007 
+Run 3 stress 0.1651487 
+Run 4 stress 0.1664172 
+Run 5 stress 0.1564537 
+Run 6 stress 0.1422034 
+Run 7 stress 0.1336382 
+... Procrustes: rmse 0.001407469  max resid 0.006340577 
+... Similar to previous best
+Run 8 stress 0.1786152 
+Run 9 stress 0.1451679 
+Run 10 stress 0.1338771 
+... Procrustes: rmse 0.04382818  max resid 0.2046716 
+Run 11 stress 0.1335889 
+... New best solution
+... Procrustes: rmse 0.005337661  max resid 0.02189183 
+Run 12 stress 0.1422461 
+Run 13 stress 0.1339002 
+... Procrustes: rmse 0.04454942  max resid 0.2073691 
+Run 14 stress 0.1420937 
+Run 15 stress 0.1422034 
+Run 16 stress 0.1621218 
+Run 17 stress 0.1422022 
+Run 18 stress 0.1422015 
+Run 19 stress 0.1420809 
+Run 20 stress 0.1422839 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+     3: no. of iterations >= maxit
+    17: stress ratio > sratmax
+Run 0 stress 0.2178824 
+Run 1 stress 0.2388219 
+Run 2 stress 0.2400623 
+Run 3 stress 0.2389413 
+Run 4 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 0.01463277  max resid 0.05447033 
+Run 5 stress 0.2387195 
+Run 6 stress 0.2239344 
+Run 7 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 0.0001491059  max resid 0.0004169657 
+... Similar to previous best
+Run 8 stress 0.2173094 
+... Procrustes: rmse 9.696204e-05  max resid 0.0002621784 
+... Similar to previous best
+Run 9 stress 0.2178277 
+Run 10 stress 0.2335031 
+Run 11 stress 0.2174537 
+... Procrustes: rmse 0.03162926  max resid 0.1239098 
+Run 12 stress 0.2173094 
+... Procrustes: rmse 1.135921e-05  max resid 3.049539e-05 
+... Similar to previous best
+Run 13 stress 0.2376485 
+Run 14 stress 0.2326349 
+Run 15 stress 0.2501837 
+Run 16 stress 0.2773096 
+Run 17 stress 0.2324576 
+Run 18 stress 0.2174537 
+... Procrustes: rmse 0.03162998  max resid 0.1238997 
+Run 19 stress 0.2174537 
+... Procrustes: rmse 0.03163034  max resid 0.1239036 
+Run 20 stress 0.2178277 
+*** Best solution repeated 3 times
+Run 0 stress 0.1956183 
+Run 1 stress 0.1999381 
+Run 2 stress 0.2041269 
+Run 3 stress 0.2062013 
+Run 4 stress 0.1987065 
+Run 5 stress 0.1914203 
+... New best solution
+... Procrustes: rmse 0.05547482  max resid 0.1934461 
+Run 6 stress 0.1949935 
+Run 7 stress 0.2200505 
+Run 8 stress 0.198701 
+Run 9 stress 0.2017113 
+Run 10 stress 0.2067312 
+Run 11 stress 0.197651 
+Run 12 stress 0.2121178 
+Run 13 stress 0.1928263 
+Run 14 stress 0.1987009 
+Run 15 stress 0.2024822 
+Run 16 stress 0.1941938 
+Run 17 stress 0.2005325 
+Run 18 stress 0.1999603 
+Run 19 stress 0.2180798 
+Run 20 stress 0.1999298 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    20: stress ratio > sratmax
+Run 0 stress 0.09022026 
+Run 1 stress 0.09209916 
+Run 2 stress 0.09175563 
+Run 3 stress 0.0906742 
+... Procrustes: rmse 0.04073183  max resid 0.1959685 
+Run 4 stress 0.09126583 
+Run 5 stress 0.09130116 
+Run 6 stress 0.0906043 
+... Procrustes: rmse 0.02859166  max resid 0.09869813 
+Run 7 stress 0.09132976 
+Run 8 stress 0.09199234 
+Run 9 stress 0.09099365 
+Run 10 stress 0.09049553 
+... Procrustes: rmse 0.03382442  max resid 0.1451085 
+Run 11 stress 0.09211758 
+Run 12 stress 0.09182755 
+Run 13 stress 0.09172509 
+Run 14 stress 0.09303277 
+Run 15 stress 0.09102238 
+Run 16 stress 0.09128671 
+Run 17 stress 0.09064785 
+... Procrustes: rmse 0.04262369  max resid 0.2181557 
+Run 18 stress 0.09146002 
+Run 19 stress 0.09211396 
+Run 20 stress 0.09134839 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    20: no. of iterations >= maxit
+Run 0 stress 0.06990876 
+Run 1 stress 0.1750362 
+Run 2 stress 0.2000353 
+Run 3 stress 0.1702236 
+Run 4 stress 0.2315946 
+Run 5 stress 0.0710139 
+Run 6 stress 0.0710139 
+Run 7 stress 0.0710139 
+Run 8 stress 0.1750362 
+Run 9 stress 0.1702236 
+Run 10 stress 0.0710139 
+Run 11 stress 0.0710139 
+Run 12 stress 0.0710139 
+Run 13 stress 0.06990876 
+... Procrustes: rmse 4.1793e-06  max resid 1.085824e-05 
+... Similar to previous best
+Run 14 stress 0.0710139 
+Run 15 stress 0.06990876 
+... New best solution
+... Procrustes: rmse 1.751821e-06  max resid 5.08546e-06 
+... Similar to previous best
+Run 16 stress 0.0710139 
+Run 17 stress 0.0710139 
+Run 18 stress 0.0710139 
+Run 19 stress 0.0710139 
+Run 20 stress 0.2298526 
+*** Best solution repeated 1 times
+Run 0 stress 0.1239711 
+Run 1 stress 0.1344724 
+Run 2 stress 0.1239709 
+... New best solution
+... Procrustes: rmse 0.0004711886  max resid 0.001997404 
+... Similar to previous best
+Run 3 stress 0.1249136 
+Run 4 stress 0.12693 
+Run 5 stress 0.1302276 
+Run 6 stress 0.1566969 
+Run 7 stress 0.1293387 
+Run 8 stress 0.1344867 
+Run 9 stress 0.1243762 
+... Procrustes: rmse 0.01492607  max resid 0.04931432 
+Run 10 stress 0.1331652 
+Run 11 stress 0.1345143 
+Run 12 stress 0.1269305 
+Run 13 stress 0.1267451 
+Run 14 stress 0.1234716 
+... New best solution
+... Procrustes: rmse 0.05914063  max resid 0.2615082 
+Run 15 stress 0.1349071 
+Run 16 stress 0.1299861 
+Run 17 stress 0.1241713 
+Run 18 stress 0.1370034 
+Run 19 stress 0.1235061 
+... Procrustes: rmse 0.04966523  max resid 0.2576374 
+Run 20 stress 0.1330212 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+     6: no. of iterations >= maxit
+    14: stress ratio > sratmax
+Run 0 stress 0.1612692 
+Run 1 stress 0.1993289 
+Run 2 stress 0.1652419 
+Run 3 stress 0.1612692 
+... New best solution
+... Procrustes: rmse 6.634775e-05  max resid 0.0003018507 
+... Similar to previous best
+Run 4 stress 0.164623 
+Run 5 stress 0.2168744 
+Run 6 stress 0.1714469 
+Run 7 stress 0.1652419 
+Run 8 stress 0.1652419 
+Run 9 stress 0.1652419 
+Run 10 stress 0.1612692 
+... Procrustes: rmse 2.930144e-05  max resid 0.0001299788 
+... Similar to previous best
+Run 11 stress 0.2145816 
+Run 12 stress 0.1714469 
+Run 13 stress 0.1612692 
+... Procrustes: rmse 8.455481e-05  max resid 0.0003612568 
+... Similar to previous best
+Run 14 stress 0.1992271 
+Run 15 stress 0.1923165 
+Run 16 stress 0.1612693 
+... Procrustes: rmse 0.0001659326  max resid 0.000627027 
+... Similar to previous best
+Run 17 stress 0.1714469 
+Run 18 stress 0.1922933 
+Run 19 stress 0.1612692 
+... Procrustes: rmse 3.868582e-05  max resid 0.0001426244 
+... Similar to previous best
+Run 20 stress 0.2168744 
+*** Best solution repeated 5 times
+Run 0 stress 0.1197405 
+Run 1 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 6.286503e-05  max resid 0.0002863694 
+... Similar to previous best
+Run 2 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 1.884589e-05  max resid 9.077386e-05 
+... Similar to previous best
+Run 3 stress 0.1197405 
+... Procrustes: rmse 7.917615e-06  max resid 3.578493e-05 
+... Similar to previous best
+Run 4 stress 0.1419554 
+Run 5 stress 0.1420645 
+Run 6 stress 0.1197405 
+... Procrustes: rmse 4.541279e-06  max resid 1.292476e-05 
+... Similar to previous best
+Run 7 stress 0.1197405 
+... Procrustes: rmse 2.313991e-05  max resid 7.43903e-05 
+... Similar to previous best
+Run 8 stress 0.1197405 
+... Procrustes: rmse 8.878297e-06  max resid 2.906031e-05 
+... Similar to previous best
+Run 9 stress 0.1197405 
+... Procrustes: rmse 5.165775e-05  max resid 0.0002222279 
+... Similar to previous best
+Run 10 stress 0.1197405 
+... Procrustes: rmse 8.856159e-06  max resid 3.553208e-05 
+... Similar to previous best
+Run 11 stress 0.1197405 
+... Procrustes: rmse 1.867397e-05  max resid 5.546121e-05 
+... Similar to previous best
+Run 12 stress 0.1197405 
+... Procrustes: rmse 1.634188e-05  max resid 7.664734e-05 
+... Similar to previous best
+Run 13 stress 0.1425846 
+Run 14 stress 0.12241 
+Run 15 stress 0.1425845 
+Run 16 stress 0.1197405 
+... Procrustes: rmse 2.74464e-05  max resid 9.964906e-05 
+... Similar to previous best
+Run 17 stress 0.1224099 
+Run 18 stress 0.1418773 
+Run 19 stress 0.1197405 
+... Procrustes: rmse 4.37261e-06  max resid 2.075895e-05 
+... Similar to previous best
+Run 20 stress 0.1197406 
+... Procrustes: rmse 8.529192e-05  max resid 0.0003644727 
+... Similar to previous best
+*** Best solution repeated 12 times
+Run 0 stress 0.1309325 
+Run 1 stress 0.1328515 
+Run 2 stress 0.130913 
+... New best solution
+... Procrustes: rmse 0.001840605  max resid 0.01556956 
+Run 3 stress 0.1309642 
+... Procrustes: rmse 0.002946143  max resid 0.02171353 
+Run 4 stress 0.1309641 
+... Procrustes: rmse 0.002898225  max resid 0.02097271 
+Run 5 stress 0.1309136 
+... Procrustes: rmse 0.0001820539  max resid 0.0009303345 
+... Similar to previous best
+Run 6 stress 0.130913 
+... Procrustes: rmse 0.0001262997  max resid 0.001417723 
+... Similar to previous best
+Run 7 stress 0.1309323 
+... Procrustes: rmse 0.001862796  max resid 0.01581448 
+Run 8 stress 0.1309377 
+... Procrustes: rmse 0.0009419329  max resid 0.01009646 
+Run 9 stress 0.1328515 
+Run 10 stress 0.1309132 
+... Procrustes: rmse 0.0001008763  max resid 0.0008750362 
+... Similar to previous best
+Run 11 stress 0.1329723 
+Run 12 stress 0.1309323 
+... Procrustes: rmse 0.001845385  max resid 0.01556634 
+Run 13 stress 0.1309538 
+... Procrustes: rmse 0.002565128  max resid 0.02064423 
+Run 14 stress 0.1309424 
+... Procrustes: rmse 0.002064654  max resid 0.01687246 
+Run 15 stress 0.130954 
+... Procrustes: rmse 0.002588528  max resid 0.02051178 
+Run 16 stress 0.1309324 
+... Procrustes: rmse 0.001848922  max resid 0.0156953 
+Run 17 stress 0.1309542 
+... Procrustes: rmse 0.002552426  max resid 0.02044544 
+Run 18 stress 0.1309545 
+... Procrustes: rmse 0.002572219  max resid 0.02075824 
+Run 19 stress 0.1309131 
+... Procrustes: rmse 0.0001035852  max resid 0.0008990713 
+... Similar to previous best
+Run 20 stress 0.130913 
+... Procrustes: rmse 8.891928e-05  max resid 0.0008693558 
+... Similar to previous best
+*** Best solution repeated 5 times
+Run 0 stress 0.01585656 
+Run 1 stress 0.01644758 
+Run 2 stress 0.02257997 
+Run 3 stress 0.02290447 
+Run 4 stress 0.0602026 
+Run 5 stress 0.01538268 
+... New best solution
+... Procrustes: rmse 0.08945814  max resid 0.1743258 
+Run 6 stress 0.001810619 
+... New best solution
+... Procrustes: rmse 0.145224  max resid 0.2842791 
+Run 7 stress 0.00214163 
+... Procrustes: rmse 0.1921786  max resid 0.438887 
+Run 8 stress 0.0853431 
+Run 9 stress 0.07332398 
+Run 10 stress 0.01535641 
+Run 11 stress 0.06020246 
+Run 12 stress 0.06020252 
+Run 13 stress 0.0008645982 
+... New best solution
+... Procrustes: rmse 0.1736114  max resid 0.4003518 
+Run 14 stress 0.01585492 
+Run 15 stress 0.0003585879 
+... New best solution
+... Procrustes: rmse 0.2534545  max resid 0.4974646 
+Run 16 stress 0.01632513 
+Run 17 stress 0.002651196 
+Run 18 stress 0.01589068 
+Run 19 stress 0.07400964 
+Run 20 stress 0.002262127 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    14: no. of iterations >= maxit
+     5: stress ratio > sratmax
+     1: scale factor of the gradient < sfgrmin
+Run 0 stress 0.1336374 
+Run 1 stress 0.1422047 
+Run 2 stress 0.133638 
+... Procrustes: rmse 0.001304109  max resid 0.005718726 
+... Similar to previous best
+Run 3 stress 0.1339006 
+... Procrustes: rmse 0.04415221  max resid 0.207787 
+Run 4 stress 0.1335888 
+... New best solution
+... Procrustes: rmse 0.005317029  max resid 0.02182098 
+Run 5 stress 0.1335891 
+... Procrustes: rmse 0.0005575898  max resid 0.002352428 
+... Similar to previous best
+Run 6 stress 0.1541634 
+Run 7 stress 0.1651491 
+Run 8 stress 0.1335891 
+... Procrustes: rmse 0.0001670378  max resid 0.0007466271 
+... Similar to previous best
+Run 9 stress 0.1806807 
+Run 10 stress 0.1335879 
+... New best solution
+... Procrustes: rmse 0.0005943983  max resid 0.002749534 
+... Similar to previous best
+Run 11 stress 0.1422038 
+Run 12 stress 0.1335883 
+... Procrustes: rmse 0.0003662968  max resid 0.001438115 
+... Similar to previous best
+Run 13 stress 0.1622043 
+Run 14 stress 0.1621201 
+Run 15 stress 0.1335882 
+... Procrustes: rmse 0.0004260233  max resid 0.00136865 
+... Similar to previous best
+Run 16 stress 0.1422076 
+Run 17 stress 0.1420846 
+Run 18 stress 0.1338767 
+... Procrustes: rmse 0.04404192  max resid 0.2071349 
+Run 19 stress 0.1338996 
+... Procrustes: rmse 0.0446586  max resid 0.2085905 
+Run 20 stress 0.1422019 
+*** Best solution repeated 3 times
+Run 0 stress 0.2178824 
+Run 1 stress 0.2178824 
+... Procrustes: rmse 1.80083e-05  max resid 4.62875e-05 
+... Similar to previous best
+Run 2 stress 0.2174537 
+... New best solution
+... Procrustes: rmse 0.0332915  max resid 0.1203603 
+Run 3 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 0.03167626  max resid 0.1233595 
+Run 4 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 0.0001229568  max resid 0.0003417149 
+... Similar to previous best
+Run 5 stress 0.2174537 
+... Procrustes: rmse 0.03162549  max resid 0.1238865 
+Run 6 stress 0.2414523 
+Run 7 stress 0.2178823 
+Run 8 stress 0.2333469 
+Run 9 stress 0.2502703 
+Run 10 stress 0.2178277 
+Run 11 stress 0.226953 
+Run 12 stress 0.2178277 
+Run 13 stress 0.2694459 
+Run 14 stress 0.266766 
+Run 15 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 3.556967e-05  max resid 9.779923e-05 
+... Similar to previous best
+Run 16 stress 0.2173094 
+... Procrustes: rmse 3.553424e-05  max resid 0.0001073403 
+... Similar to previous best
+Run 17 stress 0.2389413 
+Run 18 stress 0.2786158 
+Run 19 stress 0.2174537 
+... Procrustes: rmse 0.03163977  max resid 0.1239312 
+Run 20 stress 0.2717506 
+*** Best solution repeated 2 times
+Run 0 stress 0.1956183 
+Run 1 stress 0.2028488 
+Run 2 stress 0.2074792 
+Run 3 stress 0.1921432 
+... New best solution
+... Procrustes: rmse 0.05831292  max resid 0.1928087 
+Run 4 stress 0.2002571 
+Run 5 stress 0.1990115 
+Run 6 stress 0.1919654 
+... New best solution
+... Procrustes: rmse 0.03664775  max resid 0.1416719 
+Run 7 stress 0.1919653 
+... New best solution
+... Procrustes: rmse 6.490987e-05  max resid 0.0001584991 
+... Similar to previous best
+Run 8 stress 0.2001642 
+Run 9 stress 0.2018923 
+Run 10 stress 0.2011483 
+Run 11 stress 0.2061081 
+Run 12 stress 0.2025728 
+Run 13 stress 0.2070835 
+Run 14 stress 0.1956182 
+Run 15 stress 0.196641 
+Run 16 stress 0.1985502 
+Run 17 stress 0.2155202 
+Run 18 stress 0.2045321 
+Run 19 stress 0.2136965 
+Run 20 stress 0.2121144 
+*** Best solution repeated 1 times
+Run 0 stress 0.09022026 
+Run 1 stress 0.09160617 
+Run 2 stress 0.09175142 
+Run 3 stress 0.09178466 
+Run 4 stress 0.09077077 
+Run 5 stress 0.09176151 
+Run 6 stress 0.09091656 
+Run 7 stress 0.09097655 
+Run 8 stress 0.09137944 
+Run 9 stress 0.09068653 
+... Procrustes: rmse 0.03550615  max resid 0.1461135 
+Run 10 stress 0.09040765 
+... Procrustes: rmse 0.03716641  max resid 0.1998554 
+Run 11 stress 0.09117989 
+Run 12 stress 0.09077316 
+Run 13 stress 0.09137384 
+Run 14 stress 0.09132313 
+Run 15 stress 0.091279 
+Run 16 stress 0.09282896 
+Run 17 stress 0.09130517 
+Run 18 stress 0.09171783 
+Run 19 stress 0.09149601 
+Run 20 stress 0.09225218 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    20: no. of iterations >= maxit
+RStudioGD 
+        2 
+[1] "Lactobacillus"
+using Gonnet
+[1] "Porphyromonas"
+using Gonnet
+[1] "Bacteroides"
+using Gonnet
+[1] "Atopobium"
+using Gonnet
+[1] "Prevotella"
+using Gonnet
+[1] "Stenotrophomonas"
+[1] "Streptococcus"
+using Gonnet
+[1] "Spirochaetaceae"
+[1] "Parabacteroides"
+using Gonnet
+[1] "Bacteroidetes"
+using Gonnet
+[1] "Anaerococcus"
+using Gonnet
+[1] "Veillonella"
+using Gonnet
+[1] "Alistipes"
+using Gonnet
+[1] "Barnesiella"
+using Gonnet
+[1] "Clostridiales"
+using Gonnet
+[1] "Negativicoccus"
+[1] "Peptoniphilus"
+using Gonnet
+[1] "Enterococcus"
+[1] "Bacteroidales"
+using Gonnet
+[1] "Clostridiales_Incertae Sedis XI"
+using Gonnet
+[1] "Porphyromonadaceae"
+using Gonnet
+[1] "Prevotellaceae"
+using Gonnet
+[1] "Firmicutes"
+using Gonnet
+[1] "Lachnospiraceae"
+using Gonnet
+[1] "Escherichia/Shigella"
+[1] "Ruminococcaceae"
+using Gonnet
+[1] "Clostridium IV"
+using Gonnet
+[1] "Dialister"
+using Gonnet
+[1] "Clostridium XI"
+[1] "Oscillibacter"
+using Gonnet
+[1] "Roseburia"
+[1] "Peptococcus"
+using Gonnet
+[1] "Blautia"
+using Gonnet
+[1] "Spirochaetales"
+[1] "Propionimicrobium"
+[1] "Dorea"
+[1] "Parasutterella"
+[1] "Flavobacterium"
+[1] "Howardella"
+[1] "Collinsella"
+[1] "Pseudomonas"
+using Gonnet
+[1] "Flavonifractor"
+[1] "Staphylococcus"
+[1] "Fastidiosipila"
+[1] "Faecalibacterium"
+[1] "Finegoldia"
+[1] "Actinomyces"
+using Gonnet
+[1] "Gemella"
+[1] "Peptostreptococcus"
+[1] "Lachnospiracea_incertae_sedis"
+using Gonnet
+[1] "Actinobaculum"
+[1] "Morganella"
+[1] "Jonquetella"
+[1] "Novosphingobium"
+[1] "Facklamia"
+[1] "Proteus"
+[1] "Acidaminococcaceae"
+[1] "Campylobacter"
+[1] "Murdochiella"
+using Gonnet
+[1] "Serratia"
+using Gonnet
+[1] "Enhydrobacter"
+[1] "Saccharofermentans"
+using Gonnet
+[1] "Helcococcus"
+using Gonnet
+[1] "Propionibacteriaceae"
+[1] "Enterobacteriaceae"
+[1] "Synergistaceae"
+[1] "Arcanobacterium"
+[1] "Butyricicoccus"
+using Gonnet
+[1] "Mobiluncus"
+[1] "Ruminococcus"
+using Gonnet
+[1] "Anaerovorax"
+[1] "Clostridium XlVb"
+using Gonnet
+[1] "Clostridiales_Incertae Sedis XIII"
+[1] "Propionibacterium"
+using Gonnet
+[1] "Corynebacterium"
+using Gonnet
+[1] "Aerococcus"
+[1] "Erysipelotrichaceae"
+using Gonnet
+[1] "Gemmiger"
+[1] "Anaeroglobus"
+[1] "Phascolarctobacterium"
+[1] "Clostridia"
+using Gonnet
+[1] "Clostridium XlVa"
+[1] "Coriobacteriaceae"
+using Gonnet
+[1] "Butyricimonas"
+[1] "Fusobacterium"
+using Gonnet
+[1] "Varibaculum"
+[1] "Holdemania"
+[1] "Acinetobacter"
+[1] "Gardnerella"
+[1] "Sphingobacterium"
+[1] "Weissella"
+[1] "Brevibacterium"
+[1] "Brevundimonas"
+[1] "Paraprevotella"
+[1] "Actinomycetaceae"
+[1] "Lactobacillaceae"
+[1] "Comamonadaceae"
+[1] "Anaeroplasma"
+[1] "Slackia"
+[1] "Granulicatella"
+[1] "Erysipelotrichaceae_incertae_sedis"
+[1] "Actinomycetospora"
+[1] "Eggerthella"
+[1] "Burkholderiales"
+[1] "Lactococcus"
+[1] "Nosocomiicoccus"
+[1] "Clostridium XVIII"
+[1] "Ureaplasma"
+[1] "Megasphaera"
+[1] "Lactobacillales"
+[1] "Delftia"
+[1] "Pedobacter"
+using Gonnet
+[1] "Rhizobium"
+[1] "Elizabethkingia"
+[1] "Veillonellaceae"
+[1] "Chryseobacterium"
+[1] "Antonio"
