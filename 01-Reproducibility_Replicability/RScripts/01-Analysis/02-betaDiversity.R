@@ -66,17 +66,17 @@ for(cohort in cohorts){
   assign(paste0(cohort, "_SOTA_beta"), p1,.GlobalEnv)
 }
 
-chao_pipeline_plots <- (Chao_Chao_beta+ggtitle("Chao") + theme(legend.position = "none") | 
-                           Antonio_Chao_beta+ggtitle("Antonio")  + theme(legend.position = "none") |
-                           Gressel_Chao_beta+ggtitle("Gressel") + theme(legend.position = "none") |
-                           Tsementzi_Chao_beta + ggtitle("Tsementzi") + theme(legend.position = "none") |
-                           Walsh_Chao_beta+ggtitle("Walsh") +  theme(legend.position = "none"))
+chao_pipeline_plots <- (Chao_Chao_beta + theme(legend.position = "none") | 
+                           Antonio_Chao_beta  + theme(legend.position = "none") |
+                           Gressel_Chao_beta + theme(legend.position = "none") |
+                           Tsementzi_Chao_beta  + theme(legend.position = "none") |
+                           Walsh_Chao_beta+  theme(legend.position = "none"))
 
-antonio_pipeline_plots <- (Chao_Antonio_beta + theme(legend.position = "none")| 
-                             Antonio_Antonio_beta  + theme(legend.position = "none")|
-                             Gressel_Antonio_beta + theme(legend.position = "none") |
-                             Tsementzi_Antonio_beta + theme(legend.position = "none") |
-                             Walsh_Antonio_beta + theme(legend.position = "none"))
+antonio_pipeline_plots <- (Chao_Antonio_beta + ggtitle("Chao") + theme(legend.position = "none")| 
+                             Antonio_Antonio_beta  +  ggtitle("Antonio") +theme(legend.position = "none")|
+                             Gressel_Antonio_beta +ggtitle("Gressel") + theme(legend.position = "none") |
+                             Tsementzi_Antonio_beta + ggtitle("Tsementzi") + theme(legend.position = "none") |
+                             Walsh_Antonio_beta + ggtitle("Walsh") + theme(legend.position = "none"))
 
 tsementzi_pipeline_plots <- (Chao_Tsementzi_beta + theme(legend.position = "none")| 
                                Antonio_Tsementzi_beta + theme(legend.position = "none") |
