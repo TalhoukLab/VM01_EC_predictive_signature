@@ -25,14 +25,14 @@ library(mixOmics)
 
 cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
-  raw_otus <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otutab.txt')))
+  raw_otus <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otutab.txt')))
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
   otus <- mutate_all(raw_otus,function(x) as.numeric(as.character(x)))
   otus.res <- PreFL(data = otus)
   otus <- otus.res$data.filter
   names(otus) = gsub(pattern = "_", replacement = "", x = names(otus))
-  rep_seqs <- readDNAStringSet(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otus.fasta')))
+  rep_seqs <- readDNAStringSet(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otus.fasta')))
   names(rep_seqs) <- sapply(strsplit(names(rep_seqs), ";"), "[", 1)
   pred <- predict(rdp(), rep_seqs)
   
@@ -114,14 +114,14 @@ for(cohort in cohorts){
   outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=F))
   #outs_CSS_lg <- log(outs_CSS + 1)
  
-  feature_table <- read.delim(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
+  feature_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
   #ids <- c(read.delim("~/Desktop/TAW_train.txt", sep = "\t", header = FALSE))
   #feature_table <- vm.metadata[ids$V1,]
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   rownames(feature_table) <- feature_table$sraID
   otus_table <- otu_table(otu_copy, taxa_are_rows = TRUE)
   #pred_copy1 <- pred
-  phylo_tree <- read_tree(file.path(paste0('~/Desktop/thesis/vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '_cohort/test_paired.tree')))
+  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '_cohort/test_paired.tree')))
   rooted_tree <- phangorn::midpoint(phylo_tree)
   taxa_names(rooted_tree) <- paste0("OTU_", taxa_names(rooted_tree))
   tree_phy <- phy_tree(rooted_tree)
