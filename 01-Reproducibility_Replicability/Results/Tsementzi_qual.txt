@@ -1,0 +1,255 @@
+Run 0 stress 0.01585656 
+Run 1 stress 0.07332398 
+Run 2 stress 0.002089998 
+... New best solution
+... Procrustes: rmse 0.2181213  max resid 0.4236427 
+Run 3 stress 0.0018471 
+... New best solution
+... Procrustes: rmse 0.143745  max resid 0.276596 
+Run 4 stress 0.001979584 
+... Procrustes: rmse 0.1355952  max resid 0.3114122 
+Run 5 stress 0.02317797 
+Run 6 stress 0.01555126 
+Run 7 stress 0.002492135 
+Run 8 stress 0.01622358 
+Run 9 stress 0.001858434 
+... Procrustes: rmse 0.005574696  max resid 0.01102853 
+Run 10 stress 0.0225038 
+Run 11 stress 0.01661018 
+Run 12 stress 0.0167835 
+Run 13 stress 0.01546632 
+Run 14 stress 0.0007308178 
+... New best solution
+... Procrustes: rmse 0.1004814  max resid 0.2135286 
+Run 15 stress 0.002321614 
+Run 16 stress 0.04781191 
+Run 17 stress 0.07332398 
+Run 18 stress 0.07332398 
+Run 19 stress 0.08303334 
+Run 20 stress 0.002421334 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    16: no. of iterations >= maxit
+     3: stress ratio > sratmax
+     1: scale factor of the gradient < sfgrmin
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 31 taxa and 9 samples ]
+sample_data() Sample Data:       [ 9 samples by 9 sample variables ]
+tax_table()   Taxonomy Table:    [ 31 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 31 tips and 30 internal nodes ]
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 1000, na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.4635 0.13687 1.0923 0.3017
+sample_data(phylo_to_use)$age        1   0.5357 0.15817 1.2622 0.1818
+sample_data(phylo_to_use)$BMI        1   0.3557 0.10504 0.8382 0.6953
+sample_data(phylo_to_use)$pHRecoded  1   0.3342 0.09868 0.7875 0.7483
+Residual                             4   1.6975 0.50124              
+Total                                8   3.3867 1.00000              
+Run 0 stress 0.1336374 
+Run 1 stress 0.1420834 
+Run 2 stress 0.133589 
+... New best solution
+... Procrustes: rmse 0.005279569  max resid 0.0215243 
+Run 3 stress 0.1645668 
+Run 4 stress 0.16416 
+Run 5 stress 0.142099 
+Run 6 stress 0.1695438 
+Run 7 stress 0.1336384 
+... Procrustes: rmse 0.005682105  max resid 0.0213618 
+Run 8 stress 0.1336378 
+... Procrustes: rmse 0.005278993  max resid 0.02140091 
+Run 9 stress 0.1678664 
+Run 10 stress 0.133639 
+... Procrustes: rmse 0.005797277  max resid 0.02127107 
+Run 11 stress 0.1335886 
+... New best solution
+... Procrustes: rmse 0.0003347639  max resid 0.001587469 
+... Similar to previous best
+Run 12 stress 0.1335883 
+... New best solution
+... Procrustes: rmse 0.001473061  max resid 0.006707888 
+... Similar to previous best
+Run 13 stress 0.1420871 
+Run 14 stress 0.1541692 
+Run 15 stress 0.1335885 
+... Procrustes: rmse 0.0002577734  max resid 0.001062439 
+... Similar to previous best
+Run 16 stress 0.1338999 
+... Procrustes: rmse 0.04421085  max resid 0.2059253 
+Run 17 stress 0.1336379 
+... Procrustes: rmse 0.005229092  max resid 0.02160227 
+Run 18 stress 0.1422 
+Run 19 stress 0.1338779 
+... Procrustes: rmse 0.04363244  max resid 0.2050484 
+Run 20 stress 0.1582755 
+*** Best solution repeated 2 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 183 taxa and 32 samples ]
+sample_data() Sample Data:       [ 32 samples by 6 sample variables ]
+tax_table()   Taxonomy Table:    [ 183 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 183 tips and 181 internal nodes ]
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 1000, na.action = "na.omit")
+                                    Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology  1   0.7818 0.06590 2.0886 0.01898 *
+sample_data(phylo_to_use)$age        1   0.2259 0.01904 0.6034 0.90410  
+Residual                            29  10.8549 0.91506                 
+Total                               31  11.8625 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Run 0 stress 0.2178824 
+Run 1 stress 0.226953 
+Run 2 stress 0.2399479 
+Run 3 stress 0.2519482 
+Run 4 stress 0.2335031 
+Run 5 stress 0.2178277 
+... New best solution
+... Procrustes: rmse 0.03065495  max resid 0.123652 
+Run 6 stress 0.2233628 
+Run 7 stress 0.2174537 
+... New best solution
+... Procrustes: rmse 0.01531104  max resid 0.06004093 
+Run 8 stress 0.2367012 
+Run 9 stress 0.2272431 
+Run 10 stress 0.2178823 
+... Procrustes: rmse 0.03328091  max resid 0.1195955 
+Run 11 stress 0.2174537 
+... Procrustes: rmse 4.873505e-05  max resid 0.0001858914 
+... Similar to previous best
+Run 12 stress 0.2174537 
+... New best solution
+... Procrustes: rmse 1.857334e-05  max resid 7.354798e-05 
+... Similar to previous best
+Run 13 stress 0.2174537 
+... Procrustes: rmse 1.393762e-05  max resid 4.946587e-05 
+... Similar to previous best
+Run 14 stress 0.227243 
+Run 15 stress 0.2398973 
+Run 16 stress 0.2173094 
+... New best solution
+... Procrustes: rmse 0.03165167  max resid 0.1233095 
+Run 17 stress 0.2178824 
+Run 18 stress 0.2367008 
+Run 19 stress 0.2174537 
+... Procrustes: rmse 0.03165407  max resid 0.1239522 
+Run 20 stress 0.2173094 
+... Procrustes: rmse 9.826193e-05  max resid 0.0002516393 
+... Similar to previous best
+*** Best solution repeated 1 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 271 taxa and 29 samples ]
+sample_data() Sample Data:       [ 29 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 271 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 271 tips and 269 internal nodes ]
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 1000, na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.3574 0.02901 0.8067 0.8531
+Residual                            27  11.9607 0.97099              
+Total                               28  12.3181 1.00000              
+Run 0 stress 0.1956183 
+Run 1 stress 0.2153949 
+Run 2 stress 0.2018643 
+Run 3 stress 0.1928263 
+... New best solution
+... Procrustes: rmse 0.0671139  max resid 0.2005697 
+Run 4 stress 0.2043606 
+Run 5 stress 0.1989621 
+Run 6 stress 0.2472124 
+Run 7 stress 0.209614 
+Run 8 stress 0.2054291 
+Run 9 stress 0.2001891 
+Run 10 stress 0.1961708 
+Run 11 stress 0.2210956 
+Run 12 stress 0.2039359 
+Run 13 stress 0.197651 
+Run 14 stress 0.2066463 
+Run 15 stress 0.1961703 
+Run 16 stress 0.2032214 
+Run 17 stress 0.199835 
+Run 18 stress 0.1976509 
+Run 19 stress 0.1930069 
+... Procrustes: rmse 0.1188634  max resid 0.3939073 
+Run 20 stress 0.1921432 
+... New best solution
+... Procrustes: rmse 0.04354578  max resid 0.1916699 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+     1: no. of iterations >= maxit
+    19: stress ratio > sratmax
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 278 taxa and 35 samples ]
+sample_data() Sample Data:       [ 35 samples by 10 sample variables ]
+tax_table()   Taxonomy Table:    [ 278 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 278 tips and 276 internal nodes ]
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 1000, na.action = "na.omit")
+                                    Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology  1   0.3445 0.02813 0.7964 0.77023  
+sample_data(phylo_to_use)$age        1   0.3933 0.03212 0.9092 0.61439  
+sample_data(phylo_to_use)$BMI        1   0.8150 0.06656 1.8841 0.01099 *
+sample_data(phylo_to_use)$pHRecoded  1   0.7435 0.06072 1.7189 0.02498 *
+Residual                            23   9.9490 0.81247                 
+Total                               27  12.2453 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Run 0 stress 0.09022026 
+Run 1 stress 0.09250185 
+Run 2 stress 0.09089566 
+Run 3 stress 0.09149932 
+Run 4 stress 0.09198471 
+Run 5 stress 0.09070713 
+... Procrustes: rmse 0.05358692  max resid 0.3811483 
+Run 6 stress 0.09208465 
+Run 7 stress 0.09108524 
+Run 8 stress 0.09205457 
+Run 9 stress 0.09225582 
+Run 10 stress 0.09051169 
+... Procrustes: rmse 0.03548798  max resid 0.2101604 
+Run 11 stress 0.09102669 
+Run 12 stress 0.09178855 
+Run 13 stress 0.0913618 
+Run 14 stress 0.0911179 
+Run 15 stress 0.09078072 
+Run 16 stress 0.09164729 
+Run 17 stress 0.0918107 
+Run 18 stress 0.09227136 
+Run 19 stress 0.09081971 
+Run 20 stress 0.0925544 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+    20: no. of iterations >= maxit
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 111 taxa and 111 samples ]
+sample_data() Sample Data:       [ 111 samples by 10 sample variables ]
+tax_table()   Taxonomy Table:    [ 111 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 111 tips and 109 internal nodes ]
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 1000, na.action = "na.omit")
+                                    Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology  1    1.416 0.03369 3.1477 0.02398 *
+sample_data(phylo_to_use)$age        1    0.724 0.01722 1.6094 0.12887  
+sample_data(phylo_to_use)$BMI       90   38.903 0.92558 0.9610 0.50150  
+sample_data(phylo_to_use)$pHRecoded  1    0.539 0.01281 1.1975 0.30270  
+Residual                             1    0.450 0.01070                 
+Total                               94   42.031 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
