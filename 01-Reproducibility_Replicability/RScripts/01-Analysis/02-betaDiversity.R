@@ -133,20 +133,20 @@ for(cohort in cohorts){
   print(mul_var_res)
 }
 sink()
-chao_pipeline_plots <- (Chao_Chao_beta + theme(legend.position = "none") | 
-                           Antonio_Chao_beta  + theme(legend.position = "none") |
+chao_pipeline_plots <- (Antonio_Chao_beta  + theme(legend.position = "none") |
+                          Chao_Chao_beta + theme(legend.position = "none") | 
                            Gressel_Chao_beta + theme(legend.position = "none") |
                            Tsementzi_Chao_beta  + theme(legend.position = "none") |
                            Walsh_Chao_beta+  theme(legend.position = "none"))
 
-antonio_pipeline_plots <- (Chao_Antonio_beta + ggtitle("Chao") + theme(legend.position = "none")| 
-                             Antonio_Antonio_beta  +  ggtitle("Antonio") +theme(legend.position = "none")|
+antonio_pipeline_plots <- (Antonio_Antonio_beta  +  ggtitle("Antonio") +theme(legend.position = "none")|
+                            Chao_Antonio_beta + ggtitle("Chao") + theme(legend.position = "none")| 
                              Gressel_Antonio_beta +ggtitle("Gressel") + theme(legend.position = "none") |
                              Tsementzi_Antonio_beta + ggtitle("Tsementzi") + theme(legend.position = "none") |
                              Walsh_Antonio_beta + ggtitle("Walsh") + theme(legend.position = "none"))
 
-tsementzi_pipeline_plots <- (Chao_Tsementzi_beta + theme(legend.position = "none")| 
-                               Antonio_Tsementzi_beta + theme(legend.position = "none") |
+tsementzi_pipeline_plots <- (Antonio_Tsementzi_beta + theme(legend.position = "none") |
+                               Chao_Tsementzi_beta + theme(legend.position = "none")| 
                                Gressel_Tsementzi_beta  + theme(legend.position = "none") |
                                Tsementzi_Tsementzi_beta + theme(legend.position = "none") |
                                Walsh_Tsementzi_beta +
@@ -154,19 +154,19 @@ tsementzi_pipeline_plots <- (Chao_Tsementzi_beta + theme(legend.position = "none
                                      legend.text = element_text(size=13)) +
                                guides(color = guide_legend(override.aes = list(size = 4))))
 
-walsh_pipeline_plots <- (Chao_Walsh_beta  + theme(legend.position = "none")| 
-                            Antonio_Walsh_beta  + theme(legend.position = "none") |
+walsh_pipeline_plots <- (Antonio_Walsh_beta  + theme(legend.position = "none") |
+                           Chao_Walsh_beta  + theme(legend.position = "none")| 
                             Gressel_Walsh_beta  + theme(legend.position = "none") |
                             Tsementzi_Walsh_beta + theme(legend.position = "none") |
                             Walsh_Walsh_beta + theme(legend.position = "none"))
 
-SOTA_pipeline_plots <- (Chao_SOTA_beta  + theme(legend.position = "none") | 
-                              Antonio_SOTA_beta  + theme(legend.position = "none") |
+SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none") |
+                                Chao_SOTA_beta  + theme(legend.position = "none") | 
                               Gressel_SOTA_beta  + theme(legend.position = "none") |
                               Tsementzi_SOTA_beta + theme(legend.position = "none") |
                               Walsh_SOTA_beta + theme(legend.position = "none"))
 
 p <- (antonio_pipeline_plots / chao_pipeline_plots/ tsementzi_pipeline_plots / walsh_pipeline_plots / SOTA_pipeline_plots)
-png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity.png"), width = 1500, height = 900)
+png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity.png"), width = 6500, height = 3500, res = 300)
 print(p)
 dev.off()
