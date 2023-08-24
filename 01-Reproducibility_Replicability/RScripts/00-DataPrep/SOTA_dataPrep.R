@@ -140,6 +140,14 @@ for(cohort in cohorts){
   phylo_raw <- phyloseq(otu_table(otu_copy, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
                        sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
   
+  otu_copy.filter.res <- PreFL(data = otu_copy)
+  otu_copy.filter <- otu_copy.filter.res$data.filter
+  
+  otu_clr <- compositions::clr(otu_copy.filter)
+  phylo_clr <- phyloseq(otu_table(otu_clr, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
+                        sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
+  
   assign(paste0(cohort, "_SOTAphyloseq_tree_raw"),phylo_raw ,.GlobalEnv)
+  assign(paste0(cohort, "_SOTAphyloseq_tree"),phylo_clr ,.GlobalEnv)
 }
 

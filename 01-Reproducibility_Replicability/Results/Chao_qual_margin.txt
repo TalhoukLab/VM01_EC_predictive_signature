@@ -1,0 +1,100 @@
+[1] "Antonio"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 472 taxa and 13 samples ]
+sample_data() Sample Data:       [ 13 samples by 10 sample variables ]
+tax_table()   Taxonomy Table:    [ 472 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 472 tips and 471 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology  1   0.5243 0.11167 1.5905 0.17822  
+sample_data(phylo_to_use)$age        1   0.2062 0.04391 0.6254 0.77228  
+sample_data(phylo_to_use)$BMI        1   0.1602 0.03412 0.4860 0.89109  
+sample_data(phylo_to_use)$pHRecoded  1   0.6219 0.13244 1.8865 0.08911 .
+Residual                             8   2.6371 0.56166                 
+Total                               12   4.6953 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "Chao"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 836 taxa and 32 samples ]
+sample_data() Sample Data:       [ 32 samples by 6 sample variables ]
+tax_table()   Taxonomy Table:    [ 836 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 836 tips and 835 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology  1   0.3584 0.04509 1.4093 0.06931 .
+sample_data(phylo_to_use)$age        1   0.2140 0.02693 0.8417 0.66337  
+Residual                            29   7.3746 0.92795                 
+Total                               31   7.9471 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "Gressel"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 480 taxa and 29 samples ]
+sample_data() Sample Data:       [ 29 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 480 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 480 tips and 479 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.1119 0.02849 0.7917 0.5644
+Residual                            27   3.8177 0.97151              
+Total                               28   3.9297 1.00000              
+[1] "Tsementzi"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 7321 taxa and 36 samples ]
+sample_data() Sample Data:       [ 36 samples by 11 sample variables ]
+tax_table()   Taxonomy Table:    [ 7321 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 7321 tips and 7320 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + as.factor(sample_data(phylo_to_use)$pHRecoded) + as.factor(sample_data(phylo_to_use)$ethnicity), permutations = 100, by = "margin", na.action = "na.omit")
+                                               Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology             1   0.1468 0.02579 0.7557 0.65347  
+sample_data(phylo_to_use)$age                   1   0.1497 0.02630 0.7706 0.69307  
+sample_data(phylo_to_use)$BMI                   1   0.1415 0.02486 0.7285 0.78218  
+as.factor(sample_data(phylo_to_use)$pHRecoded)  1   0.2567 0.04511 1.3218 0.13861  
+as.factor(sample_data(phylo_to_use)$ethnicity)  3   0.8025 0.14104 1.3775 0.06931 .
+Residual                                       21   4.0781 0.71673                 
+Total                                          28   5.6900 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] "Walsh"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 481 taxa and 148 samples ]
+sample_data() Sample Data:       [ 148 samples by 12 sample variables ]
+tax_table()   Taxonomy Table:    [ 481 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 481 tips and 480 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + as.factor(sample_data(phylo_to_use)$pHRecoded) + as.factor(sample_data(phylo_to_use)$ethnicityRecoded), permutations = 100, by = "margin", na.action = "na.omit")
+                                                       Df SumOfSqs      R2      F  Pr(>F)  
+sample_data(phylo_to_use)$histology                     0    0.000 0.00000    NaN          
+sample_data(phylo_to_use)$age                           1    0.246 0.00529 1.0961 0.33663  
+sample_data(phylo_to_use)$BMI                         120   40.623 0.87387 1.5094 0.05941 .
+as.factor(sample_data(phylo_to_use)$pHRecoded)          1    0.258 0.00554 1.1485 0.29703  
+as.factor(sample_data(phylo_to_use)$ethnicityRecoded)   0    0.000 0.00000    Inf          
+Residual                                                2    0.449 0.00965                 
+Total                                                 128   46.487 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

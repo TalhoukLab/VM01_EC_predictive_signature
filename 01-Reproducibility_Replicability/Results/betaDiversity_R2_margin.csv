@@ -1,0 +1,86 @@
+﻿cohort,covariate,pipeline,R2,pvalue,sig
+Antonio,histology,Antonio,0.08237,0.108911,NS
+Antonio,age,Antonio,0.11088,0.009901,Sig
+Antonio,BMI,Antonio,0.17273,0.009901,Sig
+Antonio,pH,Antonio,0.04694,0.445545,NS
+Chao,histology,Antonio,0.027,0.5644,NS
+Chao,age,Antonio,0.02703,0.5941,NS
+Gressel,histology,Antonio,0.03153,0.5248,NS
+Tsementzi,histology,Antonio,0.02844,0.4752,NS
+Tsementzi,age,Antonio,0.01628,0.9109,NS
+Tsementzi,BMI,Antonio,0.02863,0.604,NS
+Tsementzi,pH,Antonio,0.0738,0.0297,Sig
+Tsementzi,ethnicity,Antonio,0.12041,0.2475,NS
+Walsh,histology,Antonio,0,      ,NS
+Walsh,age,Antonio,0.0042,0.5545,NS
+Walsh,BMI,Antonio,0.78662,0.3069,NS
+Walsh,pH,Antonio,0.00514,0.4752,NS
+Walsh,ethnicity,Antonio,0,      ,NS
+Antonio,histology,Tsementzi,0.13893,0.2673,NS
+Antonio,age,Tsementzi,0.14423,0.2178,NS
+Antonio,BMI,Tsementzi,0.13486,0.3564,NS
+Antonio,pH,Tsementzi,0.09433,0.703,NS
+Chao,histology,Tsementzi,0.05867,0.0297,Sig
+Chao,age,Tsementzi,0.02302,0.6634,NS
+Gressel,histology,Tsementzi,0.02955,0.8317,NS
+Tsementzi,histology,Tsementzi,0.02798,0.8317,NS
+Tsementzi,age,Tsementzi,0.03649,0.3267,NS
+Tsementzi,BMI,Tsementzi,0.05217,0.0297,Sig
+Tsementzi,pH,Tsementzi,0.06795,0.0198,Sig
+Tsementzi,ethnicity,Tsementzi,0.11782,0.1089,NS
+Walsh,histology,Tsementzi,0,      ,NS
+Walsh,age,Tsementzi,0.01231,0.1386,NS
+Walsh,BMI,Tsementzi,0.9106,0.198,NS
+Walsh,pH,Tsementzi,0.01235,0.1287,NS
+Walsh,ethnicity,Tsementzi,0,      ,NS
+Antonio,histology,Walsh,0.0643,0.3465,NS
+Antonio,age,Walsh,0.02702,0.604,Sig
+Antonio,BMI,Walsh,0.05582,0.3762,NS
+Antonio,pH,Walsh,0.09794,0.1683,NS
+Chao,histology,Walsh,0.10427,0.0495,Sig
+Chao,age,Walsh,0.03829,0.2574,NS
+Gressel,histology,Walsh,0.01923,0.7921,NS
+Tsementzi,histology,Walsh,0.00478,0.970297,NS
+Tsementzi,age,Walsh,0.02511,0.425743,NS
+Tsementzi,BMI,Walsh,0.05275,0.148515,NS
+Tsementzi,pH,Walsh,0.11955,0.009901,Sig
+Tsementzi,ethnicity,Walsh,0.10586,0.415842,NS
+Walsh,histology,Walsh,0,       ,NS
+Walsh,age,Walsh,0.005,0.10891,NS
+Walsh,BMI,Walsh,0.74269,0.06931,NS
+Walsh,pH,Walsh,0.00193,0.35644,NS
+Walsh,ethnicity,Walsh,0,       ,NS
+Antonio,histology,SOTA,0.07966,0.138614,NS
+Antonio,age,SOTA,0.08452,0.089109,NS
+Antonio,BMI,SOTA,0.13325,0.009901,Sig
+Antonio,pH,SOTA,0.04183,0.722772,NS
+Chao,histology,SOTA,0.06273,0.0396,Sig
+Chao,age,SOTA,0.02645,0.5941,NS
+Gressel,histology,SOTA,0.04626,0.2178,NS
+Tsementzi,histology,SOTA,0.04822,0.1287,NS
+Tsementzi,age,SOTA,0.03333,0.5743,NS
+Tsementzi,BMI,SOTA,0.03629,0.3267,NS
+Tsementzi,pH,SOTA,0.04916,0.1287,NS
+Tsementzi,ethnicity,SOTA,0.08261,0.9505,NS
+Walsh,histology,SOTA,0,      ,NS
+Walsh,age,SOTA,0.00743,0.3069,NS
+Walsh,BMI,SOTA,0.80867,0.3069,NS
+Walsh,pH,SOTA,0.00676,0.3366,NS
+Walsh,ethnicity,SOTA,0,      ,NS
+Antonio,histology,Chao,0.11167,0.17822,NS
+Antonio,age,Chao,0.04391,0.77228,NS
+Antonio,BMI,Chao,0.03412,0.89109,NS
+Antonio,pH,Chao,0.13244,0.08911,NS
+Chao,histology,Chao,0.04509,0.06931,NS
+Chao,age,Chao,0.02693,0.66337,NS
+Gressel,histology,Chao,0.02849,0.5644,NS
+Tsementzi,histology,Chao,0.02579,0.65347,NS
+Tsementzi,age,Chao,0.0263,0.69307,NS
+Tsementzi,BMI,Chao,0.02486,0.78218,NS
+Tsementzi,pH,Chao,0.04511,0.13861,NS
+Tsementzi,ethnicity,Chao,0.14104,0.06931,NS
+Walsh,histology,Chao,0,       ,NS
+Walsh,age,Chao,0.00529,0.33663,NS
+Walsh,BMI,Chao,0.87387,0.05941,NS
+Walsh,pH,Chao,0.00554,0.29703,NS
+Walsh,ethnicity,Chao,0,       ,NS

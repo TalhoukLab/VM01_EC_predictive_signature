@@ -44,20 +44,22 @@ my_Shannon <- function(x){
     (-sum(p * log(p)))
   
 }
-#sink("~/Desktop/LM.txt")
+
+sink("~/Desktop/KW.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
-    phylo <- eval(parse(text = paste0(cohort, '_', pipeline, 'phyloseq_tree_raw')))
+    phylo <- eval(parse(text = paste0(cohort, '_', pipeline, 'phyloseq_tree')))
     #tab <- microbiome::alpha(phylo, index = c("shannon", "chao1", "pielou"))
     otu <- abundances(phylo)
-    to_keep <- which((colSums(otu))>1)
+    to_keep <- which((colSums(otu))!=0)
     otu <- otu[, to_keep]
-    metaSeqObject <- newMRexperiment(otu) 
-    CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
     
-    outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=T))
-    ev <- apply(outs_CSS, 2, function(x) {
+    #metaSeqObject <- newMRexperiment(otu) 
+    #CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
+    #outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=T))
+    
+    ev <- apply(otu, 2, function(x) {
       my_Shannon(x)
     })
     ps1.meta <- meta(phylo)
@@ -69,22 +71,22 @@ for (pipeline in pipelines){
     #tab$cohort <- ps1.meta$cohort
     assign(paste0(cohort, "_", pipeline, "alphaDiversity"),ps1.meta,.GlobalEnv)
     if(cohort=="Antonio" || cohort=="Walsh"){
-      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
-                        as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) + 
-                        as.factor(ps1.meta$Menopausal.status))
+      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+                        as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) +
+                        as.factor(ps1.meta$menopausal.status))
     }
     if(cohort == "Tsementzi"){
-      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
+      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
                        as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded))
     }
     if(cohort == "Chao"){
-      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) + 
-                       as.factor(ps1.meta$Menopausal.status))
+      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+                       as.factor(ps1.meta$menopausal.status))
     }
     if(cohort == "Gressel"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology))
     }
-    print(summary(test.sig))
+    #print(summary(test.sig))
     assign(paste0(cohort, "_", pipeline, "alphaDiversity_sig"),test.sig,.GlobalEnv)
   }
   
@@ -101,23 +103,36 @@ for (pipeline in pipelines){
   all_cohorts_long$log_val <- log(all_cohorts_long$value)
   all_cohorts_long$pipeline <- pipeline
   assign(paste0(pipeline, "alphaDiversity"),all_cohorts_long,.GlobalEnv)
-  #anno_df = compare_means(value ~ histology, group.by = c("metric", "cohort"), data = all_cohorts_long, method = "kruskal.test")
+  anno_df = compare_means(value ~ histology, group.by = c("metric", "cohort"), data = all_cohorts_long, method = "kruskal.test")
   #print(pipeline)
-  #print(anno_df)
+  print(anno_df)
   
 }
-#sink()
+sink()
 
 all_pipelines <- rbind(AntonioalphaDiversity,
                        ChaoalphaDiversity,
                        GresselalphaDiversity,
                        TsementzialphaDiversity,
                        SOTAalphaDiversity)
+all_pipelines$pipeline[all_pipelines$pipeline == "Antonio"] <- "Antonio_Walsh"
 all_pipelines$pipeline <- paste0(all_pipelines$pipeline, "_pipeline")
+all_pipelines$pipeline <- factor(all_pipelines$pipeline, levels = c("Antonio_Walsh_pipeline",
+                                                                    "Tsementzi_pipeline",
+                                                                    "Gressel_pipeline", 
+                                                                    "Chao_pipeline",
+                                                                    "SOTA_pipeline"))
+
+all_pipelines$cohort <- factor(all_pipelines$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
+
 bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
+  geom_rect(data = subset(all_pipelines,pipeline == 'SOTA_pipeline'),aes(fill = pipeline),
+            xmin = -Inf,xmax = Inf,
+            ymin = -Inf,ymax = Inf,alpha = 0.12) +
   geom_boxplot(aes(fill=histology)) + 
-  scale_fill_manual(values=c("yellowgreen", "tomato3")) + 
-  facet_wrap(~pipeline, ncol=5, scales = "fixed") + ylab("Shannon index")+ 
+  scale_fill_manual(values=c("yellowgreen", "tomato3", "whitesmoke")) + 
+  theme_bw()+
+  facet_wrap(~pipeline, ncol=5, scales = "fixed") + ylab("Shannon index") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 20),
         axis.text.y = element_text(size = 20),
         axis.title=element_text(size=22),
@@ -125,6 +140,6 @@ bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
-        legend.title = element_text(size=16),   legend.text = element_text(size=16)) 
+        legend.title = element_text(size=16),
+        legend.text = element_text(size=16), strip.background =element_rect(fill="white")) 
 bp1
-

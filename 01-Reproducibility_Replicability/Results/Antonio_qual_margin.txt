@@ -1,0 +1,281 @@
+Run 0 stress 0.06990876 
+Run 1 stress 0.0710139 
+Run 2 stress 0.0710139 
+Run 3 stress 0.0710139 
+Run 4 stress 0.2128958 
+Run 5 stress 0.2312493 
+Run 6 stress 0.0710139 
+Run 7 stress 0.0710139 
+Run 8 stress 0.06990876 
+... Procrustes: rmse 2.069873e-06  max resid 5.940443e-06 
+... Similar to previous best
+Run 9 stress 0.06990876 
+... Procrustes: rmse 5.706776e-06  max resid 1.64496e-05 
+... Similar to previous best
+Run 10 stress 0.1702236 
+Run 11 stress 0.06990876 
+... Procrustes: rmse 5.335277e-06  max resid 1.577597e-05 
+... Similar to previous best
+Run 12 stress 0.06990876 
+... Procrustes: rmse 3.419038e-06  max resid 9.847877e-06 
+... Similar to previous best
+Run 13 stress 0.0710139 
+Run 14 stress 0.06990876 
+... New best solution
+... Procrustes: rmse 2.932041e-06  max resid 8.367837e-06 
+... Similar to previous best
+Run 15 stress 0.0710139 
+Run 16 stress 0.210877 
+Run 17 stress 0.06990876 
+... Procrustes: rmse 5.707595e-06  max resid 1.641556e-05 
+... Similar to previous best
+Run 18 stress 0.1702236 
+Run 19 stress 0.06990876 
+... Procrustes: rmse 6.097349e-07  max resid 1.418192e-06 
+... Similar to previous best
+Run 20 stress 0.06990876 
+... Procrustes: rmse 4.809915e-06  max resid 1.381366e-05 
+... Similar to previous best
+*** Best solution repeated 4 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 471 taxa and 18 samples ]
+sample_data() Sample Data:       [ 18 samples by 10 sample variables ]
+tax_table()   Taxonomy Table:    [ 471 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 471 tips and 470 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F   Pr(>F)   
+sample_data(phylo_to_use)$histology  1   0.3292 0.08237 1.6298 0.108911   
+sample_data(phylo_to_use)$age        1   0.4431 0.11088 2.1939 0.009901 **
+sample_data(phylo_to_use)$BMI        1   0.6903 0.17273 3.4176 0.009901 **
+sample_data(phylo_to_use)$pHRecoded  1   0.1876 0.04694 0.9288 0.445545   
+Residual                            12   2.4237 0.60649                   
+Total                               16   3.9963 1.00000                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Run 0 stress 0.1239711 
+Run 1 stress 0.1375975 
+Run 2 stress 0.1239522 
+... New best solution
+... Procrustes: rmse 0.05909175  max resid 0.2564193 
+Run 3 stress 0.1235061 
+... New best solution
+... Procrustes: rmse 0.04934756  max resid 0.2522542 
+Run 4 stress 0.1304729 
+Run 5 stress 0.1602872 
+Run 6 stress 0.1238999 
+... Procrustes: rmse 0.04882339  max resid 0.2550864 
+Run 7 stress 0.129718 
+Run 8 stress 0.1344617 
+Run 9 stress 0.1296711 
+Run 10 stress 0.1350109 
+Run 11 stress 0.1289191 
+Run 12 stress 0.1234713 
+... New best solution
+... Procrustes: rmse 0.04957913  max resid 0.2566857 
+Run 13 stress 0.1311779 
+Run 14 stress 0.1239708 
+... Procrustes: rmse 0.05918932  max resid 0.2626979 
+Run 15 stress 0.1566966 
+Run 16 stress 0.1268203 
+Run 17 stress 0.1239716 
+Run 18 stress 0.1331654 
+Run 19 stress 0.1272768 
+Run 20 stress 0.13389 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+     6: no. of iterations >= maxit
+    14: stress ratio > sratmax
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 273 taxa and 32 samples ]
+sample_data() Sample Data:       [ 32 samples by 6 sample variables ]
+tax_table()   Taxonomy Table:    [ 273 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 273 tips and 272 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1  0.06628 0.02700 0.8278 0.5644
+sample_data(phylo_to_use)$age        1  0.06635 0.02703 0.8287 0.5941
+Residual                            29  2.32211 0.94587              
+Total                               31  2.45499 1.00000              
+Run 0 stress 0.1612692 
+Run 1 stress 0.1918646 
+Run 2 stress 0.1714469 
+Run 3 stress 0.1652419 
+Run 4 stress 0.1646231 
+Run 5 stress 0.1612693 
+... Procrustes: rmse 0.0001419732  max resid 0.0006421728 
+... Similar to previous best
+Run 6 stress 0.171447 
+Run 7 stress 0.164623 
+Run 8 stress 0.2181169 
+Run 9 stress 0.164623 
+Run 10 stress 0.1652419 
+Run 11 stress 0.171447 
+Run 12 stress 0.1612692 
+... Procrustes: rmse 3.204124e-05  max resid 0.0001025948 
+... Similar to previous best
+Run 13 stress 0.1612692 
+... New best solution
+... Procrustes: rmse 4.599486e-05  max resid 0.0001568347 
+... Similar to previous best
+Run 14 stress 0.1612692 
+... Procrustes: rmse 3.862892e-05  max resid 0.000140815 
+... Similar to previous best
+Run 15 stress 0.1714469 
+Run 16 stress 0.1612692 
+... Procrustes: rmse 3.785258e-05  max resid 0.000136903 
+... Similar to previous best
+Run 17 stress 0.1612693 
+... Procrustes: rmse 0.0002120953  max resid 0.001006483 
+... Similar to previous best
+Run 18 stress 0.1612692 
+... Procrustes: rmse 0.0001840783  max resid 0.0007164116 
+... Similar to previous best
+Run 19 stress 0.2145814 
+Run 20 stress 0.164623 
+*** Best solution repeated 5 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 57 taxa and 29 samples ]
+sample_data() Sample Data:       [ 29 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 57 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 57 tips and 56 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.2620 0.03153 0.8791 0.5248
+Residual                            27   8.0473 0.96847              
+Total                               28   8.3093 1.00000              
+Run 0 stress 0.1197405 
+Run 1 stress 0.1224103 
+Run 2 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 7.300405e-05  max resid 0.0002950261 
+... Similar to previous best
+Run 3 stress 0.1425846 
+Run 4 stress 0.1197405 
+... New best solution
+... Procrustes: rmse 2.751772e-05  max resid 0.0001113914 
+... Similar to previous best
+Run 5 stress 0.1224108 
+Run 6 stress 0.1224099 
+Run 7 stress 0.1197405 
+... Procrustes: rmse 1.590984e-05  max resid 4.776184e-05 
+... Similar to previous best
+Run 8 stress 0.12241 
+Run 9 stress 0.1425848 
+Run 10 stress 0.1224099 
+Run 11 stress 0.1197405 
+... Procrustes: rmse 4.25716e-05  max resid 0.0001778324 
+... Similar to previous best
+Run 12 stress 0.1224099 
+Run 13 stress 0.1197405 
+... Procrustes: rmse 7.296134e-06  max resid 2.809024e-05 
+... Similar to previous best
+Run 14 stress 0.1197405 
+... Procrustes: rmse 6.823322e-05  max resid 0.0002905106 
+... Similar to previous best
+Run 15 stress 0.1224109 
+Run 16 stress 0.1425847 
+Run 17 stress 0.1197405 
+... Procrustes: rmse 1.425095e-05  max resid 5.032893e-05 
+... Similar to previous best
+Run 18 stress 0.1197405 
+... Procrustes: rmse 3.94621e-05  max resid 0.000185404 
+... Similar to previous best
+Run 19 stress 0.1197405 
+... Procrustes: rmse 8.733279e-06  max resid 4.053958e-05 
+... Similar to previous best
+Run 20 stress 0.1197405 
+... Procrustes: rmse 3.877594e-05  max resid 0.0001891417 
+... Similar to previous best
+*** Best solution repeated 9 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 502 taxa and 36 samples ]
+sample_data() Sample Data:       [ 36 samples by 11 sample variables ]
+tax_table()   Taxonomy Table:    [ 502 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 502 tips and 501 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + as.factor(sample_data(phylo_to_use)$pHRecoded) + as.factor(sample_data(phylo_to_use)$ethnicity), permutations = 100, by = "margin", na.action = "na.omit")
+                                               Df SumOfSqs      R2      F Pr(>F)  
+sample_data(phylo_to_use)$histology             1   0.1922 0.02844 0.8893 0.4752  
+sample_data(phylo_to_use)$age                   1   0.1101 0.01628 0.5092 0.9109  
+sample_data(phylo_to_use)$BMI                   1   0.1935 0.02863 0.8953 0.6040  
+as.factor(sample_data(phylo_to_use)$pHRecoded)  1   0.4988 0.07380 2.3078 0.0297 *
+as.factor(sample_data(phylo_to_use)$ethnicity)  3   0.8138 0.12041 1.2551 0.2475  
+Residual                                       21   4.5389 0.67154                
+Total                                          28   6.7589 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Run 0 stress 0.1309325 
+Run 1 stress 0.1309424 
+... Procrustes: rmse 0.002895835  max resid 0.01737398 
+Run 2 stress 0.1329138 
+Run 3 stress 0.1328515 
+Run 4 stress 0.1328515 
+Run 5 stress 0.1328515 
+Run 6 stress 0.1309427 
+... Procrustes: rmse 0.002881484  max resid 0.01732484 
+Run 7 stress 0.1328515 
+Run 8 stress 0.1328519 
+Run 9 stress 0.1309131 
+... New best solution
+... Procrustes: rmse 0.001844081  max resid 0.01558314 
+Run 10 stress 0.1328515 
+Run 11 stress 0.1328515 
+Run 12 stress 0.1328515 
+Run 13 stress 0.1329186 
+Run 14 stress 0.130913 
+... New best solution
+... Procrustes: rmse 0.00012838  max resid 0.001453079 
+... Similar to previous best
+Run 15 stress 0.130913 
+... Procrustes: rmse 0.0001232372  max resid 0.001451314 
+... Similar to previous best
+Run 16 stress 0.130913 
+... New best solution
+... Procrustes: rmse 5.072365e-05  max resid 0.0005257487 
+... Similar to previous best
+Run 17 stress 0.1328519 
+Run 18 stress 0.1309137 
+... Procrustes: rmse 0.0001903709  max resid 0.0009383017 
+... Similar to previous best
+Run 19 stress 0.1309137 
+... Procrustes: rmse 0.0001918974  max resid 0.0009375282 
+... Similar to previous best
+Run 20 stress 0.1329187 
+*** Best solution repeated 3 times
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 524 taxa and 149 samples ]
+sample_data() Sample Data:       [ 149 samples by 12 sample variables ]
+tax_table()   Taxonomy Table:    [ 524 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 524 tips and 523 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + as.factor(sample_data(phylo_to_use)$pHRecoded) + as.factor(sample_data(phylo_to_use)$ethnicityRecoded), permutations = 100, by = "margin", na.action = "na.omit")
+                                                       Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology                     0    0.000 0.00000    Inf       
+sample_data(phylo_to_use)$age                           1    0.147 0.00420 0.7778 0.5545
+sample_data(phylo_to_use)$BMI                         121   27.569 0.78662 1.2047 0.3069
+as.factor(sample_data(phylo_to_use)$pHRecoded)          1    0.180 0.00514 0.9528 0.4752
+as.factor(sample_data(phylo_to_use)$ethnicityRecoded)   0    0.000 0.00000    Inf       
+Residual                                                2    0.378 0.01079              
+Total                                                 129   35.047 1.00000              

@@ -19,6 +19,8 @@ for (cohort in cohorts) {
   print(cohort)
   raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '_cohort/feature-table.biom')))
   raw_otus <- as.data.frame(as.matrix(biom_data(raw_table)))
+  to_keep <- which((colSums(raw_otus))>1)
+  raw_otus <- raw_otus[, to_keep]
   tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '_cohort/taxonomy.tsv')), header = TRUE, sep = "\t")
   tax_table <- separate(data = tax_table, col = Taxon , into = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), sep = "\\;")
   rownames(tax_table) <- tax_table$Feature.ID
@@ -43,6 +45,6 @@ for (cohort in cohorts) {
 
   # Making phyloseq object without tree
   phyloseq_pre <- phyloseq(otus_table, tax_table_phy, samples)
-  assign(paste0(cohort, "_Gresselphyloseq_tree_raw"),phyloseq_pre,.GlobalEnv)
+  assign(paste0(cohort, "_Gresselphyloseq_tree"),phyloseq_pre,.GlobalEnv)
 }
 
