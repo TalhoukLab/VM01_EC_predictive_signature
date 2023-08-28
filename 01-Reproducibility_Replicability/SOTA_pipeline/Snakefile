@@ -250,7 +250,7 @@ rule phylogenetic_tree:
         tree = clusterOut + "otus.tree"
     shell:
         """
+        sed -i 's/\;.*//' {input.fastaIn}
         mafft {input.fastaIn} > {output.alignment}
-
         fasttree  -gtr -nt -gamma {output.alignment} > {output.tree}
         """
