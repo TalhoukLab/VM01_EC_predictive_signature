@@ -52,9 +52,6 @@ for(cohort in cohorts){
   
   unique_genus <- unique(pred_copy$genus)
   otu_filter <- otus
-  #otu_filter <- filter_taxa(otu_filter, 0.1, 5)
-  #otu_filter <- otu_filte[, colSums(otu_filter != 0) > 0]
-  
   otu_copy <- otu_filter
   pred_copy1 <- pred_copy
   for(genus_use in unique_genus){
@@ -128,25 +125,13 @@ for(cohort in cohorts){
   #pred_copy1 <- pred
   phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '/otus.tree')))
   rooted_tree <- phangorn::midpoint(phylo_tree)
-  #taxa_names(rooted_tree) <- paste0("OTU_", taxa_names(rooted_tree))
   tree_phy <- phy_tree(rooted_tree)
   tax_table_phy = tax_table(as.matrix(pred_copy1))
   samples = sample_data(feature_table)
   phyloseq_pre <- phyloseq(otus_table, tax_table_phy, samples, tree_phy)
   phyloseq_pre_un <- subset_taxa(phyloseq_pre, is.na(phylum)==FALSE)
-  #phyloseq_pre_un1 <- subset_taxa(phyloseq_pre_un, phylum!="cyanobacteria/chloroplast")
   phyloseq_obj_ne <- prune_samples(sample_sums(phyloseq_pre_un) > 1, phyloseq_pre_un)
-  #otu_table_clr <- as.data.frame(otu_table(phyloseq_obj_ne))
-  #imputed_clr <- DrImpute(as.matrix(otu_table_clr), ks = 2)
-  #colnames(imputed_clr) <- colnames(otu_table_clr)
-  #phylo_imputed <- phyloseq(otu_table(imputed_clr, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
-  #                          sample_data(phyloseq_obj_ne)) 
-  #assign(paste0(cohort, "_InHousephyloseq_tree"), phylo_imputed,.GlobalEnv)
- 
-  
-  #otu_copy.filter.res <- PreFL(data = otu_copy)
-  #otu_copy.filter <- otu_copy.filter.res$data.filter
-  
+
   res_sim <- PERFect_sim(X = t(otu_copy))
   if(ncol(as.data.frame(res_sim$filtX))>3){
     otu_copy.filter <- t(res_sim$filtX)
