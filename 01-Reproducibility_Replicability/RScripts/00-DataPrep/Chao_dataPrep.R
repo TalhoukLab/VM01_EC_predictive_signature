@@ -16,10 +16,10 @@ library(pheatmap)
 library(gsubfn)
 library(dplyr)
 
-cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Chao_train", "Chao_test", "Gressel", "Tsementzi", "Walsh")
 for(cohort in cohorts){
   print(cohort)
-  raw_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'), 'zotutab_raw.txt'), sep = '\t')
+  raw_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort), 'zotutab_raw.txt'), sep = '\t')
   raw_otus <- as.data.frame(as.matrix((raw_table)))
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
@@ -30,7 +30,7 @@ for(cohort in cohorts){
   #CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
   #outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=T))
   
-  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'), 'sintax.txt'), header = FALSE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort), 'sintax.txt'), header = FALSE, sep = "\t")
   tax_table$V2 <- gsub("\\s*\\([^\\)]+\\)","",as.character(tax_table$V2))
   tax_table <- separate(data = tax_table, col = V2 , into = c("kingdom", "rest"), sep = "\\,", extra = "merge")
   tax_table$rest <- ifelse(startsWith(tax_table$rest, "p:"), tax_table$rest, paste0("p:,", tax_table$rest))
@@ -57,7 +57,7 @@ for(cohort in cohorts){
   #feature_table <- feature_table %>% select(c("sraID", "cohort", "histology"))
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   rownames(feature_table) <- feature_table$sraID
-  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort, '_cohort'),'zotus.tree'))
+  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Chao_pipeline/results/', cohort),'zotus.tree'))
   otus_table <- otu_table(otus, taxa_are_rows = TRUE)
   tax_table_phy = tax_table(as.matrix(tax_table))
   samples = sample_data(feature_table)

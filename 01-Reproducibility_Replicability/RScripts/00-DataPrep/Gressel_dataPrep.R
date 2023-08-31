@@ -14,14 +14,14 @@ library(reshape2)
 library(pheatmap)
 
 
-cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Gressel", "Gressel_train", "Gressel_test", "Tsementzi", "Walsh")
 for (cohort in cohorts) {
   print(cohort)
-  raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '_cohort/feature-table.biom')))
+  raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '/feature-table.biom')))
   raw_otus <- as.data.frame(as.matrix(biom_data(raw_table)))
   to_keep <- which((colSums(raw_otus))>1)
   raw_otus <- raw_otus[, to_keep]
-  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '_cohort/taxonomy.tsv')), header = TRUE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Gressel_pipeline/results/', cohort, '/taxonomy.tsv')), header = TRUE, sep = "\t")
   tax_table <- separate(data = tax_table, col = Taxon , into = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), sep = "\\;")
   rownames(tax_table) <- tax_table$Feature.ID
   tax_table = subset(tax_table, select = -c(Feature.ID, Confidence))

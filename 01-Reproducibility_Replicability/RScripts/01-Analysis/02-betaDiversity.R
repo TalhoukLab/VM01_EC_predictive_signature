@@ -224,15 +224,14 @@ dev.off()
 library(ggplot2)
 library(latex2exp)
 
-df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betaDiversity_R2_terms.csv", header = TRUE, sep = ",")
+df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
 df$pipeline <- paste0(df$pipeline, "_pipeline")
 df$R2 <- round(df$R2, 3)
 df$covariate <- factor(df$covariate, levels = c("histology", "BMI", "pH", "age", "ethnicity"))
 df$cohort <- factor(df$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
 df$pipeline <- factor(df$pipeline, levels = c("Antonio_pipeline", "Walsh_pipeline", "Tsementzi_pipeline", "Gressel_pipeline", "Chao_pipeline", "SOTA_pipeline"))
 ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) + 
-  geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', 'white'), 
-            alpha = ifelse(df$sig== "Sig", 1, 0), size = ifelse(df$sig== "Sig", 0.45, 0)) +
+  geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', NA), size = 0.3) +
   geom_text(aes(label = R2), color = "black", size = 4) +
   scale_fill_gradient(low = "white", high = "red", name = unname(TeX(c("$R^2$")))) + facet_wrap(~pipeline,  ncol=5) + theme_classic() + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 16),
@@ -244,4 +243,5 @@ ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) +
         legend.key.width = unit(1, 'cm'),
         legend.title = element_text(size=12),
         legend.text = element_text(size=12))
+
 

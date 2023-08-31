@@ -18,10 +18,10 @@ library(dplyr)
 
 ## Making phyloseq objects 
 
-cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
+cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Tsementzi_train", "Tsementzi_test", "Walsh")
 for (cohort in cohorts) {
   print(cohort)
-  raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '_cohort/filtered_sortedUnique_otu.biom')))
+  raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '/filtered_sortedUnique_otu.biom')))
   raw_otus <- as.data.frame(as.matrix(biom_data(raw_table)))
   
   # Remove empty sample 
@@ -34,7 +34,7 @@ for (cohort in cohorts) {
   outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=F))
 
   # read in tax data 
-  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '_cohort/seqs_sorted_rep_set_tax_assignments.txt')), header = FALSE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '/seqs_sorted_rep_set_tax_assignments.txt')), header = FALSE, sep = "\t")
   tax_table <- separate(data = tax_table, col = V2 , into = c("kingdom", "phylum", "class", "order", "family", "genus"), sep = "\\;")
   rownames(tax_table) <- tax_table$V1
   tax_table[is.na(tax_table)] <- ""
@@ -47,7 +47,7 @@ for (cohort in cohorts) {
   tax_table$genus <- gsub("g__", "", gsub("\\[", "",  gsub("\\]", "" ,as.character(tax_table$genus))))
   tax_table <- mutate_all(tax_table, .funs=tolower)
   
-  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '_cohort/rep_set.tre')))
+  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Tsementzi_pipeline/results/', cohort, '/rep_set.tre')))
   
   feature_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
   rownames(feature_table) <- feature_table$sraID

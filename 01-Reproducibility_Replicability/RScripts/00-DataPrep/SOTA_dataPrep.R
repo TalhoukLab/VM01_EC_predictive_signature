@@ -22,17 +22,22 @@ library(rRDPData)
 library(seqinr)
 library(PLSDAbatch)
 library(mixOmics)
+library(phytools)
+library(PERFect)
 
-cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
+
+cohorts <- c("Antonio", "Antonio_train", "Antonio_test",
+             "Chao", "Chao_train", "Chao_test", "Gressel", "Gressel_train", "Gressel_test",
+             "Tsementzi", "Tsementzi_train", "Tsementzi_test", "Walsh", "Walsh_train", "Walsh_test")
 for(cohort in cohorts){
-  raw_otus <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otutab.txt')))
+  raw_otus <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '/all.otutab.txt')))
   rownames(raw_otus) <- raw_otus$X.OTU.ID
   raw_otus = subset(raw_otus, select = -c(X.OTU.ID))
   otus <- mutate_all(raw_otus,function(x) as.numeric(as.character(x)))
   otus.res <- PreFL(data = otus)
   otus <- otus.res$data.filter
   names(otus) = gsub(pattern = "_", replacement = "", x = names(otus))
-  rep_seqs <- readDNAStringSet(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '_cohort/all.otus.fasta')))
+  rep_seqs <- readDNAStringSet(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '/all.otus.fasta')))
   names(rep_seqs) <- sapply(strsplit(names(rep_seqs), ";"), "[", 1)
   pred <- predict(rdp(), rep_seqs)
   
@@ -43,13 +48,13 @@ for(cohort in cohorts){
     mutate(genus= ifelse(is.na(genus), order, genus)) %>%
     mutate(genus= ifelse(is.na(genus), class, genus)) %>%
     mutate(genus= ifelse(is.na(genus), phylum ,genus))
-
-
+  
+  
   unique_genus <- unique(pred_copy$genus)
   otu_filter <- otus
   #otu_filter <- filter_taxa(otu_filter, 0.1, 5)
   #otu_filter <- otu_filte[, colSums(otu_filter != 0) > 0]
-
+  
   otu_copy <- otu_filter
   pred_copy1 <- pred_copy
   for(genus_use in unique_genus){
@@ -103,17 +108,17 @@ for(cohort in cohorts){
             pred_copy1[otu_ids[remaining[i]], ]$genus <- paste0(pred_copy1[otu_ids[remaining[i]], ]$genus, "_unmerged_", i)
           }
         }
-
+        
       }
     }
-
+    
   }
   #otu_copy <- otus
   metaSeqObject <- newMRexperiment(otu_copy) 
   CSS <- cumNorm(metaSeqObject, p=cumNormStat(metaSeqObject))
   outs_CSS = data.frame(MRcounts(CSS, norm=TRUE, log=F))
   #outs_CSS_lg <- log(outs_CSS + 1)
- 
+  
   feature_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
   #ids <- c(read.delim("~/Desktop/TAW_train.txt", sep = "\t", header = FALSE))
   #feature_table <- vm.metadata[ids$V1,]
@@ -121,9 +126,9 @@ for(cohort in cohorts){
   rownames(feature_table) <- feature_table$sraID
   otus_table <- otu_table(otu_copy, taxa_are_rows = TRUE)
   #pred_copy1 <- pred
-  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '_cohort/test_paired.tree')))
+  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/SOTA_pipeline/results/', cohort, '/otus.tree')))
   rooted_tree <- phangorn::midpoint(phylo_tree)
-  taxa_names(rooted_tree) <- paste0("OTU_", taxa_names(rooted_tree))
+  #taxa_names(rooted_tree) <- paste0("OTU_", taxa_names(rooted_tree))
   tree_phy <- phy_tree(rooted_tree)
   tax_table_phy = tax_table(as.matrix(pred_copy1))
   samples = sample_data(feature_table)
@@ -137,11 +142,21 @@ for(cohort in cohorts){
   #phylo_imputed <- phyloseq(otu_table(imputed_clr, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
   #                          sample_data(phyloseq_obj_ne)) 
   #assign(paste0(cohort, "_InHousephyloseq_tree"), phylo_imputed,.GlobalEnv)
-  phylo_raw <- phyloseq(otu_table(otu_copy, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
-                       sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
+ 
   
-  otu_copy.filter.res <- PreFL(data = otu_copy)
-  otu_copy.filter <- otu_copy.filter.res$data.filter
+  #otu_copy.filter.res <- PreFL(data = otu_copy)
+  #otu_copy.filter <- otu_copy.filter.res$data.filter
+  
+  res_sim <- PERFect_sim(X = t(otu_copy))
+  if(ncol(as.data.frame(res_sim$filtX))>3){
+    otu_copy.filter <- t(res_sim$filtX)
+  } else {
+    otu_copy.filter <- otu_copy
+  }
+ 
+  
+  phylo_raw <- phyloseq(otu_table(otu_copy.filter, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
+                        sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
   
   otu_clr <- compositions::clr(otu_copy.filter)
   phylo_clr <- phyloseq(otu_table(otu_clr, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
@@ -150,4 +165,3 @@ for(cohort in cohorts){
   assign(paste0(cohort, "_SOTAphyloseq_tree_raw"),phylo_raw ,.GlobalEnv)
   assign(paste0(cohort, "_SOTAphyloseq_tree"),phylo_clr ,.GlobalEnv)
 }
-
