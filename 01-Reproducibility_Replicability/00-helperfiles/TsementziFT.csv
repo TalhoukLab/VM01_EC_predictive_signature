@@ -1,37 +1,37 @@
-,sraID,cohort,histology,stage,age,BMI,pH,menopausal.status,ethnicity,pHRecoded
-1,SRR6920034,Tsementzi,Benign,Not Applicable,65,20,6,post-menopausal,white,>4.5
-2,SRR6920033,Tsementzi,Benign,Not Applicable,73,20.9,4,post-menopausal,white,<=4.5
-3,SRR6920032,Tsementzi,Benign,Not Applicable,68,39.7,6,post-menopausal,white,>4.5
-4,SRR6920031,Tsementzi,Benign,Not Applicable,71,25.2,5,post-menopausal,white,>4.5
-5,SRR6920029,Tsementzi,Benign,Not Applicable,55,26.3,7,post-menopausal,white,>4.5
-6,SRR6920028,Tsementzi,Benign,Not Applicable,52,23.8,4,post-menopausal,asian,<=4.5
-7,SRR6920027,Tsementzi,Benign,Not Applicable,61,23.3,6,post-menopausal,african-american,>4.5
-8,SRR6920036,Tsementzi,Benign,Not Applicable,61,25.7,6,post-menopausal,asian,>4.5
-9,SRR6920035,Tsementzi,Benign,Not Applicable,62,17.7,5,post-menopausal,asian,>4.5
-10,SRR6920050,Tsementzi,Benign,Not Applicable,63,30.2,5,post-menopausal,african-american,>4.5
-11,SRR6920049,Tsementzi,Benign,Not Applicable,72,18.5,5,post-menopausal,white,>4.5
-12,SRR6920052,Tsementzi,Benign,Not Applicable,55,23.6,5,post-menopausal,white,>4.5
-13,SRR6920051,Tsementzi,Benign,Not Applicable,54,27.8,5,post-menopausal,african-american,>4.5
-14,SRR6920046,Tsementzi,Benign,Not Applicable,66,24.2,5,post-menopausal,white,>4.5
-15,SRR6920045,Tsementzi,Benign,Not Applicable,58,22.7,5,post-menopausal,white,>4.5
-16,SRR6920048,Tsementzi,Benign,Not Applicable,65,40.5,4,post-menopausal,african-american,<=4.5
-17,SRR6920047,Tsementzi,Benign,Not Applicable,58,33.5,5,post-menopausal,white,>4.5
-18,SRR6920059,Tsementzi,EC,2,68,17.5,8,post-menopausal,white,>4.5
-19,SRR6920058,Tsementzi,EC,1,64,31.8,4,post-menopausal,african-american,<=4.5
-20,SRR6920041,Tsementzi,Benign,Not Applicable,64,20.9,7,post-menopausal,white,>4.5
-21,SRR6920056,Tsementzi,EC,2,66,31.9,7,post-menopausal,white,>4.5
-22,SRR6920085,Tsementzi,Benign,Not Applicable,75,25.8,7,post-menopausal,white,>4.5
-23,SRR6920086,Tsementzi,Benign,Not Applicable,60,34.9,5,post-menopausal,asian,>4.5
-24,SRR6920087,Tsementzi,Benign,Not Applicable,71,21.8,7,post-menopausal,white,>4.5
-25,SRR6920088,Tsementzi,Benign,Not Applicable,72,26.3,NA,post-menopausal,white,NA
-26,SRR6920089,Tsementzi,Benign,Not Applicable,63,24.5,4,post-menopausal,african-american,<=4.5
-27,SRR6920090,Tsementzi,Benign,Not Applicable,57,36.9,NA,post-menopausal,white,NA
-28,SRR6920091,Tsementzi,Benign,Not Applicable,66,27.3,NA,post-menopausal,african-american,NA
-29,SRR6920053,Tsementzi,EC,3,54,28.8,5,post-menopausal,pacific_islander,>4.5
-30,SRR6920092,Tsementzi,Benign,Not Applicable,69,32.1,5,post-menopausal,white,>4.5
-31,SRR6920093,Tsementzi,Benign,Not Applicable,70,25.1,6,post-menopausal,white,>4.5
-32,SRR6920094,Tsementzi,Benign,Not Applicable,58,40.4,6,post-menopausal,african-american,>4.5
-33,SRR6920072,Tsementzi,EC,3,55,28.5,NA,post-menopausal,african-american,NA
-34,SRR6920077,Tsementzi,EC,2,63,44.2,NA,post-menopausal,african-american,NA
-35,SRR6920078,Tsementzi,EC,1,63,42.6,NA,post-menopausal,african-american,NA
-36,SRR6920075,Tsementzi,EC,1,56,31,NA,post-menopausal,hispanic,NA
+,sraID,cohort,histology,stage,age,BMI,pH,menopausal.status,ethnicity,pHRecoded,ethnicityRecode
+1,SRR6920034,Tsementzi,Benign,Not Applicable,65,20,6,post-menopausal,white,>4.5,white
+2,SRR6920033,Tsementzi,Benign,Not Applicable,73,20.9,4,post-menopausal,white,<=4.5,white
+3,SRR6920032,Tsementzi,Benign,Not Applicable,68,39.7,6,post-menopausal,white,>4.5,white
+4,SRR6920031,Tsementzi,Benign,Not Applicable,71,25.2,5,post-menopausal,white,>4.5,white
+5,SRR6920029,Tsementzi,Benign,Not Applicable,55,26.3,7,post-menopausal,white,>4.5,white
+6,SRR6920028,Tsementzi,Benign,Not Applicable,52,23.8,4,post-menopausal,asian,<=4.5,asian
+7,SRR6920027,Tsementzi,Benign,Not Applicable,61,23.3,6,post-menopausal,african-american,>4.5,african-american
+8,SRR6920036,Tsementzi,Benign,Not Applicable,61,25.7,6,post-menopausal,asian,>4.5,asian
+9,SRR6920035,Tsementzi,Benign,Not Applicable,62,17.7,5,post-menopausal,asian,>4.5,asian
+10,SRR6920050,Tsementzi,Benign,Not Applicable,63,30.2,5,post-menopausal,african-american,>4.5,african-american
+11,SRR6920049,Tsementzi,Benign,Not Applicable,72,18.5,5,post-menopausal,white,>4.5,white
+12,SRR6920052,Tsementzi,Benign,Not Applicable,55,23.6,5,post-menopausal,white,>4.5,white
+13,SRR6920051,Tsementzi,Benign,Not Applicable,54,27.8,5,post-menopausal,african-american,>4.5,african-american
+14,SRR6920046,Tsementzi,Benign,Not Applicable,66,24.2,5,post-menopausal,white,>4.5,white
+15,SRR6920045,Tsementzi,Benign,Not Applicable,58,22.7,5,post-menopausal,white,>4.5,white
+16,SRR6920048,Tsementzi,Benign,Not Applicable,65,40.5,4,post-menopausal,african-american,<=4.5,african-american
+17,SRR6920047,Tsementzi,Benign,Not Applicable,58,33.5,5,post-menopausal,white,>4.5,white
+18,SRR6920059,Tsementzi,EC,2,68,17.5,8,post-menopausal,white,>4.5,white
+19,SRR6920058,Tsementzi,EC,1,64,31.8,4,post-menopausal,african-american,<=4.5,african-american
+20,SRR6920041,Tsementzi,Benign,Not Applicable,64,20.9,7,post-menopausal,white,>4.5,white
+21,SRR6920056,Tsementzi,EC,2,66,31.9,7,post-menopausal,white,>4.5,white
+22,SRR6920085,Tsementzi,Benign,Not Applicable,75,25.8,7,post-menopausal,white,>4.5,white
+23,SRR6920086,Tsementzi,Benign,Not Applicable,60,34.9,5,post-menopausal,asian,>4.5,asian
+24,SRR6920087,Tsementzi,Benign,Not Applicable,71,21.8,7,post-menopausal,white,>4.5,white
+25,SRR6920088,Tsementzi,Benign,Not Applicable,72,26.3,NA,post-menopausal,white,NA,white
+26,SRR6920089,Tsementzi,Benign,Not Applicable,63,24.5,4,post-menopausal,african-american,<=4.5,african-american
+27,SRR6920090,Tsementzi,Benign,Not Applicable,57,36.9,NA,post-menopausal,white,NA,white
+28,SRR6920091,Tsementzi,Benign,Not Applicable,66,27.3,NA,post-menopausal,african-american,NA,african-american
+29,SRR6920053,Tsementzi,EC,3,54,28.8,5,post-menopausal,pacific_islander,>4.5,Other
+30,SRR6920092,Tsementzi,Benign,Not Applicable,69,32.1,5,post-menopausal,white,>4.5,white
+31,SRR6920093,Tsementzi,Benign,Not Applicable,70,25.1,6,post-menopausal,white,>4.5,white
+32,SRR6920094,Tsementzi,Benign,Not Applicable,58,40.4,6,post-menopausal,african-american,>4.5,african-american
+33,SRR6920072,Tsementzi,EC,3,55,28.5,NA,post-menopausal,african-american,NA,african-american
+34,SRR6920077,Tsementzi,EC,2,63,44.2,NA,post-menopausal,african-american,NA,african-american
+35,SRR6920078,Tsementzi,EC,1,63,42.6,NA,post-menopausal,african-american,NA,african-american
+36,SRR6920075,Tsementzi,EC,1,56,31,NA,post-menopausal,hispanic,NA,Other
