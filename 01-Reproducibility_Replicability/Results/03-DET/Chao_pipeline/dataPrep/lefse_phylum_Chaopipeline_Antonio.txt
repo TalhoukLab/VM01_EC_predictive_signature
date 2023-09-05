@@ -1,0 +1,14 @@
+histology	Benign	Benign	Benign	EC	Benign	EC	EC	EC	EC	EC	EC	Benign	Benign
+sraID	SRR2533834	SRR2533846	SRR2533860	SRR2533873	SRR2533888	SRR2533894	SRR2533897	SRR2533904	SRR2533911	SRR2533933	SRR2533949	SRR2533965	SRR2533972
+pHRecoded	1	1	1	2	2	2	2	1	2	2	2	1	2
+BMI	23.84	41.91	23.73	37.33	20.32	37.58	25.95	24.27	32.09	41.30	42.70	25.02	26.32
+age	41	49	46	64	55	71	56	59	60	69	71	43	28
+menopausal.status	3	3	3	2	1	2	3	2	2	2	2	3	3
+actinobacteria	   0	   0	   0	4045	 319	   0	   0	   0	   0	   0	   0	   0	1606
+bacteroidetes	     1	    44	     4	 20399	121532	   231	     0	     2	     0	 11390	     0	   235	 54119
+firmicutes	 41325	  5201	 59391	 21932	 38726	     0	    11	  1205	   132	 21836	   264	102819	 49454
+fusobacteria	    0	    0	    0	  592	    0	    0	    0	    0	    0	    0	    0	    0	38949
+proteobacteria	 7040	    0	    0	72526	 2563	    0	    0	    0	    0	    0	    0	    2	    1
+spirochaetes	  0	  0	  0	129	  0	  0	  0	  0	  0	  0	  0	  0	  0
+synergistetes	0	0	0	0	0	0	0	0	0	0	0	0	0
+tenericutes	   0	   0	   0	   0	   0	   0	   0	   0	   0	   0	   0	   0	1275

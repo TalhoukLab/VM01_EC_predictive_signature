@@ -1,0 +1,16 @@
+age	1.8036277953448152			-
+pHRecoded	0.26324143477458134			-
+BMI	1.4393326938302626			-
+ethnicityRecode	0.47712125471966244			-
+actinobacteria	2.3227360044699497			-
+bacteroidetes	2.04581177397827			-
+chloroflexi	0.0			-
+cyanobacteria	0.0			-
+firmicutes	2.452935870201179			-
+fusobacteria	1.2768446111454979			-
+proteobacteria	1.0543576623225925			-
+spirochaetes	0.0			-
+synergistetes	0.0			-
+tenericutes	1.1222158782728264			-
+tm7	0.0			-
+verrucomicrobia	0.0			-
