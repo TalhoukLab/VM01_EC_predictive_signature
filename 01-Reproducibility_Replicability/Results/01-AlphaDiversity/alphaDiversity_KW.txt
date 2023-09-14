@@ -45,9 +45,9 @@
 # A tibble: 5 × 8
   metric  cohort    .y.         p p.adj p.format p.signif method        
   <fct>   <chr>     <chr>   <dbl> <dbl> <chr>    <chr>    <chr>         
-1 shannon Antonio   value 0.833   0.83  0.8327   ns       Kruskal-Wallis
-2 shannon Chao      value 0.384   0.77  0.3841   ns       Kruskal-Wallis
-3 shannon Gressel   value 0.211   0.63  0.2105   ns       Kruskal-Wallis
+1 shannon Antonio   value 0.833   1     0.8327   ns       Kruskal-Wallis
+2 shannon Chao      value 0.384   1     0.3841   ns       Kruskal-Wallis
+3 shannon Gressel   value 0.527   1     0.5271   ns       Kruskal-Wallis
 4 shannon Tsementzi value 0.110   0.44  0.1100   ns       Kruskal-Wallis
 5 shannon Walsh     value 0.00815 0.041 0.0081   **       Kruskal-Wallis
 [1] "cohort_pipelineAntonio_SOTA"
@@ -56,10 +56,10 @@
 [1] "cohort_pipelineTsementzi_SOTA"
 [1] "cohort_pipelineWalsh_SOTA"
 # A tibble: 5 × 8
-  metric  cohort    .y.           p   p.adj p.format p.signif method        
-  <fct>   <chr>     <chr>     <dbl>   <dbl> <chr>    <chr>    <chr>         
-1 shannon Antonio   value 0.160     0.48    0.16     ns       Kruskal-Wallis
-2 shannon Chao      value 0.0302    0.12    0.03     *        Kruskal-Wallis
-3 shannon Gressel   value 0.306     0.61    0.31     ns       Kruskal-Wallis
-4 shannon Tsementzi value 0.397     0.61    0.40     ns       Kruskal-Wallis
-5 shannon Walsh     value 0.0000337 0.00017 3.4e-05  ****     Kruskal-Wallis
+  metric  cohort    .y.           p    p.adj p.format p.signif method        
+  <fct>   <chr>     <chr>     <dbl>    <dbl> <chr>    <chr>    <chr>         
+1 shannon Antonio   value 0.160     0.48     0.16     ns       Kruskal-Wallis
+2 shannon Chao      value 0.0302    0.12     0.03     *        Kruskal-Wallis
+3 shannon Gressel   value 0.275     0.55     0.27     ns       Kruskal-Wallis
+4 shannon Tsementzi value 0.381     0.55     0.38     ns       Kruskal-Wallis
+5 shannon Walsh     value 0.0000195 0.000097 1.9e-05  ****     Kruskal-Wallis

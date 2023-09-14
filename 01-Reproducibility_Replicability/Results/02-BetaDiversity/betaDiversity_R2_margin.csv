@@ -50,22 +50,22 @@ Walsh,age,Walsh,0.005,0.10891,NS
 Walsh,BMI,Walsh,0.74269,0.06931,NS
 Walsh,pH,Walsh,0.00193,0.35644,NS
 Walsh,ethnicity,Walsh,0,       ,NS
-Antonio,histology,SOTA,0.07966,0.138614,NS
-Antonio,age,SOTA,0.08452,0.089109,NS
-Antonio,BMI,SOTA,0.13325,0.009901,Sig
-Antonio,pH,SOTA,0.04183,0.722772,NS
-Chao,histology,SOTA,0.06273,0.0396,Sig
-Chao,age,SOTA,0.02645,0.5941,NS
-Gressel,histology,SOTA,0.04626,0.2178,NS
-Tsementzi,histology,SOTA,0.04822,0.1287,NS
-Tsementzi,age,SOTA,0.03333,0.5743,NS
-Tsementzi,BMI,SOTA,0.03629,0.3267,NS
-Tsementzi,pH,SOTA,0.04916,0.1287,NS
-Tsementzi,ethnicity,SOTA,0.08261,0.9505,NS
+Antonio,histology,SOTA,0.07897,0.1089,NS
+Antonio,age,SOTA,0.08353,0.0495,Sig
+Antonio,BMI,SOTA,0.13174,0.0297,Sig
+Antonio,pH,SOTA,0.04291,0.703,NS
+Chao,histology,SOTA,0.05286,0.07921,Sig
+Chao,age,SOTA,0.02902,0.49505,NS
+Gressel,histology,SOTA,0.04343,0.3366,NS
+Tsementzi,histology,SOTA,0.02603,0.8416,NS
+Tsementzi,age,SOTA,0.02431,0.9109,NS
+Tsementzi,BMI,SOTA,0.03656,0.4356,NS
+Tsementzi,pH,SOTA,0.05084,0.1485,NS
+Tsementzi,ethnicity,SOTA,0.08356,0.901,NS
 Walsh,histology,SOTA,0,      ,NS
-Walsh,age,SOTA,0.00743,0.3069,NS
-Walsh,BMI,SOTA,0.80867,0.3069,NS
-Walsh,pH,SOTA,0.00676,0.3366,NS
+Walsh,age,SOTA,0.00762,0.3267,NS
+Walsh,BMI,SOTA,0.83168,0.4356,NS
+Walsh,pH,SOTA,0.0067,0.4554,NS
 Walsh,ethnicity,SOTA,0,      ,NS
 Antonio,histology,Chao,0.11167,0.17822,NS
 Antonio,age,Chao,0.04391,0.77228,NS

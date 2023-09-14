@@ -142,7 +142,7 @@ for(cohort in cohorts){
   
   phylo_raw <- phyloseq(otu_table(otu_copy.filter, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
                         sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))
-  
+  phylo_raw <- subset_taxa(phylo_raw, phylum!="Cyanobacteria/Chloroplast")
   otu_clr <- compositions::clr(otu_copy.filter)
   phylo_clr <- phyloseq(otu_table(otu_clr, taxa_are_rows=TRUE), tax_table(phyloseq_obj_ne), 
                         sample_data(phyloseq_obj_ne), phy_tree(phyloseq_obj_ne))

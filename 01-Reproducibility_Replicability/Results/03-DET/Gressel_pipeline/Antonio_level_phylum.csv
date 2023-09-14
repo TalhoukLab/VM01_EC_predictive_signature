@@ -1,8 +1,0 @@
-"","taxon","diff_abun","lefc","structural_zero (histology = EC)","W"
-"kingdom:bacteria","kingdom:bacteria","FALSE","-0.100464541042218","1.17744149196181","-0.08532444433806"
-" firmicutes","phylum: firmicutes","FALSE","1.98713358328404","1.73034022479571","1.148406281498"
-" bacteroidetes","phylum: bacteroidetes","FALSE","0.119217559149874","1.20556502688998","0.0988893643152726"
-" proteobacteria","phylum: proteobacteria","FALSE","-3.51532667098734","1.38037056985824","-2.54665431714352"
-" actinobacteria","phylum: actinobacteria","FALSE","-0.688495021984031","1.01120959838788","-0.680862823178959"
-"kingdom:unassigned","kingdom:unassigned","FALSE","0.455510501217933","0.834812836231345","0.545643863448814"
-" fusobacteria","phylum: fusobacteria","FALSE","-0.575768084598836","1.01555349690714","-0.566950029075112"

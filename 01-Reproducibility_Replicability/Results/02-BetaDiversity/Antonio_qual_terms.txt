@@ -1,41 +1,45 @@
 Run 0 stress 0.06990876 
-Run 1 stress 0.2049597 
+Run 1 stress 0.06990876 
+... Procrustes: rmse 3.537576e-06  max resid 9.981242e-06 
+... Similar to previous best
 Run 2 stress 0.06990876 
-... Procrustes: rmse 4.71039e-06  max resid 1.382099e-05 
+... Procrustes: rmse 1.547371e-06  max resid 4.523667e-06 
 ... Similar to previous best
-Run 3 stress 0.0710139 
-Run 4 stress 0.0710139 
+Run 3 stress 0.06990876 
+... Procrustes: rmse 4.294883e-06  max resid 1.405596e-05 
+... Similar to previous best
+Run 4 stress 0.2340297 
 Run 5 stress 0.06990876 
-... Procrustes: rmse 5.870712e-06  max resid 1.670574e-05 
+... Procrustes: rmse 1.1823e-06  max resid 2.7222e-06 
 ... Similar to previous best
-Run 6 stress 0.06990876 
-... Procrustes: rmse 1.716414e-06  max resid 4.341856e-06 
-... Similar to previous best
-Run 7 stress 0.06990876 
-... Procrustes: rmse 1.858707e-06  max resid 5.269286e-06 
-... Similar to previous best
+Run 6 stress 0.0710139 
+Run 7 stress 0.0710139 
 Run 8 stress 0.0710139 
-Run 9 stress 0.0710139 
+Run 9 stress 0.1750362 
 Run 10 stress 0.06990876 
-... Procrustes: rmse 3.266388e-06  max resid 8.685151e-06 
+... Procrustes: rmse 7.577077e-07  max resid 2.108019e-06 
 ... Similar to previous best
-Run 11 stress 0.0710139 
-Run 12 stress 0.229797 
-Run 13 stress 0.1870425 
-Run 14 stress 0.2271378 
-Run 15 stress 0.1702236 
-Run 16 stress 0.06990876 
-... Procrustes: rmse 4.727208e-06  max resid 1.347022e-05 
+Run 11 stress 0.06990876 
+... Procrustes: rmse 2.810282e-06  max resid 7.843153e-06 
 ... Similar to previous best
-Run 17 stress 0.0710139 
-Run 18 stress 0.0710139 
-Run 19 stress 0.06990876 
+Run 12 stress 0.06990876 
+... Procrustes: rmse 8.956894e-07  max resid 2.276556e-06 
+... Similar to previous best
+Run 13 stress 0.2049597 
+Run 14 stress 0.1702236 
+Run 15 stress 0.0710139 
+Run 16 stress 0.0710139 
+Run 17 stress 0.06990876 
+... Procrustes: rmse 3.483651e-06  max resid 1.004143e-05 
+... Similar to previous best
+Run 18 stress 0.06990876 
 ... New best solution
-... Procrustes: rmse 2.308558e-06  max resid 6.783308e-06 
+... Procrustes: rmse 2.278627e-07  max resid 4.980814e-07 
 ... Similar to previous best
-Run 20 stress 0.06990876 
-... Procrustes: rmse 2.186432e-06  max resid 5.746256e-06 
+Run 19 stress 0.06990876 
+... Procrustes: rmse 1.988689e-06  max resid 4.034823e-06 
 ... Similar to previous best
+Run 20 stress 0.0710139 
 *** Best solution repeated 2 times
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 471 taxa and 18 samples ]
@@ -49,44 +53,47 @@ Number of permutations: 100
 
 adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 100, by = "terms", na.action = "na.omit")
                                     Df SumOfSqs      R2      F   Pr(>F)   
-sample_data(phylo_to_use)$histology  1   0.2921 0.07310 1.4464 0.099010 . 
-sample_data(phylo_to_use)$age        1   0.4003 0.10016 1.9818 0.069307 . 
+sample_data(phylo_to_use)$histology  1   0.2921 0.07310 1.4464 0.118812   
+sample_data(phylo_to_use)$age        1   0.4003 0.10016 1.9818 0.029703 * 
 sample_data(phylo_to_use)$BMI        1   0.6926 0.17331 3.4291 0.009901 **
-sample_data(phylo_to_use)$pHRecoded  1   0.1876 0.04694 0.9288 0.534653   
+sample_data(phylo_to_use)$pHRecoded  1   0.1876 0.04694 0.9288 0.514851   
 Residual                            12   2.4237 0.60649                   
 Total                               16   3.9963 1.00000                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 Run 0 stress 0.1239711 
-Run 1 stress 0.1267455 
-Run 2 stress 0.1289193 
-Run 3 stress 0.1364693 
-Run 4 stress 0.1234715 
+Run 1 stress 0.1235061 
 ... New best solution
-... Procrustes: rmse 0.05908317  max resid 0.2613066 
-Run 5 stress 0.130001 
-Run 6 stress 0.124176 
-Run 7 stress 0.123485 
-... Procrustes: rmse 0.002069463  max resid 0.0073627 
+... Procrustes: rmse 0.0301586  max resid 0.138148 
+Run 2 stress 0.1380426 
+Run 3 stress 0.1338325 
+Run 4 stress 0.1275046 
+Run 5 stress 0.1347986 
+Run 6 stress 0.1324784 
+Run 7 stress 0.1262447 
+Run 8 stress 0.1235322 
+... Procrustes: rmse 0.04973774  max resid 0.2569247 
+Run 9 stress 0.1240402 
+Run 10 stress 0.1243761 
+Run 11 stress 0.1235061 
+... Procrustes: rmse 0.0009348632  max resid 0.004094732 
 ... Similar to previous best
-Run 8 stress 0.1235321 
-... Procrustes: rmse 0.005733854  max resid 0.01763514 
-Run 9 stress 0.1235206 
-... Procrustes: rmse 0.004817873  max resid 0.01809697 
-Run 10 stress 0.1252352 
-Run 11 stress 0.1364653 
-Run 12 stress 0.1235062 
-... Procrustes: rmse 0.0497285  max resid 0.2579282 
-Run 13 stress 0.1326029 
-Run 14 stress 0.1345373 
-Run 15 stress 0.1331716 
-Run 16 stress 0.1235207 
-... Procrustes: rmse 0.004894084  max resid 0.01827296 
-Run 17 stress 0.1339159 
-Run 18 stress 0.1267448 
-Run 19 stress 0.1289396 
-Run 20 stress 0.1326025 
-*** Best solution repeated 1 times
+Run 12 stress 0.133165 
+Run 13 stress 0.1240396 
+Run 14 stress 0.1234718 
+... New best solution
+... Procrustes: rmse 0.04963889  max resid 0.2570629 
+Run 15 stress 0.1241706 
+Run 16 stress 0.1236278 
+... Procrustes: rmse 0.009794632  max resid 0.03281695 
+Run 17 stress 0.1239713 
+... Procrustes: rmse 0.05918273  max resid 0.2624901 
+Run 18 stress 0.1297185 
+Run 19 stress 0.1327071 
+Run 20 stress 0.1339449 
+*** Best solution was not repeated -- monoMDS stopping criteria:
+     5: no. of iterations >= maxit
+    15: stress ratio > sratmax
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 273 taxa and 32 samples ]
 sample_data() Sample Data:       [ 32 samples by 6 sample variables ]
@@ -99,42 +106,40 @@ Number of permutations: 100
 
 adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 100, by = "terms", na.action = "na.omit")
                                     Df SumOfSqs      R2      F Pr(>F)
-sample_data(phylo_to_use)$histology  1  0.06652 0.02710 0.8308 0.5842
-sample_data(phylo_to_use)$age        1  0.06635 0.02703 0.8287 0.5941
+sample_data(phylo_to_use)$histology  1  0.06652 0.02710 0.8308 0.5941
+sample_data(phylo_to_use)$age        1  0.06635 0.02703 0.8287 0.6238
 Residual                            29  2.32211 0.94587              
 Total                               31  2.45499 1.00000              
 Run 0 stress 0.1612692 
-Run 1 stress 0.1652419 
-Run 2 stress 0.1612692 
-... Procrustes: rmse 4.895941e-05  max resid 0.0001974337 
-... Similar to previous best
-Run 3 stress 0.1918634 
-Run 4 stress 0.1911722 
-Run 5 stress 0.171447 
-Run 6 stress 0.1612692 
+Run 1 stress 0.1714469 
+Run 2 stress 0.1979154 
+Run 3 stress 0.164623 
+Run 4 stress 0.1979154 
+Run 5 stress 0.164623 
+Run 6 stress 0.164623 
+Run 7 stress 0.1612692 
 ... New best solution
-... Procrustes: rmse 8.684389e-05  max resid 0.0003960217 
+... Procrustes: rmse 0.0001034974  max resid 0.0004673783 
 ... Similar to previous best
-Run 7 stress 0.1652419 
-Run 8 stress 0.171447 
+Run 8 stress 0.1612692 
+... Procrustes: rmse 0.0001749355  max resid 0.0006268272 
+... Similar to previous best
 Run 9 stress 0.164623 
-Run 10 stress 0.1612693 
-... Procrustes: rmse 0.0001787394  max resid 0.0008352077 
+Run 10 stress 0.191925 
+Run 11 stress 0.1986836 
+Run 12 stress 0.171447 
+Run 13 stress 0.1612692 
+... Procrustes: rmse 0.0001621253  max resid 0.0007009856 
 ... Similar to previous best
-Run 11 stress 0.164623 
-Run 12 stress 0.1612692 
-... Procrustes: rmse 0.0001641697  max resid 0.0006767609 
+Run 14 stress 0.1984282 
+Run 15 stress 0.1954113 
+Run 16 stress 0.171447 
+Run 17 stress 0.1612693 
+... Procrustes: rmse 0.0002509248  max resid 0.001152228 
 ... Similar to previous best
-Run 13 stress 0.1652419 
-Run 14 stress 0.164623 
-Run 15 stress 0.1652419 
-Run 16 stress 0.164623 
-Run 17 stress 0.1919251 
-Run 18 stress 0.1979154 
-Run 19 stress 0.1714469 
-Run 20 stress 0.1612692 
-... Procrustes: rmse 0.0001026481  max resid 0.0004043739 
-... Similar to previous best
+Run 18 stress 0.1714469 
+Run 19 stress 0.1646231 
+Run 20 stress 0.1714469 
 *** Best solution repeated 4 times
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 57 taxa and 29 samples ]
@@ -148,58 +153,57 @@ Number of permutations: 100
 
 adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 100, by = "terms", na.action = "na.omit")
                                     Df SumOfSqs      R2      F Pr(>F)
-sample_data(phylo_to_use)$histology  1   0.2620 0.03153 0.8791 0.6238
+sample_data(phylo_to_use)$histology  1   0.2620 0.03153 0.8791 0.5347
 Residual                            27   8.0473 0.96847              
 Total                               28   8.3093 1.00000              
 Run 0 stress 0.1197405 
-Run 1 stress 0.1418773 
-Run 2 stress 0.1224098 
-Run 3 stress 0.1197405 
+Run 1 stress 0.1197405 
 ... New best solution
-... Procrustes: rmse 7.337884e-05  max resid 0.0002957737 
+... Procrustes: rmse 3.533493e-05  max resid 0.0001645893 
 ... Similar to previous best
-Run 4 stress 0.1224101 
-Run 5 stress 0.1197405 
-... Procrustes: rmse 6.852288e-05  max resid 0.0002849459 
-... Similar to previous best
-Run 6 stress 0.1224103 
+Run 2 stress 0.1425847 
+Run 3 stress 0.1418773 
+Run 4 stress 0.1224097 
+Run 5 stress 0.12241 
+Run 6 stress 0.1224102 
 Run 7 stress 0.1197405 
 ... New best solution
-... Procrustes: rmse 9.445223e-06  max resid 4.143201e-05 
+... Procrustes: rmse 1.360219e-05  max resid 5.140469e-05 
 ... Similar to previous best
-Run 8 stress 0.1420645 
-Run 9 stress 0.1425845 
-Run 10 stress 0.1197405 
-... New best solution
-... Procrustes: rmse 2.499722e-05  max resid 9.112971e-05 
+Run 8 stress 0.1197405 
+... Procrustes: rmse 2.274542e-05  max resid 0.0001125263 
 ... Similar to previous best
-Run 11 stress 0.1418773 
+Run 9 stress 0.1224099 
+Run 10 stress 0.1418773 
+Run 11 stress 0.1224098 
 Run 12 stress 0.1197405 
-... Procrustes: rmse 8.182484e-06  max resid 3.487579e-05 
+... Procrustes: rmse 2.153707e-05  max resid 7.217622e-05 
 ... Similar to previous best
-Run 13 stress 0.1224106 
+Run 13 stress 0.1224097 
 Run 14 stress 0.1197405 
-... Procrustes: rmse 3.174934e-05  max resid 0.0001033476 
+... New best solution
+... Procrustes: rmse 5.955323e-06  max resid 2.053843e-05 
 ... Similar to previous best
-Run 15 stress 0.1197405 
-... Procrustes: rmse 2.685893e-05  max resid 9.438051e-05 
-... Similar to previous best
+Run 15 stress 0.1425846 
 Run 16 stress 0.1197405 
-... Procrustes: rmse 1.098444e-05  max resid 4.825456e-05 
+... Procrustes: rmse 2.044553e-05  max resid 7.491622e-05 
 ... Similar to previous best
 Run 17 stress 0.1197405 
-... Procrustes: rmse 9.138329e-06  max resid 3.252997e-05 
+... Procrustes: rmse 7.165249e-05  max resid 0.0002725686 
 ... Similar to previous best
-Run 18 stress 0.1750251 
-Run 19 stress 0.1418773 
+Run 18 stress 0.1197405 
+... Procrustes: rmse 4.768215e-05  max resid 0.0001851621 
+... Similar to previous best
+Run 19 stress 0.1197405 
+... Procrustes: rmse 1.214032e-05  max resid 5.796118e-05 
+... Similar to previous best
 Run 20 stress 0.1197405 
-... New best solution
-... Procrustes: rmse 3.084411e-06  max resid 1.29206e-05 
+... Procrustes: rmse 2.232818e-05  max resid 9.840467e-05 
 ... Similar to previous best
-*** Best solution repeated 1 times
+*** Best solution repeated 6 times
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 502 taxa and 36 samples ]
-sample_data() Sample Data:       [ 36 samples by 11 sample variables ]
+sample_data() Sample Data:       [ 36 samples by 12 sample variables ]
 tax_table()   Taxonomy Table:    [ 502 taxa by 6 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 502 tips and 501 internal nodes ]
 Permutation test for adonis under reduced model
@@ -209,55 +213,55 @@ Number of permutations: 100
 
 adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + as.factor(sample_data(phylo_to_use)$pHRecoded) + as.factor(sample_data(phylo_to_use)$ethnicity), permutations = 100, by = "terms", na.action = "na.omit")
                                                Df SumOfSqs      R2      F   Pr(>F)   
-sample_data(phylo_to_use)$histology             1   0.2107 0.03117 0.9747 0.405941   
-sample_data(phylo_to_use)$age                   1   0.2308 0.03415 1.0679 0.316832   
-sample_data(phylo_to_use)$BMI                   1   0.2833 0.04192 1.3109 0.188119   
+sample_data(phylo_to_use)$histology             1   0.2107 0.03117 0.9747 0.386139   
+sample_data(phylo_to_use)$age                   1   0.2308 0.03415 1.0679 0.336634   
+sample_data(phylo_to_use)$BMI                   1   0.2833 0.04192 1.3109 0.207921   
 as.factor(sample_data(phylo_to_use)$pHRecoded)  1   0.6813 0.10081 3.1523 0.009901 **
-as.factor(sample_data(phylo_to_use)$ethnicity)  3   0.8138 0.12041 1.2551 0.207921   
+as.factor(sample_data(phylo_to_use)$ethnicity)  3   0.8138 0.12041 1.2551 0.217822   
 Residual                                       21   4.5389 0.67154                   
 Total                                          28   6.7589 1.00000                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 Run 0 stress 0.1309325 
-Run 1 stress 0.130913 
+Run 1 stress 0.1328515 
+Run 2 stress 0.1329136 
+Run 3 stress 0.1309538 
+... Procrustes: rmse 0.003290763  max resid 0.02003724 
+Run 4 stress 0.1309324 
 ... New best solution
-... Procrustes: rmse 0.001846093  max resid 0.01558795 
-Run 2 stress 0.1309537 
-... Procrustes: rmse 0.002522844  max resid 0.02014488 
-Run 3 stress 0.1328515 
-Run 4 stress 0.1309494 
-... Procrustes: rmse 0.002055047  max resid 0.01639786 
-Run 5 stress 0.1309383 
-... Procrustes: rmse 0.001004679  max resid 0.01057911 
-Run 6 stress 0.1329187 
-Run 7 stress 0.130913 
+... Procrustes: rmse 2.334846e-05  max resid 0.0002011586 
+... Similar to previous best
+Run 5 stress 0.130913 
 ... New best solution
-... Procrustes: rmse 6.438243e-05  max resid 0.0006488101 
+... Procrustes: rmse 0.001843375  max resid 0.01560466 
+Run 6 stress 0.1309695 
+... Procrustes: rmse 0.00231737  max resid 0.01541327 
+Run 7 stress 0.1328515 
+Run 8 stress 0.1328519 
+Run 9 stress 0.1309323 
+... Procrustes: rmse 0.001871828  max resid 0.0159836 
+Run 10 stress 0.1309386 
+... Procrustes: rmse 0.001104935  max resid 0.01142115 
+Run 11 stress 0.130965 
+... Procrustes: rmse 0.002885341  max resid 0.021326 
+Run 12 stress 0.1309537 
+... Procrustes: rmse 0.002529751  max resid 0.02016781 
+Run 13 stress 0.1329138 
+Run 14 stress 0.1328515 
+Run 15 stress 0.130913 
+... Procrustes: rmse 0.000124307  max resid 0.001451729 
 ... Similar to previous best
-Run 8 stress 0.1309424 
-... Procrustes: rmse 0.002096967  max resid 0.0169684 
-Run 9 stress 0.1329137 
-Run 10 stress 0.1309541 
-... Procrustes: rmse 0.002413558  max resid 0.01719943 
-Run 11 stress 0.1329138 
-Run 12 stress 0.130913 
-... Procrustes: rmse 0.000138257  max resid 0.001455352 
+Run 16 stress 0.1328515 
+Run 17 stress 0.1309832 
+... Procrustes: rmse 0.002567732  max resid 0.01639382 
+Run 18 stress 0.130913 
+... New best solution
+... Procrustes: rmse 1.903235e-05  max resid 0.0001218593 
 ... Similar to previous best
-Run 13 stress 0.1309131 
-... Procrustes: rmse 0.0001503053  max resid 0.001458577 
-... Similar to previous best
-Run 14 stress 0.1329137 
-Run 15 stress 0.1329137 
-Run 16 stress 0.1309427 
-... Procrustes: rmse 0.002035314  max resid 0.01686223 
-Run 17 stress 0.130913 
-... Procrustes: rmse 0.0001413544  max resid 0.0014522 
-... Similar to previous best
-Run 18 stress 0.1328519 
-Run 19 stress 0.1309323 
-... Procrustes: rmse 0.001859962  max resid 0.01576027 
-Run 20 stress 0.1329723 
-*** Best solution repeated 4 times
+Run 19 stress 0.1309537 
+... Procrustes: rmse 0.002531047  max resid 0.01999827 
+Run 20 stress 0.1329137 
+*** Best solution repeated 1 times
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 524 taxa and 149 samples ]
 sample_data() Sample Data:       [ 149 samples by 12 sample variables ]
@@ -272,8 +276,8 @@ adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(p
                                                 Df SumOfSqs      R2       F   Pr(>F)   
 sample_data(phylo_to_use)$histology              1    2.689 0.07672 14.2169 0.009901 **
 sample_data(phylo_to_use)$age                    1    1.482 0.04229  7.8362 0.009901 **
-sample_data(phylo_to_use)$BMI                  124   30.318 0.86506  1.2927 0.326733   
-as.factor(sample_data(phylo_to_use)$pHRecoded)   1    0.180 0.00514  0.9528 0.475248   
+sample_data(phylo_to_use)$BMI                  124   30.318 0.86506  1.2927 0.198020   
+as.factor(sample_data(phylo_to_use)$pHRecoded)   1    0.180 0.00514  0.9528 0.455446   
 Residual                                         2    0.378 0.01079                    
 Total                                          129   35.047 1.00000                    
 ---

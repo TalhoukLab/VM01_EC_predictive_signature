@@ -45,7 +45,7 @@ my_Shannon <- function(x){
   
 }
 
-sink("~/Desktop/KW.txt")
+sink("~/Desktop/LM.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
@@ -86,7 +86,7 @@ for (pipeline in pipelines){
     if(cohort == "Gressel"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology))
     }
-    #print(summary(test.sig))
+    print(summary(test.sig))
     assign(paste0(cohort, "_", pipeline, "alphaDiversity_sig"),test.sig,.GlobalEnv)
   }
   
@@ -105,7 +105,7 @@ for (pipeline in pipelines){
   assign(paste0(pipeline, "alphaDiversity"),all_cohorts_long,.GlobalEnv)
   anno_df = compare_means(value ~ histology, group.by = c("metric", "cohort"), data = all_cohorts_long, method = "kruskal.test")
   #print(pipeline)
-  print(anno_df)
+  #print(anno_df)
   
 }
 sink()
@@ -133,13 +133,13 @@ bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
   scale_fill_manual(values=c("yellowgreen", "tomato3", "whitesmoke")) + 
   theme_bw()+
   facet_wrap(~pipeline, ncol=5, scales = "fixed") + ylab("Shannon index") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 20),
-        axis.text.y = element_text(size = 20),
-        axis.title=element_text(size=22),
-        strip.text.x = element_text(size = 21),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+        axis.text.y = element_text(size = 12),
+        axis.title=element_text(size=16),
+        strip.text.x = element_text(size = 12),
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
-        legend.title = element_text(size=16),
-        legend.text = element_text(size=16), strip.background =element_rect(fill="white")) 
+        legend.title = element_text(size=10),
+        legend.text = element_text(size=10), strip.background =element_rect(fill="white")) 
 bp1

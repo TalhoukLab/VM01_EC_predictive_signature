@@ -37,14 +37,14 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
   if(cohort == "Chao"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age, 
-                        permutations = 100, na.action = "na.omit", by = "terms")
+                        permutations = 100, na.action = "na.omit", by = "margin")
   } 
   if(cohort == "Antonio"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
                           sample_data(phylo_to_use)$BMI + 
                           sample_data(phylo_to_use)$pHRecoded,
-                        permutations = 100, na.action = "na.omit", by = "terms")
+                        permutations = 100, na.action = "na.omit", by = "margin")
   } 
   if(cohort == "Tsementzi"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
@@ -52,7 +52,7 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
                           sample_data(phylo_to_use)$BMI + 
                           as.factor(sample_data(phylo_to_use)$pHRecoded) + 
                           as.factor(sample_data(phylo_to_use)$ethnicity),
-                        permutations = 100, na.action = "na.omit", by = "terms")
+                        permutations = 100, na.action = "na.omit", by = "margin")
   } 
   if(cohort == 'Walsh'){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
@@ -60,17 +60,17 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
                           sample_data(phylo_to_use)$BMI + 
                           as.factor(sample_data(phylo_to_use)$pHRecoded) + 
                           as.factor(sample_data(phylo_to_use)$ethnicityRecoded),
-                        permutations = 100, na.action = "na.omit", by = "terms")
+                        permutations = 100, na.action = "na.omit", by = "margin")
   }
   if(cohort == "Gressel"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology,
-                        permutations = 100, na.action = "na.omit", by = "terms")
+                        permutations = 100, na.action = "na.omit", by = "margin")
   }
   return(test_mul)
 }
 
 
-sink("~/Desktop/Chao_qual_terms.txt")
+sink("~/Desktop/Chao_qual_margin.txt")
 for(cohort in cohorts){
   print(cohort)
   phylo_use <- eval(parse(text = paste0(cohort, "_Chaophyloseq_tree_raw")))
@@ -89,6 +89,7 @@ for(cohort in cohorts){
   assign(paste0(cohort, "_Chao_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
+
 sink()
 
 ## Antonio beta diversity - only use unweighted unifrac using NMDS ordination 
@@ -157,7 +158,7 @@ for(cohort in cohorts){
 sink()
 
 ## SOTA pipeline
-sink("~/Desktop/SOTA_qual.txt")
+sink("~/Desktop/SOTA_qual_margin.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_SOTAphyloseq_tree_raw")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -217,16 +218,20 @@ SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", plo
                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))))
 
 p <- (antonio_pipeline_plots / walsh_pipeline_plots/ tsementzi_pipeline_plots / chao_pipeline_plots / SOTA_pipeline_plots)
-png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity1.png"), width = 6500, height = 3500, res = 300)
+png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity12.png"), width = 6500, height = 3500, res = 300)
 print(p)
 dev.off()
 
 library(ggplot2)
 library(latex2exp)
 
-df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
+
+pdf("~/Desktop/margin.pdf",  width=16, height=5)
+
+
+df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
 df$pipeline <- paste0(df$pipeline, "_pipeline")
-df$R2 <- round(df$R2, 3)
+df$R2 <- round(df$R2, 2)
 df$covariate <- factor(df$covariate, levels = c("histology", "BMI", "pH", "age", "ethnicity"))
 df$cohort <- factor(df$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
 df$pipeline <- factor(df$pipeline, levels = c("Antonio_pipeline", "Walsh_pipeline", "Tsementzi_pipeline", "Gressel_pipeline", "Chao_pipeline", "SOTA_pipeline"))
@@ -234,14 +239,14 @@ ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) +
   geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', NA), size = 0.3) +
   geom_text(aes(label = R2), color = "black", size = 4) +
   scale_fill_gradient(low = "white", high = "red", name = unname(TeX(c("$R^2$")))) + facet_wrap(~pipeline,  ncol=5) + theme_classic() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 16),
-        axis.text.y = element_text(size = 17),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+        axis.text.y = element_text(size = 12),
         axis.title=element_text(size=16),
-        strip.text.x = element_text(size = 17),
+        strip.text.x = element_text(size = 12),
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
-        legend.title = element_text(size=12),
-        legend.text = element_text(size=12))
-
+        legend.title = element_text(size=10),
+        legend.text = element_text(size=10))
+dev.off()
 

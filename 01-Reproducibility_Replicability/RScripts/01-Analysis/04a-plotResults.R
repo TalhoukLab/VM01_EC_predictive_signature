@@ -2,9 +2,9 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-all_scores_cross <- read.csv("~/Desktop/crossLab.csv", sep=",", header = TRUE)
+all_scores_cross <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/04-MLRep/crossLab.csv", sep=",", header = TRUE)
 all_scores_cross$type <- "cross lab"
-all_scores_within <- read.csv("~/Desktop/withinLab.csv", sep=",", header = TRUE)
+all_scores_within <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/04-MLRep/withinLab.csv", sep=",", header = TRUE)
 all_scores_within$type <- "within lab" 
 all_scores_within$training_cohort <- all_scores_within$training_cohort %>% str_replace("_.*", "")
 all_scores_within$testing_cohort <- all_scores_within$testing_cohort %>% str_replace("_.*", "")
@@ -23,8 +23,7 @@ all_scores$training_cohort <- factor(all_scores$training_cohort, levels=c("Anton
 all_scores$pipeline = factor(all_scores$pipeline, levels=c("Antonio", "Tsementzi", "Gressel", "Chao", "SOTA"),
                              labels=c("Antonio_Walsh_pipeline", "Tsementzi_pipeline", "Gressel_pipeline", "Chao_pipeline", "SOTA_pipeline"))
 
-pdf("~/Desktop/ggplot.pdf",  width=12, height=9)
-
+pdf("~/Desktop/ggplot1.pdf",  width=12, height=9)
 
 all_scores %>%
   filter(pipeline != "SOTA") %>% 
