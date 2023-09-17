@@ -70,7 +70,7 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
 }
 
 
-sink("~/Desktop/Chao_qual_margin.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Chao_qual_margin.txt")
 for(cohort in cohorts){
   print(cohort)
   phylo_use <- eval(parse(text = paste0(cohort, "_Chaophyloseq_tree_raw")))
@@ -93,7 +93,7 @@ for(cohort in cohorts){
 sink()
 
 ## Antonio beta diversity - only use unweighted unifrac using NMDS ordination 
-sink("~/Desktop/Antonio_qual.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Antonio_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
   p1 <- phylo_use %>%
@@ -114,7 +114,7 @@ for(cohort in cohorts){
 sink()
   
 ## Tsementzi beta diversity - use bray and jaccard using NMDS ordination 
-sink("~/Desktop/Tsementzi_qual.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Tsementzi_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Tsementziphyloseq_tree_raw")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -136,7 +136,7 @@ for(cohort in cohorts){
 sink()
 
 ## Walsh beta diversity - use 
-sink("~/Desktop/Walsh_qual.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Walsh_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -158,7 +158,7 @@ for(cohort in cohorts){
 sink()
 
 ## SOTA pipeline
-sink("~/Desktop/SOTA_qual_margin.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/SOTA_qual_margin.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_SOTAphyloseq_tree_raw")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -218,7 +218,7 @@ SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", plo
                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))))
 
 p <- (antonio_pipeline_plots / walsh_pipeline_plots/ tsementzi_pipeline_plots / chao_pipeline_plots / SOTA_pipeline_plots)
-png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity12.png"), width = 6500, height = 3500, res = 300)
+png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity.png"), width = 6500, height = 3500, res = 300)
 print(p)
 dev.off()
 
@@ -226,7 +226,7 @@ library(ggplot2)
 library(latex2exp)
 
 
-pdf("~/Desktop/margin.pdf",  width=16, height=5)
+pdf("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/margin.pdf",  width=16, height=5)
 
 
 df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")

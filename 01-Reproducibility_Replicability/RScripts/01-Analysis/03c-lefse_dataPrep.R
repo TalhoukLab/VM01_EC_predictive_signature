@@ -52,7 +52,7 @@ for(cohort in cohorts){
     }
     data_full <- na.omit(data_full)
     data_full1 <- data.frame(t(data_full), check.names = F)
-    write.table(data_full1, paste0("~/Desktop/lefse_", level, "_", pipeline, "pipeline_", cohort, ".txt"), quote=FALSE, sep = "\t", col.names = FALSE)
+    write.table(data_full1, paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/03-DET/Chao_pipeline/dataPrep/lefse_", level, "_", pipeline, "pipeline_", cohort, ".txt"), quote=FALSE, sep = "\t", col.names = FALSE)
   }
 }
 

@@ -44,9 +44,15 @@ for(cohort in cohorts){
                     n_cl = 1, verbose = TRUE)
       
     }
-    if(cohort == "Walsh "){
+    if(cohort == "Walsh"){
+      sample_data <- data.frame(sample_data(phylo_use_raw))
+      sample_data <- na.omit(sample_data)
+      sample_data$age <- as.numeric(sample_data$age)
+      sample_data$BMI <- as.numeric(sample_data$BMI)
+      sample_data$menopausal.status <- as.factor(sample_data$menopausal.status)
+      phylo_use_raw <- phyloseq(otu_table(phylo_use_raw), tax_table(phylo_use_raw), sample_data(sample_data))
       out = ancombc(data = phylo_use_raw, assay_name = "counts", 
-                    if(level == "OTU")  tax_level <- NULL else  tax_level =  level, 
+                    tax_level =  level, 
                     formula = "menopausal.status + BMI + age + pHRecoded + histology + ethnicityRecoded", 
                     p_adj_method = "holm", prv_cut = 0.10, lib_cut = 1000, 
                     group = "histology", struc_zero = TRUE, neg_lb = TRUE, tol = 1e-5, 
@@ -61,7 +67,7 @@ for(cohort in cohorts){
     res_ancombc_fil <- res_ancombc_fil[res_ancombc_fil$taxon %like% level, ]
     assign(paste0(cohort, "_", level, "_ancombc_res"), res_ancombc,.GlobalEnv)
     if(nrow(res_ancombc_fil)>0){
-      write.csv(res_ancombc_fil, paste0("~/Desktop/", cohort, "_level_", level, ".csv"), row.names = TRUE)
+      write.csv(res_ancombc_fil, paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/03-DET/Gressel_pipeline/", cohort, "_level_", level, ".csv"), row.names = TRUE)
     }
   }
 }

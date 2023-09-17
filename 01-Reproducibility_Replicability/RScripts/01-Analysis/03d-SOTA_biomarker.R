@@ -102,9 +102,9 @@ for(level in all_levels){
     if(nrow(res_deseq2_fil)>0){
       res_deseq2_fil$cohort <- cohort
       res_deseq2_fil$pipeline <- pipeline
-      res_deseq2_fil$direction <- with(res_deseq2_fil, ifelse(log2FoldChange>0, 'Positive', 'Negative'))
+      res_deseq2_fil$expression <- with(res_deseq2_fil, ifelse(log2FoldChange>0, 'High in EC', 'Low in EC'))
       res_deseq2_fil <- res_deseq2_fil %>% 
-        dplyr::select(c(taxa, cohort, pipeline, direction))
+        dplyr::select(c(taxa, cohort, pipeline, expression))
     }
     
     assign(paste0(cohort, "_", level, "_deseq2_df"), res_deseq2_fil,.GlobalEnv)

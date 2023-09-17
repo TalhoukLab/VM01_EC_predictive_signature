@@ -107,7 +107,7 @@ for(cohort in cohorts){
     results_write <- results[results$Pr...z.. <= 0.05, ]
     #write.csv(results, paste0("~/Desktop/", cohort, "_level_", level, ".csv"), row.names = TRUE)
     if(nrow(results_write)>0){
-     write.csv(results_write, paste0("~/Desktop/Antonio_", cohort, "_level_", level, ".csv"), row.names = FALSE)
+     write.csv(results_write, paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/03-DET/Antonio_Walsh_pipeline/Antonio_", cohort, "_level_", level, ".csv"), row.names = FALSE)
     }
   }
 }

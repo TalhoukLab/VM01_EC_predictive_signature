@@ -135,7 +135,7 @@ for(training_cohort in all_cohorts){
   }
 }
 
-write.csv(df, "~/Desktop/crossLab.csv", row.names = FALSE)
+write.csv(df, "../vaginalMicrobiome/01-Reproducibility_Replicability/Results/04-MLRep/crossLab.csv", row.names = FALSE)
 
 columns = c("AUC","MC", "testing_cohort","training_cohort", "pipeline", "level", "type") 
 df = data.frame(matrix(nrow = 0, ncol = length(columns))) 
@@ -161,5 +161,5 @@ for(training_cohort in within_training_cohorts){
       }
     }
 }
-write.csv(df, "~/Desktop/withinLab.csv", row.names = FALSE)
+write.csv(df, "../vaginalMicrobiome/01-Reproducibility_Replicability/Results/04-MLRep/withinLab.csv", row.names = FALSE)
 

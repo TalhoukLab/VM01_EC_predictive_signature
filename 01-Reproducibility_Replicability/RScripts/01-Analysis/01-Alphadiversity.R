@@ -45,7 +45,7 @@ my_Shannon <- function(x){
   
 }
 
-sink("~/Desktop/LM.txt")
+sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/01-AlphaDiversity/LM.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
