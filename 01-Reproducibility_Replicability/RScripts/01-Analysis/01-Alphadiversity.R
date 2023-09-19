@@ -49,7 +49,7 @@ sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/01-AlphaDive
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
-    phylo <- eval(parse(text = paste0(cohort, '_', pipeline, 'phyloseq_tree')))
+    phylo <- eval(parse(text = paste0(cohort, '_', pipeline, 'phyloseq_tree_raw')))
     #tab <- microbiome::alpha(phylo, index = c("shannon", "chao1", "pielou"))
     otu <- abundances(phylo)
     to_keep <- which((colSums(otu))!=0)
@@ -125,8 +125,8 @@ all_pipelines$pipeline <- factor(all_pipelines$pipeline, levels = c("Antonio_Wal
 
 all_pipelines$cohort <- factor(all_pipelines$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
 
-bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
-  geom_rect(data = subset(all_pipelines,pipeline == 'SOTA_pipeline'),aes(fill = pipeline),
+bp1 <- ggplot(all_cohorts_long, aes(x=cohort, y=value, fill = histology)) +
+  geom_rect(data = subset(all_cohorts_long,pipeline == 'SOTA_pipeline'),aes(fill = pipeline),
             xmin = -Inf,xmax = Inf,
             ymin = -Inf,ymax = Inf,alpha = 0.12) +
   geom_boxplot(aes(fill=histology)) + 
