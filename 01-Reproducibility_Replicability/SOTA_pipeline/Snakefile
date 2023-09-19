@@ -1,11 +1,11 @@
 ## Enviornment configurations
-accessionList = "/projects/ddodani_prj/microbiome/vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/Gressel_testids.txt"
-dadaScript = "/projects/ddodani_prj/scratch/state_of_art/dada2_vsearch/dada2.R"
+accessionList = "/01-Reproducibility_Replicability/00-helperfiles/Gressel_testids.txt"
+dadaScript = "/01-Reproducibility_Replicability/SOTA_pipeline/dada2.R"
 cohort = "Gressel_test"
 
 ## Output directories
-workspace = "/projects/ddodani_prj/scratch/state_of_art/dada2_vsearch/Gressel_test/"
-sampleDir = "/projects/ddodani_prj/microbiome/meta_analysis/01-rawData/Gressel/"
+workspace = "Gressel_test/"
+sampleDir = "01-rawData/Gressel/"
 adapterOut = workspace + "01-adapters/"
 filteringOut = workspace + "01b-filtering/"
 ASVsOut = workspace + "02-ASVsamples/"
@@ -181,7 +181,7 @@ rule Preclustering:
     threads: 10
     params:
         conda_env = "dada2",
-        perlScript = "/projects/ddodani_prj/scratch/state_of_art/dada2_vsearch/map.pl"
+        perlScript = "01-Reproducibility_Replicability/SOTA_pipeline/map.pl"
     shell:
         """
         set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
