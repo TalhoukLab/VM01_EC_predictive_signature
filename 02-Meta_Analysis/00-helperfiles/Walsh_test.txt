@@ -1,23 +1,23 @@
-,x
-1,SRR7635503
-2,SRR7635581
-3,SRR7635862
-4,SRR7636031
-5,SRR7636084
-6,SRR7636124
-7,SRR7636179
-8,SRR7636247
-9,SRR7636265
-10,SRR7636348
-11,SRR7636352
-12,SRR7636382
-13,SRR7636388
-14,SRR7636520
-15,SRR7636527
-16,SRR7636597
-17,SRR7636627
-18,SRR7636686
-19,SRR7636849
-20,SRR7636892
-21,SRR7636895
-22,SRR7636908
+,X,sraID,cohort,histology,stage,ethnicity,age,BMI,menopausal.status,pH,pHRecoded,ethnicityRecoded
+SRR7635695,22,SRR7635695,Walsh,Benign,not applicable,white,48,32.12,pre-menopausal,5.5,>4.5,white
+SRR7635743,25,SRR7635743,Walsh,Benign,not applicable,filipino,49,32.81,pre-menopausal,5,>4.5,other
+SRR7635918,36,SRR7635918,Walsh,Benign,not applicable,NA,46,29.93,pre-menopausal,6,>4.5,other
+SRR7636047,46,SRR7636047,Walsh,Benign,not applicable,white,51,50.08,pre-menopausal,5.5,>4.5,white
+SRR7636124,50,SRR7636124,Walsh,Benign,not applicable,white,51,24.26,pre-menopausal,4.5,<=4.5,white
+SRR7636204,57,SRR7636204,Walsh,Benign,not applicable,white,51,25.58,pre-menopausal,5,>4.5,white
+SRR7636291,66,SRR7636291,Walsh,EC,Stage IA,white,55,33.09,post-menopausal,8.0-8.5,>4.5,white
+SRR7636352,71,SRR7636352,Walsh,Benign,not applicable,white,57,39.98,post-menopausal,NA,NA,white
+SRR7636363,72,SRR7636363,Walsh,EC,Stage IA,white,71,40.09,post-menopausal,5.5-6.0,>4.5,white
+SRR7636367,73,SRR7636367,Walsh,EC,Stage IA,NA,56,49.42,post-menopausal,8.5,>4.5,other
+SRR7636445,81,SRR7636445,Walsh,EC,Stage IA,white,52,36,pre-menopausal,7.5-8.0,>4.5,white
+SRR7636476,84,SRR7636476,Walsh,EC,Stage IA,white,64,33.09,post-menopausal,6.5,>4.5,white
+SRR7636521,93,SRR7636521,Walsh,Benign,not applicable,white,56,36.66,pre-menopausal,6.0-6.5,>4.5,white
+SRR7636596,101,SRR7636596,Walsh,EC,Stage IA,white,66,38.68,post-menopausal,6.5,>4.5,white
+SRR7636693,112,SRR7636693,Walsh,EC,Stage IB,white,64,38.73,post-menopausal,8.5-9.0,>4.5,white
+SRR7636729,114,SRR7636729,Walsh,Benign,not applicable,white,32,30.08,pre-menopausal,6.5-7.0,>4.5,white
+SRR7636763,117,SRR7636763,Walsh,Benign,not applicable,white,43,40.36,pre-menopausal,6.5,>4.5,white
+SRR7636904,135,SRR7636904,Walsh,EC,Stage I,white,67,28.05,post-menopausal,6.5,>4.5,white
+SRR7636923,138,SRR7636923,Walsh,EC,Stage IA,white,72,24.68,post-menopausal,7,>4.5,white
+SRR7637012,144,SRR7637012,Walsh,Benign,not applicable,NA,36,25.19,pre-menopausal,8.5,>4.5,other
+SRR7637032,148,SRR7637032,Walsh,EC,Stage IA,white,74,36.7,post-menopausal,6.5,>4.5,white
+SRR7637034,149,SRR7637034,Walsh,Benign,not applicable,white,54,49.23,post-menopausal,NA,NA,white

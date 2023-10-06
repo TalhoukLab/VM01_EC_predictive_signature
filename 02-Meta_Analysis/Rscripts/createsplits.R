@@ -11,12 +11,12 @@ createPartitions <- function(cohort){
   test <- rest[test_idx,]
   validation <-  rest[-test_idx,]
   splits <- list(train=train, test=test, validation=validation)  
-  write.csv(train$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_sraID.txt')), quote = FALSE)
+  write.table(train$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_train_sraID.txt')), quote = F,  col.names  = NA, sep = ",")
   write.csv(train, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_train.txt')), quote = FALSE)
   write.csv(test, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test.txt')), quote = FALSE)
-  write.csv(test$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test.txt')), quote = FALSE)
+  write.table(test$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test_sraID.txt')), quote = FALSE, col.names = NA, sep = ",")
   write.csv(validation, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation.txt')), quote  = FALSE)
-  write.csv(validation$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation.txt')), quote  = FALSE)
+  write.table(validation$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation_sraID.txt')), quote = FALSE, col.names = NA, sep = ",")
   return(splits)
 }
 
@@ -25,3 +25,4 @@ walsh_splits <- createPartitions("Walsh")
 tsementzi_splits <- createPartitions("Tsementzi")
 gressel_splits <- createPartitions("Gressel")
 chao_splits <- createPartitions("Chao")
+

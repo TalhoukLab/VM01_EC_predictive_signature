@@ -1,6 +1,6 @@
-,x
-1,SRR19509403
-2,SRR19509420
-3,SRR19509421
-4,SRR19509425
-5,SRR19509427
+,sraID,histology,age,stage,cohort,menopausal.status
+SRR19509407,SRR19509407,Benign,43,-,Chao,pre-menopausal
+SRR19509413,SRR19509413,EC,52,-,Chao,post-menopausal
+SRR19509415,SRR19509415,EC,49,-,Chao,pre-menopausal
+SRR19509421,SRR19509421,EC,43,-,Chao,pre-menopausal
+SRR19509435,SRR19509435,EC,50,IA,Chao,post-menopausal
