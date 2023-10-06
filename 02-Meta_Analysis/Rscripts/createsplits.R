@@ -11,12 +11,12 @@ createPartitions <- function(cohort){
   test <- rest[test_idx,]
   validation <-  rest[-test_idx,]
   splits <- list(train=train, test=test, validation=validation)  
-  write.table(train$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_train_sraID.txt')), quote = F,  col.names  = NA, sep = ",")
+  write.table(train$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_train_sraID.txt')), quote = F, sep = ",", row.names = F, col.names = F)
   write.csv(train, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_train.txt')), quote = FALSE)
   write.csv(test, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test.txt')), quote = FALSE)
-  write.table(test$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test_sraID.txt')), quote = FALSE, col.names = NA, sep = ",")
+  write.table(test$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_test_sraID.txt')), quote = F, sep = ",", row.names = F, col.names = F)
   write.csv(validation, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation.txt')), quote  = FALSE)
-  write.table(validation$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation_sraID.txt')), quote = FALSE, col.names = NA, sep = ",")
+  write.table(validation$sraID, file.path(paste0('../vaginalMicrobiome/02-meta_analysis/00-helperfiles/', cohort, '_validation_sraID.txt')), quote = F, sep = ",", row.names = F, col.names = F)
   return(splits)
 }
 
