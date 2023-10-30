@@ -1,5 +1,0 @@
-pick_otus:otu_picking_method    uclust
-align_seqs:template_fp  /projects/ddodani_prj/microbiome/meta_analysis/databases/gg_13_8_otus/rep_set_aligned/97_otus.fasta
-assign_taxonomy:assignment_method   rdp
-assign_taxonomy:id_to_taxonomy_fp   /projects/ddodani_prj/microbiome/meta_analysis/databases/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
-assign_taxonomy:reference_seqs_fp   /projects/ddodani_prj/microbiome/meta_analysis/databases/gg_13_8_otus/rep_set/97_otus.fasta
