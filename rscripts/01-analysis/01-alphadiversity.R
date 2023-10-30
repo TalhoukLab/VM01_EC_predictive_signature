@@ -44,7 +44,7 @@ my_Shannon <- function(x){
     (-sum(p * log(p)))
   
 }
-
+## Will save results to local file
 sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/01-AlphaDiversity/LM.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
