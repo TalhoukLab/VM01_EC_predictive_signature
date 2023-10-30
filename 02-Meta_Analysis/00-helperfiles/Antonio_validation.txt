@@ -1,3 +1,0 @@
-,X,age,menopausal.status,histology,pH,BMI,Stage,sraID,cohort,pHRecoded
-SRR2533860,3,46,Pre-menopausal,Benign,<4.5,23.73,NA,SRR2533860,Antonio,<=4.5
-SRR2533933,15,69,Post-menopausal,EC,6.5,41.3,IA,SRR2533933,Antonio,>4.5

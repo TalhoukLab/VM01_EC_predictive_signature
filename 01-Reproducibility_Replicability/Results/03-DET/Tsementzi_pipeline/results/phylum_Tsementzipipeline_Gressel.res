@@ -1,7 +1,0 @@
-actinobacteria	1.9151359066220117			-
-bacteroidetes	2.1461280356782377			-
-firmicutes	2.682397814575529			-
-fusobacteria	1.5965970956264601			-
-proteobacteria	1.3096301674258986			-
-tenericutes	0.6884198220027106			-
-verrucomicrobia	0.2041199826559248			-

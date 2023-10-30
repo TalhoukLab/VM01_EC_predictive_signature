@@ -1,6 +1,0 @@
-,X,sraID,cohort,histology,stage,age,BMI,pH,menopausal.status,ethnicity,pHRecoded,ethnicityRecode
-SRR6920036,8,SRR6920036,Tsementzi,Benign,Not Applicable,61,25.7,6,post-menopausal,asian,>4.5,asian
-SRR6920048,16,SRR6920048,Tsementzi,Benign,Not Applicable,65,40.5,4,post-menopausal,african-american,<=4.5,african-american
-SRR6920058,19,SRR6920058,Tsementzi,EC,1,64,31.8,4,post-menopausal,african-american,<=4.5,african-american
-SRR6920088,25,SRR6920088,Tsementzi,Benign,Not Applicable,72,26.3,NA,post-menopausal,white,NA,white
-SRR6920090,27,SRR6920090,Tsementzi,Benign,Not Applicable,57,36.9,NA,post-menopausal,white,NA,white
