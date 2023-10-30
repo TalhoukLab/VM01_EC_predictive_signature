@@ -1,0 +1,15 @@
+pHRecoded	0.26884531229257996			-
+BMI	1.542683186891781			0.03763531378731429
+age	1.8157674379896123			0.017639995948672396
+menopausal_status	0.3521825181113625			-
+atopobium	0.26884531229257996			-
+bacteroides	1.2155998003393547			-
+parabacteroides	0.26884531229257996			-
+porphyromonas	0.8450980400142567			-
+prevotella	0.057991946977686726			-
+lactobacillus	1.1233849085396783			-
+f_1_68	0.0			-
+anaerococcus	0.0			-
+gallicola	0.0			-
+peptoniphilus	0.0			-
+treponema	0.0			-

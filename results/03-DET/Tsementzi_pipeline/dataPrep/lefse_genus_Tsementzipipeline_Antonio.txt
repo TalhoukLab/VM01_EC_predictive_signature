@@ -1,0 +1,17 @@
+histology	EC	EC	EC	EC	EC	EC	Benign	EC	Benign	Benign	Benign
+sraID	SRR2533904	SRR2533919	SRR2533894	SRR2533897	SRR2533911	SRR2533949	SRR2533860	SRR2533873	SRR2533834	SRR2534007	SRR2533888
+pHRecoded	1	2	2	2	2	2	1	2	1	2	2
+BMI	24.27	44.30	37.58	25.95	32.09	42.70	23.73	37.33	23.84	34.10	20.32
+age	59	77	71	56	60	71	46	64	41	59	55
+menopausal.status	2	2	2	3	2	2	3	2	3	2	1
+atopobium	 0	13	 0	 0	 0	 0	 0	 0	 0	 0	 0
+bacteroides	  2	  2	111	  0	  0	  0	  0	  0	  0	  0	  1
+parabacteroides	 0	 0	13	 0	 0	 0	 0	 0	 0	 0	 0
+porphyromonas	 0	49	 0	 0	 0	 0	 0	 0	 0	 0	 0
+prevotella	0	8	0	0	0	0	0	0	0	0	0
+lactobacillus	26	 0	 0	44	 9	14	 5	 0	 4	 0	 0
+1-68	0	3	0	0	0	0	0	0	0	0	0
+anaerococcus	0	7	0	0	0	0	0	0	0	0	0
+gallicola	0	4	0	0	0	0	0	0	0	0	0
+peptoniphilus	0	4	0	0	0	0	0	0	0	0	0
+treponema	0	5	0	0	0	0	0	0	0	0	0

@@ -1,0 +1,256 @@
+## Enviornment configurations
+accessionList = "/01-Reproducibility_Replicability/00-helperfiles/Gressel_testids.txt"
+dadaScript = "/01-Reproducibility_Replicability/SOTA_pipeline/dada2.R"
+cohort = "Gressel_test"
+
+## Output directories
+workspace = "Gressel_test/"
+sampleDir = "01-rawData/Gressel/"
+adapterOut = workspace + "01-adapters/"
+filteringOut = workspace + "01b-filtering/"
+ASVsOut = workspace + "02-ASVsamples/"
+dereplicate_sampleOut = workspace + "03-dereplicate/"
+poolOut = workspace + "04-pool/"
+dereplicateOut = workspace + "05-dereplicate/"
+PreclusterOut = workspace + "06-PreClus/"
+clusterOut = workspace + "07-Clus/"
+
+## Required lists
+samples = []
+reads = ["1", "2"]
+
+## Making a list of samples
+with open(accessionList) as f:
+    for line in f:
+        sample_full = line.split("\n")
+        samples.append(sample_full[0])
+
+if cohort=="Antonio" or cohort == "Antonio_train" or cohort == "Antonio_test":
+    remove = ["SRR2533873", "SRR2533888", "SRR2533965", "SRR2533972"]
+    samples = list(set(samples) - set(remove))
+
+if cohort=="Angel" or cohort == "Angel_train" or cohort == "Angel_test":
+    remove = ["SRR19509417"]
+    samples = list(set(samples) - set(remove))
+
+if cohort == "Gressel_test":
+    remove = ["SRR15655301"]
+    samples = list(set(samples) - set(remove))
+
+
+rule all:
+    input:
+        clusterOut + "otus.tree"
+
+rule adapter_removal:
+    input:
+        forwardIn = sampleDir + "{samples}_1.fastq",
+        reverseIn = sampleDir + "{samples}_2.fastq"
+    output:
+        forwardOut = adapterOut + "{samples}_noAda_1.fastq",
+        reverseOut = adapterOut + "{samples}_noAda_2.fastq"
+    threads: 4
+    message: "Removing universal adapters using bbduk"
+    shell:
+        """
+        bbduk.sh in1={input.forwardIn} in2={input.reverseIn} \
+        out1={output.forwardOut} out2={output.reverseOut} \
+        ref=adapters hdist=1 tpe tbo
+        """
+
+rule quality_filtering:
+    input:
+        forwardIn = adapterOut + "{samples}_noAda_1.fastq",
+        reverseIn = adapterOut + "{samples}_noAda_2.fastq"
+    output:
+        forwardOutP = filteringOut + "{samples}_1_paired.fastq",
+        forwardOutUP = filteringOut + "{samples}_1_Unpaired.fastq",
+        reverseOutP = filteringOut + "{samples}_2_paired.fastq",
+        reverseOutUP = filteringOut + "{samples}_2_Unpaired.fastq"
+    threads: 4
+    message: "Filtering reads"
+    params:
+        conda_env = "dada2"
+    threads: 4 
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        trimmomatic PE \
+        {input.forwardIn} {input.reverseIn} \
+        {output.forwardOutP} {output.forwardOutUP} {output.reverseOutP} {output.reverseOutUP} \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
+        """
+
+rule dada2:
+    input:
+        to_remove = expand(filteringOut + "{samples}_{read}_paired.fastq", samples=samples, read=reads),
+        script = dadaScript,
+        cohortIn = cohort,
+        workspaceIn = workspace
+    output:
+        checkpoint = expand(ASVsOut + "{samples}.fasta", samples=samples)
+    params:
+        conda_env = "dada2"
+    threads: 4 
+    message: "Running dada2 in R"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        Rscript --vanilla {input.script} {input.cohortIn} {input.workspaceIn}
+        ls {input.to_remove}
+        ls {output.checkpoint}
+        """
+
+rule dereplicate_sample:
+    input:
+        readIn = ASVsOut + "{samples}.fasta"
+    output:
+        readOut = dereplicate_sampleOut + "{samples}.fasta"
+    threads: 4
+    params:
+        conda_env = "dada2",
+        sampleName = "{samples}"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        vsearch --threads 4 \
+            --derep_fulllength {input.readIn} \
+            --sizeout \
+            --fasta_width 0 \
+            --relabel {params.sampleName}. \
+            --output {output.readOut}
+        """
+
+rule pool:
+    input:
+        reads = expand(dereplicate_sampleOut + "{samples}.fasta", samples=samples)
+    output:
+        readOut = poolOut + "pooled.fasta"
+    threads: 4
+    params:
+        conda_env = "dada2"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        cat {input.reads} > {output.readOut} 
+        """
+
+rule dereplicate_global:
+    input:
+        readIn = poolOut + "pooled.fasta"
+    output:
+        readOut = dereplicateOut + "uniques_temp.fasta",
+        readOutFil = dereplicateOut + "uniques.fasta",
+        ucOut = dereplicateOut + "all.derep.uc"
+    threads: 4
+    params:
+        conda_env = "dada2"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+
+        vsearch --threads 4 \
+            --minuniquesize 2 \
+            --derep_fulllength {input.readIn} \
+            --sizein \
+            --sizeout \
+            --fasta_width 0 \
+            --uc {output.ucOut} \
+            --output {output.readOut}    
+
+        sed 's/N//g' {output.readOut} > {output.readOutFil}
+        """
+
+rule Preclustering:
+    input:
+        readIn = dereplicateOut + "uniques.fasta",
+        pooled = poolOut + "pooled.fasta",
+        derepUc =  dereplicateOut + "all.derep.uc",
+        derepFasta = dereplicateOut + "uniques.fasta"
+    output:
+       readOut = PreclusterOut + "all.preclustered.fasta",
+       ucOut = PreclusterOut + "all.preclustered.uc",
+       denovoOut = PreclusterOut + "all.denovo.nonchimeras.fasta",
+       refOut = PreclusterOut + "all.ref.nonchimeras.fasta",
+       nonChiDereFasta = PreclusterOut + "all.nonchimeras.derep.fasta",
+       nonChi = PreclusterOut + "all.nonchimeras.fasta",
+    threads: 10
+    params:
+        conda_env = "dada2",
+        perlScript = "01-Reproducibility_Replicability/SOTA_pipeline/map.pl"
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+        
+        vsearch --cluster_size {input.readIn} \
+                --threads 4 \
+                --id 1.0 \
+                --strand plus \
+                --sizein \
+                --sizeout \
+                --fasta_width 0 \
+                --uc {output.ucOut} \
+                --centroids {output.readOut}
+
+        vsearch --uchime_denovo {output.readOut} \
+                --sizein \
+                --sizeout \
+                --fasta_width 0 \
+                --nonchimeras {output.denovoOut}
+
+        vsearch --uchime_ref {output.denovoOut} \
+                --threads 4 \
+                --db /projects/ddodani_prj/microbiome/meta_analysis/databases/SILVA_138.1_SSURef_NR99_tax_silva.fasta \
+                --sizein \
+                --sizeout \
+                --fasta_width 0 \
+                --nonchimeras {output.refOut}
+
+        perl {params.perlScript} {input.derepFasta} {output.ucOut} {output.refOut} > {output.nonChiDereFasta}
+        
+        perl {params.perlScript} {input.pooled} {input.derepUc} {output.nonChiDereFasta} > {output.nonChi}
+        """
+
+rule clustering:
+    input:
+        readIn =  PreclusterOut + "all.nonchimeras.fasta"
+    output:
+        readUc = clusterOut + "all.clustered.uc",
+        readOut = clusterOut + "all.otus.fasta",
+        tabOut = clusterOut + "all.otutab.txt"
+    threads: 10
+    params:
+        conda_env = "dada2",
+    shell:
+        """
+        set +eu && PS1=dummy && . $(conda info --base)/etc/profile.d/conda.sh && conda activate {params.conda_env} && echo $CONDA_PREFIX; 
+        
+        vsearch --cluster_size  {input.readIn} \
+                --threads 4 \
+                --id 0.97 \
+                --strand plus \
+                --sizein \
+                --sizeout \
+                --fasta_width 0 \
+                --uc {output.readUc} \
+                --relabel OTU_ \
+                --centroids {output.readOut} \
+                --otutabout {output.tabOut}
+            """
+
+rule phylogenetic_tree:
+    input: 
+        fastaIn = clusterOut + "all.otus.fasta"
+    output:
+        alignment = clusterOut + "all.otus.aln.fasta",
+        tree = clusterOut + "otus.tree"
+    shell:
+        """
+        sed -i 's/\;.*//' {input.fastaIn}
+        mafft {input.fastaIn} > {output.alignment}
+        fasttree  -gtr -nt -gamma {output.alignment} > {output.tree}
+        """

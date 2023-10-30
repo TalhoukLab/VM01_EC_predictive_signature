@@ -1,0 +1,15 @@
+actinobacteria	3.18764478725122			-
+bacteroidia	3.2911467617318855			-
+flavobacteriia	1.1112625136590653			-
+bacilli	4.044495858370273			-
+clostridia	2.9513569498816636			-
+erysipelotrichia	0.24551266781414982			-
+negativicutes	2.591342911734455			-
+fusobacteriia	2.429348472923661			-
+alphaproteobacteria	1.635081436010873			0.03310301531520956
+betaproteobacteria	0.9731278535996987			-
+deltaproteobacteria	0.5051499783199059			-
+epsilonproteobacteria	2.010130277215148			-
+gammaproteobacteria	1.1296898921993008			-
+mollicutes	1.9057958803678683			-
+verrucomicrobiae	1.2425414282983842			-
