@@ -1,7 +1,7 @@
 library(dplyr)
 all_cohorts <- c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao")
 all_levels <- c("phylum", "class", "order", "family", "genus")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/01-Analysis/03d-SOTA_biomarker.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/01-Analysis/03d-SOTA_biomarker.R")
 
 ## Unable to reproduce or replicate results from Antonio and Walsh et al. and Gressel et al. 
 

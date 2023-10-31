@@ -21,11 +21,11 @@ library(rRDPData)
 library(seqinr)
 
 
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Antonio_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Chao_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Gressel_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Tsementzi_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Antonio_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Chao_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Gressel_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Tsementzi_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
 
 cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
 pipelines <- c("Antonio", "Chao", "Tsementzi", "Gressel", "SOTA")
@@ -45,7 +45,7 @@ my_Shannon <- function(x){
   
 }
 ## Will save results to local file
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/01-AlphaDiversity/LM.txt")
+sink("../VM01_reproducibility_replicability/01-AlphaDiversity/LM.txt")
 for (pipeline in pipelines){
   for(cohort in cohorts){
     print(paste0("cohort_pipeline", cohort, '_', pipeline))
@@ -125,21 +125,22 @@ all_pipelines$pipeline <- factor(all_pipelines$pipeline, levels = c("Antonio_Wal
 
 all_pipelines$cohort <- factor(all_pipelines$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
 
-bp1 <- ggplot(all_cohorts_long, aes(x=cohort, y=value, fill = histology)) +
-  geom_rect(data = subset(all_cohorts_long,pipeline == 'SOTA_pipeline'),aes(fill = pipeline),
+bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
+  geom_rect(data = subset(all_pipelines,pipeline == 'SOTA_pipeline'),aes(fill = pipeline),
             xmin = -Inf,xmax = Inf,
             ymin = -Inf,ymax = Inf,alpha = 0.12) +
   geom_boxplot(aes(fill=histology)) + 
   scale_fill_manual(values=c("yellowgreen", "tomato3", "whitesmoke")) + 
   theme_bw()+
   facet_wrap(~pipeline, ncol=5, scales = "fixed") + ylab("Shannon index") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
-        axis.text.y = element_text(size = 12),
-        axis.title=element_text(size=16),
-        strip.text.x = element_text(size = 12),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title=element_text(size=21),
+        strip.text.x = element_text(size = 18),
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
-        legend.title = element_text(size=10),
-        legend.text = element_text(size=10), strip.background =element_rect(fill="white")) 
+        legend.position="bottom", 
+        legend.title = element_text(size=21, face = "bold"),
+        legend.text = element_text(size=21), strip.background =element_rect(fill="white")) 
 bp1

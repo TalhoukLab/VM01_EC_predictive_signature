@@ -23,11 +23,11 @@ library(rRDPData)
 library(seqinr)
 
 
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Antonio_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Chao_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Gressel_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/Tsementzi_dataPrep.R")
-source(file = "../vaginalMicrobiome/01-Reproducibility_Replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Antonio_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Chao_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Gressel_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Tsementzi_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
 
 ## Chao beta diversity - only use unweighted uniFrac distance with an PCA plot. 
 cohorts <- c("Antonio","Chao", "Gressel", "Tsementzi", "Walsh")
@@ -70,7 +70,7 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
 }
 
 
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Chao_qual_margin.txt")
+sink("../VM01_reproducibility_replicability/results/02-betadiversity/Chao_qual_margin.txt")
 for(cohort in cohorts){
   print(cohort)
   phylo_use <- eval(parse(text = paste0(cohort, "_Chaophyloseq_tree_raw")))
@@ -93,7 +93,7 @@ for(cohort in cohorts){
 sink()
 
 ## Antonio beta diversity - only use unweighted unifrac using NMDS ordination 
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Antonio_qual.txt")
+sink("../VM01_reproducibility_replicability/results/02-betadiversity/Antonio_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
   p1 <- phylo_use %>%
@@ -114,7 +114,7 @@ for(cohort in cohorts){
 sink()
   
 ## Tsementzi beta diversity - use bray and jaccard using NMDS ordination 
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Tsementzi_qual.txt")
+sink("../VM01_reproducibility_replicability/results/02-betadiversity/Tsementzi_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Tsementziphyloseq_tree_raw")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -136,7 +136,7 @@ for(cohort in cohorts){
 sink()
 
 ## Walsh beta diversity - use 
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/Walsh_qual.txt")
+sink("../VM01_reproducibility_replicability/results/02-betadiversity/Walsh_qual.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -158,7 +158,7 @@ for(cohort in cohorts){
 sink()
 
 ## SOTA pipeline
-sink("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/SOTA_qual_margin.txt")
+sink("../VM01_reproducibility_replicability/results/02-betadiversity/SOTA_qual_margin.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_SOTAphyloseq_tree_raw")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
@@ -218,7 +218,7 @@ SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", plo
                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))))
 
 p <- (antonio_pipeline_plots / walsh_pipeline_plots/ tsementzi_pipeline_plots / chao_pipeline_plots / SOTA_pipeline_plots)
-png(paste0("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/betadiversity.png"), width = 6500, height = 3500, res = 300)
+png(paste0("../VM01_reproducibility_replicability/results/02-betadiversity/betadiversity.png"), width = 6500, height = 3500, res = 300)
 print(p)
 dev.off()
 
@@ -226,10 +226,10 @@ library(ggplot2)
 library(latex2exp)
 
 
-pdf("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/margin.pdf",  width=16, height=5)
+pdf("../VM01_reproducibility_replicability/results/02-betadiversity/margin.pdf",  width=16, height=5)
 
 
-df <- read.csv("../vaginalMicrobiome/01-Reproducibility_Replicability/Results/02-BetaDiversity/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
+df <- read.csv("../VM01_reproducibility_replicability/results/02-betadiversity/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
 df$pipeline <- paste0(df$pipeline, "_pipeline")
 df$R2 <- round(df$R2, 2)
 df$covariate <- factor(df$covariate, levels = c("histology", "BMI", "pH", "age", "ethnicity"))
@@ -239,14 +239,15 @@ ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) +
   geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', NA), size = 0.3) +
   geom_text(aes(label = R2), color = "black", size = 4) +
   scale_fill_gradient(low = "white", high = "red", name = unname(TeX(c("$R^2$")))) + facet_wrap(~pipeline,  ncol=5) + theme_classic() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
-        axis.text.y = element_text(size = 12),
-        axis.title=element_text(size=16),
-        strip.text.x = element_text(size = 12),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title=element_text(size=21),
+        strip.text.x = element_text(size = 18),
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
-        legend.title = element_text(size=10),
+        legend.position = "bottom",
+        legend.title = element_text(size=21),
         legend.text = element_text(size=10))
 dev.off()
 

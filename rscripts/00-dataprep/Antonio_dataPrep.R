@@ -18,13 +18,13 @@ library(stringr)
 cohorts <- c("Antonio", "Antonio_train", "Antonio_test", "Chao", "Gressel", "Tsementzi", "Walsh", "Walsh_train", "Walsh_test")
 for (cohort in cohorts) {
   print(cohort)
-  raw_table <- read_biom(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.biom')))
+  raw_table <- read_biom(file.path(paste0('../VM01_reproducibility_replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.biom')))
   raw_otus <- as.data.frame(as.matrix(biom_data(raw_table)))
   to_keep <- which((colSums(raw_otus))>1)
   otus_filtered_abun_nonEmpty <- raw_otus[, to_keep]
 
   # read in tax data 
-  tax_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.probs.taxonomy')), header = FALSE, sep = "\t")
+  tax_table <- read.delim(file.path(paste0('../VM01_reproducibility_replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.probs.taxonomy')), header = FALSE, sep = "\t")
   tax_table$V2 <- gsub("\\s*\\([^\\)]+\\)","",tax_table$V2)
   
   tax_table <- separate(data = tax_table, col = V2 , into = c("kingdom", "phylum", "class", "order", "family", "genus"), sep = ";")
@@ -39,9 +39,9 @@ for (cohort in cohorts) {
   tax_table$genus <- gsub("g:", "", gsub("\\[", "",  gsub("\\]", "" ,as.character(tax_table$genus))))
   tax_table <- mutate_all(tax_table, .funs=tolower)
   
-  phylo_tree <- read_tree(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.tree')))
+  phylo_tree <- read_tree(file.path(paste0('../VM01_reproducibility_replicability/Antonio_Walsh_pipeline/results/', cohort, '/test_paired.tree')))
   rooted_tree <- phangorn::midpoint(phylo_tree)
-  feature_table <- read.delim(file.path(paste0('../vaginalMicrobiome/01-Reproducibility_Replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
+  feature_table <- read.delim(file.path(paste0('../VM01_reproducibility_replicability/00-helperfiles/', cohort, 'FT.csv')), header = TRUE, sep = ",")
   rownames(feature_table) <- feature_table$sraID
   feature_table$histology[feature_table$histology == "ACH"] <- "EC"
   feature_table$histology <- as.factor(feature_table$histology)
