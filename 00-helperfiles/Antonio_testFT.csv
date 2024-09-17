@@ -1,9 +1,0 @@
-sraID,cohort,histology,age,bmi,menopausal.status,pH
-SRR2533860,Antonio,Benign,46,23.73,Pre-menopausal,<4.5
-SRR2533894,Antonio,EC,60,32.09,Post-menopausal,5
-SRR2533919,Antonio,EC,28,26.32,Pre-menopausal,6
-SRR2533933,Antonio,EC,54,26.86,Pre-menopausal,7.8
-SRR2533985,Antonio,Benign,71,37.58,Post-menopausal,6.5
-SRR2534007,Antonio,Benign,83,28.84,,6.5
-SRR2534024,Antonio,EC,48,24.61,Pre-menopausal,6.5
-SRR2534046,Antonio,EC,57,28.6,Post-menopausal,9

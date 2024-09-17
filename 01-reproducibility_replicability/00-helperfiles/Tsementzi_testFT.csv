@@ -1,0 +1,13 @@
+"","X","sraID","cohort","histology","stage","age","BMI","pH","menopausal.status","ethnicity","pHRecoded"
+"1",1,"SRR6920034","Tsementzi","Benign","Not Applicable",65,20,6,"post-menopausal","white",">4.5"
+"2",3,"SRR6920032","Tsementzi","Benign","Not Applicable",68,39.7,6,"post-menopausal","white",">4.5"
+"3",6,"SRR6920028","Tsementzi","Benign","Not Applicable",52,23.8,4,"post-menopausal","asian","<=4.5"
+"4",15,"SRR6920045","Tsementzi","Benign","Not Applicable",58,22.7,5,"post-menopausal","white",">4.5"
+"5",17,"SRR6920047","Tsementzi","Benign","Not Applicable",58,33.5,5,"post-menopausal","white",">4.5"
+"6",19,"SRR6920058","Tsementzi","EC","1",64,31.8,4,"post-menopausal","african-american","<=4.5"
+"7",23,"SRR6920086","Tsementzi","Benign","Not Applicable",60,34.9,5,"post-menopausal","asian",">4.5"
+"8",26,"SRR6920089","Tsementzi","Benign","Not Applicable",63,24.5,4,"post-menopausal","african-american","<=4.5"
+"9",32,"SRR6920094","Tsementzi","Benign","Not Applicable",58,40.4,6,"post-menopausal","african-american",">4.5"
+"10",34,"SRR6920077","Tsementzi","EC","2",63,44.2,NA,"post-menopausal","african-american",NA
+"11",35,"SRR6920078","Tsementzi","EC","1",63,42.6,NA,"post-menopausal","african-american",NA
+"12",36,"SRR6920075","Tsementzi","EC","1",56,31,NA,"post-menopausal","hispanic",NA
