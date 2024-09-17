@@ -1,85 +1,0 @@
-[1] "Antonio"
-phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 472 taxa and 13 samples ]
-sample_data() Sample Data:       [ 13 samples by 10 sample variables ]
-tax_table()   Taxonomy Table:    [ 472 taxa by 6 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 472 tips and 471 internal nodes ]
-Permutation test for adonis under reduced model
-Marginal effects of terms
-Permutation: free
-Number of permutations: 100
-
-adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 100, by = "margin", na.action = "na.omit")
-                                    Df SumOfSqs      R2      F Pr(>F)
-sample_data(phylo_to_use)$histology  1   0.5243 0.11167 1.5905 0.1089
-sample_data(phylo_to_use)$age        1   0.2062 0.04391 0.6254 0.7624
-sample_data(phylo_to_use)$BMI        1   0.1602 0.03412 0.4860 0.8119
-sample_data(phylo_to_use)$pHRecoded  1   0.6219 0.13244 1.8865 0.1188
-Residual                             8   2.6371 0.56166              
-Total                               12   4.6953 1.00000              
-[1] "Chao"
-phyloseq-null device 
-          1 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m58.97MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m69.13MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m69.13MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m52.76MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m125.30MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m66.83MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1] "genus"
-[1] "genus"
-[1] "Antonio"
