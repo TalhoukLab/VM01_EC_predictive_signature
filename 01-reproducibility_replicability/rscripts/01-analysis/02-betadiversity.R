@@ -155,7 +155,7 @@ sink()
 library(phyloseq)
 library(ggplot2)
 library(microViz)
-sink("~/Desktop/SOTA_qual_terms.txt")
+sink("~/Desktop/DADA2_qual_terms.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_dada2phyloseq_tree")))
   phylo_use <- microbiome::transform(phylo_use, transform = "log")

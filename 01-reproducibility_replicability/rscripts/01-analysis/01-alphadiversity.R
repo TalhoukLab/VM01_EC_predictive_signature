@@ -135,22 +135,3 @@ bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
         legend.text = element_text(size=10), strip.background =element_rect(fill="white")) 
 bp1
 dev.off()
-
-
-
-bp1 <- ggplot(all_pipelines, aes(x=cohort, y=value, fill = histology)) +
-  geom_boxplot(aes(fill=histology), outlier.shape = NA) + 
-  scale_fill_manual(values=c("yellowgreen", "tomato3")) + 
-  theme_classic()+ 
-  ylim(0, 6) + ylab("Shannon index") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 20),
-        axis.text.y = element_text(size = 20),
-        axis.title=element_text(size=21),
-        strip.text.x = element_text(size = 20),
-        legend.key.size = unit(1, 'cm'),
-        legend.key.height = unit(1, 'cm'),
-        legend.key.width = unit(1, 'cm'),
-        legend.position="bottom", 
-        legend.title = element_text(size=21, face = "bold"),
-        legend.text = element_text(size=21), plot.title = element_text(size = 23, hjust = 0.5, face = "bold")) + ggtitle("Alpha diversity")
-bp1
