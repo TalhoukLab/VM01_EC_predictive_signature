@@ -44,13 +44,14 @@ fncols_antonio <- function(data, cname) {
 }
 
 
-prep_test <- function(data, trained_data){
+prep_test_age <- function(data, trained_data){
   data <- data.frame(janitor::clean_names(data))
   otu_test <- fncols_antonio(data, setdiff(colnames(trained_data), colnames(data)))
   otu_test <- base::subset(otu_test, select = colnames(trained_data))
   shannon_list <- otu_test$shannon
+  age_list <- otu_test$age
   if("shannon" %in% colnames(otu_test)){
-    otu_test <- subset(otu_test, select = -c(shannon, labels) )
+    otu_test <- subset(otu_test, select = -c(shannon, labels, age) )
   } else {
     otu_test <- otu_test
   }
@@ -59,12 +60,13 @@ prep_test <- function(data, trained_data){
   otu_test.pse.tss.log <- log10(otu_test.pse.tss)
   if("shannon" %in% colnames(trained_data)){
     otu_test.pse.tss.log$shannon <- shannon_list
+    otu_test.pse.tss.log$age <- age_list
   }
   return(otu_test.pse.tss.log)
 }
 
 get_metrics_indi <- function(data, model, level, labels){
-  preds <- prep_test(data = data, trained_data = model$pre$actions$recipe$recipe$template) %>%
+  preds <- prep_test_age(data = data, trained_data = model$pre$actions$recipe$recipe$template) %>%
     bind_cols(predict(model,
                       ., type = "prob"))%>%
     bind_cols("labels"=labels)
@@ -81,7 +83,7 @@ get_metrics_indi <- function(data, model, level, labels){
 }
 
 get_metrics_base <- function(data, model, level, labels){
-  preds <- prep_test(data = data, trained_data = model$train) %>%
+  preds <- prep_test_age(data = data, trained_data = model$train) %>%
     bind_cols(predict(model,
                       ., type = "prob", members=TRUE))%>%
     bind_cols("labels"=labels)
@@ -110,16 +112,16 @@ taxa_names(test_obj_agg_chao) <- paste0(data.frame(tax_table(test_obj_agg_chao))
                                         data.frame(tax_table(test_obj_agg_chao))[,idx])
 test_data_chao <- data.frame(t(data.frame(otu_table(test_obj_agg_chao))))
 test_data_chao$shannon <- (shannon_test_chao$diversity_shannon)
+test_data_chao$age <- (sample_data(Antonio1_solo_res$raw)$age)
 
 
-shannon_train <- as.data.frame(microbiome::alpha(Gressel_solo_res$raw, 
+shannon_train <- as.data.frame(microbiome::alpha(Chao_solo_res$raw, 
                                                  index = c("diversity_shannon")))
-train_fitered <- phyloseq::filter_taxa(Gressel_solo_res$raw, function(x) sum(x > 0) > (0.05*length(x)), TRUE)
+train_fitered <- phyloseq::filter_taxa(Chao_solo_res$raw, function(x) sum(x > 0) > (0.05*length(x)), TRUE)
 training_data <- my_tax_glom(train_fitered, level = "genus")$tss
 training_data$shannon <- (shannon_train$diversity_shannon)
-
-
-
+training_data$age <- (sample_data(Chao_solo_res$raw)$age)
+training_data <- na.omit(training_data)
 neigh <- ifelse(min(table(training_data$labels))>25, 5, min(table(training_data$labels))-1)
 training_data$labels <- as.factor(training_data$labels)
 training_data <- janitor::clean_names(training_data)
@@ -128,8 +130,8 @@ set.seed(123)
 folds <- rsample::vfold_cv(training_data_smote, strata = "labels", v = 5, repeats = 3)
 ## remove correlation filter for base models 
 data_rec <- recipe(labels ~ ., data = training_data_smote) %>%
-  step_normalize(shannon)
-metric <- metric_set(yardstick::f_meas, yardstick::precision, yardstick::recall, yardstick::specificity, yardstick::roc_auc, yardstick::ppv, yardstick::npv, yardstick::roc_auc)
+  step_normalize(age, shannon)
+metric <- metric_set(yardstick::f_meas, yardstick::precision, yardstick::recall, yardstick::specificity, yardstick::roc_auc, yardstick::ppv, yardstick::npv)
 ctrl_res <- control_grid(event_level = "second", save_pred = TRUE, save_workflow = TRUE, verbose = TRUE)
 
 ## Random forest - set up
@@ -144,19 +146,8 @@ rand_forest_wflow <- workflow() %>%
 
 library(doMC)
 registerDoMC(cores = 5)
-## Random length tuning just to get a sense of grid 
-pre_rand_forest_res <- tune_grid(object = rand_forest_wflow, 
-                                 resamples = folds,  grid = 200,
-                                 metrics = metric,
-                                 control = ctrl_res) 
-final_rf_wf <- rand_forest_wflow %>% 
-  finalize_workflow(select_best(pre_rand_forest_res, metric = "f_meas"))
-final_fit_rf <- final_rf_wf %>%
-  fit(training_data_smote)
-rf_results_chao_pre <- get_metrics_indi(data = test_data_chao, model = final_fit_rf, level = "genus", labels = data.frame(sample_data(test_obj_agg_chao))$histology)
 
-## Grid tuning for random forest
-rf_grid <- expand.grid(mtry = seq(30, 150, 5), min_n = seq(1, 15, 2), trees = seq(1500, 2500, 100))
+rf_grid <- expand.grid(mtry = seq(5, 150, 1), min_n = seq(2, 12, 2), trees = 2000)
 rand_forest_res_grid <- tune_grid(object = rand_forest_wflow, 
                                   resamples = folds,  grid = rf_grid,
                                   metrics = metric,
@@ -166,31 +157,33 @@ final_rf_wf <- rand_forest_wflow %>%
 final_fit_rf <- final_rf_wf %>%
   fit(training_data_smote)
 rf_results_chao_grid <- get_metrics_indi(data = test_data_chao, model = final_fit_rf, level = "genus", labels = data.frame(sample_data(test_obj_agg_chao))$histology)
-saveRDS(rand_forest_res_grid, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_rf_grid.rds")
-saveRDS(final_fit_rf, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_rf_fit.rds")
+saveRDS(rand_forest_res_grid, "~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_clinical_micro_rf_grid.rds")
+saveRDS(final_fit_rf, "~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_clinical_micro_rf_fit.rds")
 
+
+## NNET
 nnet_spec <- mlp(hidden_units = tune(), penalty = tune(), epochs = tune()) %>%
   set_mode("classification") %>%
-  set_engine("nnet", MaxNWts = 10000)
+  set_engine("nnet", MaxNWts = 10000, seed = 123)
 nnet_wflow <- workflow() %>%
   add_recipe(data_rec)%>%
   add_model(nnet_spec) 
 
-## Grid tuning for nnet
-nnet_grid <- expand.grid(hidden_units = seq(5, 150, 5), penalty = seq(0, 1, 0.1), epochs = seq(5, 11, 2))
-
+##Grid tuning for nnet 
+nnet_grid <- expand.grid(hidden_units = seq(5, 150, 3), penalty = seq(0, 1, 0.1), epochs = seq(5, 11, 2))
 nnet_res <-tune_grid(object = nnet_wflow, metrics = metric, resamples = folds, 
                      grid = nnet_grid, control = ctrl_res)
-
+set.seed(123)
 final_nnet_wf <- nnet_wflow %>% 
   finalize_workflow(select_best(nnet_res, metric = "f_meas" ))
 final_fit_nnet <- final_nnet_wf %>%
   fit(training_data_smote) 
 nnet_results_chao_pre <- get_metrics_indi(data = test_data_chao, model = final_fit_nnet, level = "genus", labels = data.frame(sample_data(test_obj_agg_chao))$histology)
-saveRDS(nnet_res, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_nnet_grid.rds")
-saveRDS(final_fit_nnet, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_nnet_fit.rds")
+saveRDS(nnet_res, "~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_clinical_micro_nnet_grid.rds")
+saveRDS(final_fit_nnet, "~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_clinical_micro_nnet_fit.rds")
 
 
+## XGBOOST
 bt_spec <- boost_tree(mtry = tune(), trees = tune(), min_n = tune(), 
                       tree_depth = tune(), learn_rate = tune(), 
                       loss_reduction = tune(), sample_size = tune(), 
@@ -201,8 +194,8 @@ bt_wflow <- workflow() %>%
   add_recipe(data_rec)%>%
   add_model(bt_spec)
 
-## Grid tuning for xgb
-xgb_grid <- expand.grid(mtry = seq(5, 150, 10), trees = 1500, min_n = seq(2, 10, 3), learn_rate = 0.3, 
+##Grid tuning for xgboost
+xgb_grid <- expand.grid(mtry = seq(5, 100, 3), trees = 1500, min_n = seq(2, 10, 3), learn_rate = 0.3, 
                         loss_reduction = seq(0, 1, 0.5), stop_iter = Inf,
                         tree_depth = seq(2, 15, 3), sample_size = c(0.5, 1))
 xgb_res <-tune_grid(object = bt_wflow, metrics = metric, resamples = folds, 
@@ -212,20 +205,5 @@ final_bt_wf <- bt_wflow %>%
 final_fit_bt <- final_bt_wf %>%
   fit(training_data_smote) 
 bt_results_chao_pre <- get_metrics_indi(data = test_data_chao, model = final_fit_bt, level = "genus", labels = data.frame(sample_data(test_obj_agg_chao))$histology)
-saveRDS(xgb_res, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_xgb_grid.rds")
-saveRDS(final_fit_bt, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Gressel_microbiome_xgb_fit.rds")
-
-
-
-saveRDS(final_fit_bt, "~/Desktop/Chao_micro.rds")
-
-## Stack models 
-stacks_model <- stacks() %>%
-  add_candidates(candidates = pre_rand_forest_res, name = "rf") %>%
-  add_candidates(candidates = nnet_res, name = "nnet") %>%
-  add_candidates(candidates = bt_res, name = "bt") %>%
-  blend_predictions(metric = metric_set(f_meas)) %>%
-  fit_members()
-
-stacks_results_chao <- get_metrics_base(data = test_data_chao, model = stacks_model, level = "genus", labels = sample_data(test_obj_agg_chao)$histology)
-saveRDS(stacks_model, "~/Desktop/thesis/VM02_meta_analysis/src/results/Walsh_Micro_stacks_full_model.rds")
+saveRDS(xgb_res, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Chao_clinical_micro_xgb_grid.rds")
+saveRDS(final_fit_bt, "~/Desktop/thesis/VM02_meta_analysis/src/updated/Chao_clinical_micro_xgb_fit.rds")
