@@ -72,7 +72,7 @@ for (cohort in cohorts) {
   # Making phyloseq object with tree
   phyloseq_pre_tree <- phyloseq(otus_table, tax_table_phy, samples, tree_phy)
   phyloseq_pre_tree_raw <- phyloseq(otu_table(raw_otus, taxa_are_rows = T), tax_table_phy, samples, tree_phy)
-  
+  assign(paste0(cohort, "_Tsementziphyloseq_tree_ML"),phyloseq_pre_tree,.GlobalEnv)
   assign(paste0(cohort, "_Tsementziphyloseq_tree"),phyloseq_pre_tree,.GlobalEnv)
   assign(paste0(cohort, "_Tsementziphyloseq_tree_raw"),phyloseq_pre_tree_raw,.GlobalEnv)
 }

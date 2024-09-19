@@ -27,7 +27,7 @@ source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Antoni
 source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Chao_dataPrep.R")
 source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Gressel_dataPrep.R")
 source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/Tsementzi_dataPrep.R")
-source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/SOTA_dataPrep.R")
+source(file = "../VM01_reproducibility_replicability/RScripts/00-DataPrep/dada2_dataPrep.R")
 
 ## Chao beta diversity - only use unweighted uniFrac distance with an PCA plot. 
 cohorts <- c("Antonio","Chao", "Gressel", "Tsementzi", "Walsh")
@@ -36,56 +36,64 @@ mul_var_analysis <- function(cohort, dist_mat, phylo_to_use){
   print(phylo_to_use)
   if(cohort == "Chao"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
-                          sample_data(phylo_to_use)$age, 
-                        permutations = 100, na.action = "na.omit", by = "margin")
+                          sample_data(phylo_to_use)$age + 
+                          sample_data(phylo_to_use)$menopausal.status + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$menopausal.status,
+                        permutations = 100, na.action = "na.omit", by = "terms")
   } 
   if(cohort == "Antonio"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
                           sample_data(phylo_to_use)$BMI + 
-                          sample_data(phylo_to_use)$pHRecoded,
-                        permutations = 100, na.action = "na.omit", by = "margin")
+                          sample_data(phylo_to_use)$pHRecoded + sample_data(phylo_to_use)$menopausal.status + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$age + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$BMI + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$pHRecoded + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$menopausal.status,
+                        permutations = 100, na.action = "na.omit", by = "terms")
   } 
   if(cohort == "Tsementzi"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
                           sample_data(phylo_to_use)$BMI + 
                           as.factor(sample_data(phylo_to_use)$pHRecoded) + 
-                          as.factor(sample_data(phylo_to_use)$ethnicity),
-                        permutations = 100, na.action = "na.omit", by = "margin")
+                          as.factor(sample_data(phylo_to_use)$ethnicity) + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$age + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$BMI + 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$pHRecoded,
+                        permutations = 100, na.action = "na.omit", by = "terms")
   } 
   if(cohort == 'Walsh'){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
-                          sample_data(phylo_to_use)$BMI + 
-                          as.factor(sample_data(phylo_to_use)$pHRecoded) + 
-                          as.factor(sample_data(phylo_to_use)$ethnicityRecoded),
+                          as.numeric(sample_data(phylo_to_use)$BMI) + 
+                          sample_data(phylo_to_use)$pHRecoded + sample_data(phylo_to_use)$menopausal.status + 
+                          #sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$age + 
+                          sample_data(phylo_to_use)$histology:as.numeric(sample_data(phylo_to_use)$BMI), 
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$pHRecoded +
+                          sample_data(phylo_to_use)$histology:sample_data(phylo_to_use)$menopausal.status,
                         permutations = 100, na.action = "na.omit", by = "margin")
   }
-  if(cohort == "Gressel"){
+  if(cohort == "Gressel" || cohort == "gutMicro"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology,
-                        permutations = 100, na.action = "na.omit", by = "margin")
+                        permutations = 100, na.action = "na.omit", by = "terms")
   }
   return(test_mul)
 }
 
 
-sink("../VM01_reproducibility_replicability/results/02-betadiversity/Chao_qual_margin.txt")
+sink("~/Desktop/Chao_qual_terms.txt")
 for(cohort in cohorts){
   print(cohort)
   phylo_use <- eval(parse(text = paste0(cohort, "_Chaophyloseq_tree_raw")))
-  dist_obj <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("unifrac") 
   
-  p1 <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("unifrac") %>%
-    ord_calc("PCA")%>%
-    ord_plot(axes = c(1, 2), color = "histology", size = 2.5) +
+  dist = phyloseq::distance(phylo_use,
+                            method = "unifrac")
+  ordi = ordinate(phylo_use, distance="unifrac", method="PCoA")
+  p1 <- plot_ordination(phylo_use, ordi, "samples", color="histology") +
+    geom_point(size = 2.5) +
     scale_color_manual(values=c("yellowgreen", "tomato3"))
-  
-  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist_obj@dist, phylo_to_use = phylo_use)
+  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist, phylo_to_use = phylo_use)
   assign(paste0(cohort, "_Chao_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
@@ -93,88 +101,71 @@ for(cohort in cohorts){
 sink()
 
 ## Antonio beta diversity - only use unweighted unifrac using NMDS ordination 
-sink("../VM01_reproducibility_replicability/results/02-betadiversity/Antonio_qual.txt")
+sink("~/Desktop/Antonio_qual_terms.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
-  p1 <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("unifrac") %>% 
-    ord_calc("NMDS")%>%
-    ord_plot(axes = c(1, 2), color = "histology", size = 2.5) +
+  dist = phyloseq::distance(phylo_use,
+                            method = "unifrac")
+  ordi = ordinate(phylo_use, distance="unifrac", method="NMDS")
+  p1 <- plot_ordination(phylo_use, ordi, "samples", color="histology") +
+    geom_point(size = 2.5) +
     scale_color_manual(values=c("yellowgreen", "tomato3"))
-  
-  dist_obj <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("unifrac") 
- 
-  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist_obj@dist,phylo_to_use = phylo_use)
+  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist, phylo_to_use = phylo_use)
   assign(paste0(cohort, "_Antonio_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
 sink()
   
 ## Tsementzi beta diversity - use bray and jaccard using NMDS ordination 
-sink("../VM01_reproducibility_replicability/results/02-betadiversity/Tsementzi_qual.txt")
+sink("~/Desktop/Tsementzi_qual_terms.txt")
 for(cohort in cohorts){
-  phylo_use <- eval(parse(text = paste0(cohort, "_Tsementziphyloseq_tree_raw")))
+  phylo_use <- eval(parse(text = paste0(cohort, "_Tsementziphyloseq_tree")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
-  p1 <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("bray") %>% 
-    ord_calc("NMDS")%>%
-    ord_plot(axes = c(1, 2), color = "histology", size = 2.5) +
+  dist = phyloseq::distance(phylo_use,
+                            method = "bray")
+  ordi = ordinate(phylo_use, distance="bray", method="NMDS")
+  p1 <- plot_ordination(phylo_use, ordi, "samples", color="histology") +
+    geom_point(size = 2.5) +
     scale_color_manual(values=c("yellowgreen", "tomato3"))
-  
-  dist_obj <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("bray") 
-  
-  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist_obj@dist, phylo_to_use = phylo_use)
+  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist, phylo_to_use = phylo_use)
   assign(paste0(cohort, "_Tsementzi_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
 sink()
 
 ## Walsh beta diversity - use 
-sink("../VM01_reproducibility_replicability/results/02-betadiversity/Walsh_qual.txt")
+sink("~/Desktop/Walsh_qual_terms.txt")
 for(cohort in cohorts){
   phylo_use <- eval(parse(text = paste0(cohort, "_Antoniophyloseq_tree")))
   phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
-  p1 <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("wunifrac") %>% 
-    ord_calc("PCoA")%>%
-    ord_plot(axes = c(1, 2), color = "histology", size = 2.5) +
+  dist = phyloseq::distance(phylo_use,
+                            method = "wunifrac")
+  ordi = ordinate(phylo_use, distance="wunifrac", method="PCoA")
+  p1 <- plot_ordination(phylo_use, ordi, "samples", color="histology") +
+    geom_point(size = 2.5) +
     scale_color_manual(values=c("yellowgreen", "tomato3"))
   
-  dist_obj <- phylo_use %>%
-    tax_transform("identity", rank = "unique") %>%
-    dist_calc("wunifrac")
-  
-  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist_obj@dist, phylo_to_use = phylo_use)
+  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist, phylo_to_use = phylo_use)
   assign(paste0(cohort, "_Walsh_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
 sink()
 
 ## SOTA pipeline
-sink("../VM01_reproducibility_replicability/results/02-betadiversity/SOTA_qual_margin.txt")
+library(phyloseq)
+library(ggplot2)
+library(microViz)
+sink("~/Desktop/SOTA_qual_terms.txt")
 for(cohort in cohorts){
-  phylo_use <- eval(parse(text = paste0(cohort, "_SOTAphyloseq_tree_raw")))
-  phylo_use <- prune_samples(sample_sums(phylo_use)> 0, phylo_use)
-  p1 <- phylo_use %>%
-    tax_fix() %>%
-    tax_transform("clr", rank = "genus") %>%
-    ord_calc(method = "PCA") %>%
-    ord_plot(axes = c(1, 2), color = "histology", size = 2.5) +
+  phylo_use <- eval(parse(text = paste0(cohort, "_dada2phyloseq_tree")))
+  phylo_use <- microbiome::transform(phylo_use, transform = "log")
+  dist = phyloseq::distance(phylo_use,
+                     method = "wunifrac")
+  ordi = ordinate(phylo_use, distance="wunifrac", method="PCoA")
+  p1 <- plot_ordination(phylo_use, ordi, "samples", color="histology") +
+    geom_point(size = 2.5) +
     scale_color_manual(values=c("yellowgreen", "tomato3"))
-  
-  dist_obj <- phylo_use %>%
-    tax_fix() %>%
-    tax_transform("identity", rank = "genus") %>%
-    dist_calc("aitchison")
-  
-  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist_obj@dist, phylo_to_use = phylo_use)
+  mul_var_res <- mul_var_analysis(cohort = cohort, dist_mat = dist, phylo_to_use = phylo_use)
   assign(paste0(cohort, "_SOTA_beta"), p1,.GlobalEnv)
   print(mul_var_res)
 }
@@ -206,10 +197,15 @@ walsh_pipeline_plots <- (Antonio_Walsh_beta  + theme(legend.position = "none") |
                            Gressel_Walsh_beta + theme(legend.position = "none") |
                            Chao_Walsh_beta + theme(legend.position = "none"))
 
-SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, alpha = 0.6), 
-                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))) | 
-                          Walsh_SOTA_beta + theme(legend.position = "none",  plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, alpha = 0.6), 
-                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))) | 
+SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", 
+                                                   plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, 
+                                                                                             alpha = 0.6), 
+                                                                                  color = rgb(0.96, 0.96, 0.96, 
+                                                                                              alpha = 0.6))) | 
+                          Walsh_SOTA_beta + theme(legend.position = "none", 
+                                                  plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, alpha = 0.6), 
+                                                                                                            color = rgb(0.96, 0.96, 0.96, 
+                                                                                                                        alpha = 0.6))) | 
                           Tsementzi_SOTA_beta + theme(legend.position = "none",  plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, alpha = 0.6), 
                                                                                                                 color = rgb(0.96, 0.96, 0.96, alpha = 0.6))) |
                           Gressel_SOTA_beta + theme(legend.position = "none",  plot.background = element_rect(fill = rgb(0.96, 0.96, 0.96, alpha = 0.6), 
@@ -218,7 +214,7 @@ SOTA_pipeline_plots <- (Antonio_SOTA_beta  + theme(legend.position = "none", plo
                                                                                                            color = rgb(0.96, 0.96, 0.96, alpha = 0.6))))
 
 p <- (antonio_pipeline_plots / walsh_pipeline_plots/ tsementzi_pipeline_plots / chao_pipeline_plots / SOTA_pipeline_plots)
-png(paste0("../VM01_reproducibility_replicability/results/02-betadiversity/betadiversity.png"), width = 6500, height = 3500, res = 300)
+png(paste0("~/Desktop/betadiversity.png"), width = 6500, height = 3500, res = 300)
 print(p)
 dev.off()
 
@@ -226,28 +222,40 @@ library(ggplot2)
 library(latex2exp)
 
 
-pdf("../VM01_reproducibility_replicability/results/02-betadiversity/margin.pdf",  width=16, height=5)
+pdf("~/Desktop/margin1.pdf",  width=25, height=8)
 
 
 df <- read.csv("../VM01_reproducibility_replicability/results/02-betadiversity/betaDiversity_R2_margin.csv", header = TRUE, sep = ",")
 df$pipeline <- paste0(df$pipeline, "_pipeline")
+df$R2 <- as.numeric(df$R2)
+df$p.value <- as.numeric(df$p.value)
 df$R2 <- round(df$R2, 2)
 df$covariate <- factor(df$covariate, levels = c("histology", "BMI", "pH", "age", "ethnicity"))
 df$cohort <- factor(df$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
-df$pipeline <- factor(df$pipeline, levels = c("Antonio_pipeline", "Walsh_pipeline", "Tsementzi_pipeline", "Gressel_pipeline", "Chao_pipeline", "SOTA_pipeline"))
-ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) + 
-  geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', NA), size = 0.3) +
-  geom_text(aes(label = R2), color = "black", size = 4) +
-  scale_fill_gradient(low = "white", high = "red", name = unname(TeX(c("$R^2$")))) + facet_wrap(~pipeline,  ncol=5) + theme_classic() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18),
-        axis.text.y = element_text(size = 18),
+df$pipeline <- factor(df$pipeline, levels = c("Antonio_pipeline", "Walsh_pipeline", "Tsementzi_pipeline", "Gressel_pipeline", "Chao_pipeline", "DADA2_pipeline"),
+                      labels = c(unname(TeX(c("Antonio_pipeline\nUniFrac"))), unname(TeX(c("Walsh_pipeline\nwUniFrac"))), 
+                                 unname(TeX(c("Tsementzi_pipeline\nBray-Curtis"))), unname(TeX(c("Gressel_pipeline"))), 
+                                 unname(TeX(c("Chao_pipeline\nUniFrac"))), unname(TeX(c("DADA2_pipeline\nwUniFrac")))))
+df_dada <- df[df$pipeline=="DADA2_pipeline", ]
+beta <- ggplot(df, aes(cohort, covariate, fill= R2)) +  geom_tile(aes(fill = R2)) + facet_grid(. ~ pipeline) + 
+  geom_tile(data = df, fill="transparent", color = ifelse(df$sig=="Sig", 'black', NA), size = 0.5) +
+  geom_text(aes(label = R2), color = "black", size = 6.0) +
+  scale_fill_gradient(low = "white", high = "red", name = unname(TeX(c("$R^2$"))))  + theme_classic() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 20),
+        axis.text.y = element_text(size = 20),
         axis.title=element_text(size=21),
-        strip.text.x = element_text(size = 18),
+        strip.text.x = element_text(size = 20),
         legend.key.size = unit(1, 'cm'),
         legend.key.height = unit(1, 'cm'),
         legend.key.width = unit(1, 'cm'),
         legend.position = "bottom",
         legend.title = element_text(size=21),
-        legend.text = element_text(size=10))
+        legend.text = element_text(size=10), plot.title = element_text(size = 23, hjust = 0.5, face = "bold")) + ggtitle("Beta diversity")
+print(beta)
 dev.off()
+pdf("~/Desktop/figure1.pdf",  width=20, height=8)
 
+pw <- (bp1 | beta)
+pw + plot_annotation(tag_levels = 'A') & 
+                     theme(plot.tag = element_text(size = 23, face = "bold"))
+dev.off()

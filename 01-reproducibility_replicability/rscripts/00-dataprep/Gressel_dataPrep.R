@@ -46,5 +46,9 @@ for (cohort in cohorts) {
   # Making phyloseq object without tree
   phyloseq_pre <- phyloseq(otus_table, tax_table_phy, samples)
   assign(paste0(cohort, "_Gresselphyloseq_tree_raw"),phyloseq_pre,.GlobalEnv)
+  assign(paste0(cohort, "_Gresselphyloseq_tree"),phyloseq_pre,.GlobalEnv)
+  assign(paste0(cohort, "_Gresselphyloseq_tree_ML"),phyloseq_pre,.GlobalEnv)
+  
+  
 }
 

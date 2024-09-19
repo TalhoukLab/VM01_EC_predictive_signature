@@ -55,5 +55,6 @@ for (cohort in cohorts) {
   ps.rarefied = rarefy_even_depth(phyloseq_obj, rngseed=1, sample.size=0.9*min(sample_sums(phyloseq_obj)), replace=F)
   assign(paste0(cohort, "_Antoniophyloseq_tree"),ps.rarefied,.GlobalEnv)
   assign(paste0(cohort, "_Antoniophyloseq_tree_raw"),phyloseq_obj,.GlobalEnv)
+  assign(paste0(cohort, "_Antoniophyloseq_tree_ML"),ps.rarefied,.GlobalEnv)
 }
   

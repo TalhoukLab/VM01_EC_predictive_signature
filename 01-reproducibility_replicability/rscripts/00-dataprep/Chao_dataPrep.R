@@ -71,7 +71,7 @@ for(cohort in cohorts){
   otu_table[otu_table == 0] <- 0.001
   phyloseq_obj <- phyloseq(otu_table(otu_table,  taxa_are_rows = TRUE), tax_table(phyloseq_com), sample_data(phyloseq_com), phy_tree(phyloseq_com))
   phyloseq_lg <- microbiome::transform(phyloseq_obj, 'log10')
-  
+  assign(paste0(cohort, "_Chaophyloseq_tree_ML"), phyloseq_lg,.GlobalEnv)
   assign(paste0(cohort, "_Chaophyloseq_tree"), phyloseq_lg,.GlobalEnv)
   assign(paste0(cohort, "_Chaophyloseq_tree_raw"), phyloseq_obj_ne,.GlobalEnv)
 }
