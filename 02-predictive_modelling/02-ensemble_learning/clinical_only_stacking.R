@@ -3,7 +3,8 @@ library(yardstick)
 library(themis)
 library(tidymodels)
 library(stacks)
-
+library(mice)
+library(data.table)
 source(here::here("~/Desktop/thesis/VM02_meta_analysis/src/dataPrep.R"), encoding = "UTF-8")
 cohorts <- c("Antonio_train", "Antonio_test", "Antonio", "Antonio1", "Chao_train", "Chao_test", "Chao",
              "Gressel_train", "Gressel_test", "Gressel", "Gressel_forward", "Gressel_forward_train", "Gressel_forward_test", 
@@ -21,7 +22,7 @@ for(tester in cohorts){
   assign(paste0(tester, "_solo_res"),res ,.GlobalEnv)
 }
 
-my_tax_glom <- function(phylo_obj, level){
+clinical_my_tax_glom <- function(phylo_obj, level){
   aggregated <- tax_glom(phylo_obj, taxrank = level, 
                          NArm = TRUE, bad_empty = c(NA, "", " ", "\t"))
   idx <- which(rank_names(aggregated)==level)
@@ -39,15 +40,15 @@ my_tax_glom <- function(phylo_obj, level){
   return(res)
 }
 
-prep_test_chao <- function(data, trained_data){
+clinical_prep_test_chao <- function(data, trained_data){
   data <- data.frame(janitor::clean_names(data))
   trained_data <- subset(trained_data, select = -c(histology) )
   otu_test <- base::subset(data, select = colnames(trained_data))
   return(otu_test)
 }
 
-get_metrics_indi <- function(data, model, level, labels, cohort){
-  preds <- prep_test_chao(data = data, trained_data = model$pre$actions$recipe$recipe$template) %>%
+clinical_get_metrics_indi <- function(data, model, level, labels, cohort){
+  preds <- clinical_prep_test_chao(data = data, trained_data = model$pre$actions$recipe$recipe$template) %>%
     bind_cols(predict(model,
                       ., type = "prob"))%>%
     bind_cols("labels"=labels)
@@ -64,7 +65,7 @@ get_metrics_indi <- function(data, model, level, labels, cohort){
   return(res)
 }
 
-get_metrics_base <- function(data, model, level, labels){
+clinical_get_metrics_base <- function(data, model, level, labels){
   preds <- prep_test(data = data, trained_data = model$train) %>%
     bind_cols(predict(model,
                       ., type = "prob", members=TRUE))%>%
@@ -101,55 +102,66 @@ test_data_complete_sub <- test_data_complete %>% select(c(age, bmi, pHRecoded, e
 
 
 ## Chao 
-chao_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_rf_grid.rds")
-chao_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_rf_fit.rds")
-chao_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_nnet_grid.rds")
-chao_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_nnet_fit.rds")
-chao_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_xgb_grid.rds")
-chao_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_xgb_fit.rds")
+clinical_chao_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_rf_grid.rds")
+clinical_chao_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_rf_fit.rds")
+clinical_chao_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_nnet_grid.rds")
+clinical_chao_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_nnet_fit.rds")
+clinical_chao_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_xgb_grid.rds")
+clinical_chao_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Chao_age_xgb_fit.rds")
 
 ## Tsementzi 
-tsementzi_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_rf_grid.rds")
-tsementzi_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_rf_fit.rds")
-tsementzi_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_nnet_grid.rds")
-tsementzi_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_nnet_fit.rds")
-tsementzi_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_xgb_grid.rds")
-tsementzi_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_xgb_fit.rds")
+clinical_tsementzi_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_rf_grid.rds")
+clinical_tsementzi_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_rf_fit.rds")
+clinical_tsementzi_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_nnet_grid.rds")
+clinical_tsementzi_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_nnet_fit.rds")
+clinical_tsementzi_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_xgb_grid.rds")
+clinical_tsementzi_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Tsementzi_all_clinical_xgb_fit.rds")
+
 
 ## Walsh
-walsh_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_rf_grid.rds")
-walsh_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_rf_fit.rds")
-walsh_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_nnet_grid.rds")
-walsh_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_nnet_fit.rds")
-walsh_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_xgb_grid.rds")
-walsh_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_xgb_fit.rds")
+clinical_walsh_rf_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_rf_grid.rds")
+clinical_walsh_rf_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_rf_fit.rds")
+clinical_walsh_nnet_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_nnet_grid.rds")
+clinical_walsh_nnet_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_nnet_fit.rds")
+clinical_walsh_xgb_grid <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_xgb_grid.rds")
+clinical_walsh_xgb_fit <- readRDS("~/Desktop/thesis/VM02_meta_analysis/src/updated/updated1/Walsh_all_clinical_xgb_fit.rds")
 
-get_results_microbiome <- function(cohort){
-  # stacks_model <- stacks() %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_rf_grid"))), name = "rf") %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_nnet_grid"))), name = "nnet") %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_xgb_grid"))), name = "bt") %>%
-  #   blend_predictions() %>%
-  #   fit_members()
-  # stacks_results <- get_metrics_base(data = test_data_chao, model = stacks_model, level = "genus", labels = sample_data(test_obj_agg_chao)$histology)
-  # stacks_results$met$model <- "stacks"
-  # 
-  # stacks_model_fmeas <- stacks() %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_rf_grid"))), name = "rf") %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_nnet_grid"))), name = "nnet") %>%
-  #   add_candidates(candidates = eval(parse(text = paste0(cohort, "_xgb_grid"))), name = "bt") %>%
-  #   blend_predictions(metric = metric_set(f_meas)) %>%
-  #   fit_members()
-  # stacks_results_fmeas <- get_metrics_base(data = test_data_chao, model = stacks_model_fmeas, level = "genus", labels = sample_data(test_obj_agg_chao)$histology)
-  # stacks_results_fmeas$met$model <- "stacks_fmeas"
 
-  rf_results <- get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0(cohort, "_rf_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
-  rf_results$met$model <- "rf"
-  nnet_results <- get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0(cohort, "_nnet_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
-  nnet_results$met$model <- "nnet"
-  xgb_results <- get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0(cohort, "_xgb_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
-  xgb_results$met$model <- "xgb"
-  
+clinical_get_metrics <- function(data, col){
+  data <- data %>% mutate(class = case_when((col) >=0.5 ~ "EC",
+                                                          (col) < 0.5 ~ "Benign"))
+  data$class <- factor(data$class, levels = c("Benign", "EC"))
+  data$col <- col
+  metric <- metric_set(npv, recall, precision, specificity, f_meas)
+  metrics_my <- metric(data, truth = labels, estimate = class, event_level = "second")
+  metrics_my[nrow(metrics_my) + 1,] <-  roc_auc(data = data, truth = labels, col, event_level = "second")
+  return(metrics_my)
+}
+
+get_results_clinical <- function(cohort, type){
+  if(type == "training"){
+    rf_results <- clinical_get_metrics_indi(data = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$actions$recipe$recipe$template, 
+                                         model = eval(parse(text = paste0("clinical_", cohort, "_rf_fit"))), 
+                                         level = "genus", labels = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$outcomes$histology, cohort = cohort)
+    rf_results$met$model <- "rf"
+    nnet_results<- clinical_get_metrics_indi(data = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$predictors, 
+                                           model = eval(parse(text = paste0("clinical_", cohort, "_nnet_fit"))), 
+                                           level = "genus", labels = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$outcomes$histology, cohort = cohort)
+    nnet_results$met$model <- "nnet"
+    xgb_results <- clinical_get_metrics_indi(data = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$predictors, 
+                                          model = eval(parse(text = paste0("clinical_", cohort, "_xgb_fit"))), 
+                                          level = "genus", labels = eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$outcomes$histology, cohort = cohort)
+    xgb_results$met$model <- "xgb"
+  }
+  if(type == "testing"){
+    rf_results <- clinical_get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0("clinical_", cohort, "_rf_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
+    rf_results$met$model <- "rf"
+    nnet_results <- clinical_get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0("clinical_", cohort, "_nnet_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
+    nnet_results$met$model <- "nnet"
+    xgb_results <- clinical_get_metrics_indi(data = test_data_complete_sub, model = eval(parse(text = paste0("clinical_", cohort, "_xgb_fit"))), level = "genus", labels = sample_data(Antonio1_solo_res$raw)$histology, cohort = cohort)
+    xgb_results$met$model <- "xgb"
+  }
+ 
   rf_pred <- rf_results$predictions %>% 
     dplyr::select(c(.pred_EC)) %>%
     dplyr::rename(!!paste0(cohort, "_rf") := .pred_EC)
@@ -160,48 +172,68 @@ get_results_microbiome <- function(cohort){
   
   xgb_pred <- xgb_results$predictions %>%
     dplyr::select(c(.pred_EC)) %>%
-    dplyr::rename(!!paste0(cohort, "_xgb") := .pred_EC) %>%
-    bind_cols("labels" = factor(sample_data(Antonio1_solo_res$raw)$histology, levels = c("Benign", "EC")),
-              "sraID" = sample_data(Antonio1_solo_res$raw)$sraID)
+    dplyr::rename(!!paste0(cohort, "_xgb") := .pred_EC)
   combined <- cbind(rf_pred,nnet_pred, xgb_pred)
-  combined$ECprob_voting <- rowSums(combined[,-c(4:5)])/3
-  combined <- combined %>% mutate(voting_pred = case_when((ECprob_voting) >=0.5 ~ "EC",
-                                                          (ECprob_voting) < 0.5 ~ "Benign"))
-  combined$voting_pred <- factor(combined$voting_pred, levels = c("Benign", "EC"))
-  metric <- metric_set(f_meas, precision, recall, specificity, npv)
-  metrics_my <- metric(combined, truth = labels, estimate = voting_pred, event_level = "second")
-  metrics_my$model <- "ensemble"
-  metrics_my$type <- "none"
+  if(type == "training"){
+    combined <- combined %>% 
+      bind_cols("labels" = factor(eval(parse(text = paste0("clinical_", cohort, "_rf_fit")))$pre$mold$outcomes$histology, levels = c("Benign", "EC")))
+    combined$ensemble <- rowSums(combined[,c(1:3)])/3
+    combined$rf_nnet <- rowSums(combined[,c(1:2)])/2
+    combined$rf_xgb <- rowSums(combined[,c(1,3)])/2
+    combined$nnet_xgb <- rowSums(combined[,c(2:3)])/2
+  } else {
+    combined <- combined %>%
+      bind_cols("labels" = factor(sample_data(Antonio1_solo_res$raw)$histology, levels = c("Benign", "EC")),
+                "sraID" = sample_data(Antonio1_solo_res$raw)$sraID)
+    combined$ensemble <- rowSums(combined[,c(1:3)])/3
+    combined$rf_nnet <- rowSums(combined[,c(1:2)])/2
+    combined$rf_xgb <- rowSums(combined[,c(1,3)])/2
+    combined$nnet_xgb <- rowSums(combined[,c(2:3)])/2
+    combined <- combined %>% relocate(sraID, .after = nnet_xgb)
+    
+  }
+  combined <- combined %>% relocate(labels, .after = nnet_xgb) %>%
+    dplyr::rename(!!paste0(cohort, "_ensemble") := ensemble,
+                  !!paste0(cohort, "_rf_nnet") := rf_nnet,
+                  !!paste0(cohort, "_rf_xgb") := rf_xgb,
+                  !!paste0(cohort, "_nnet_xgb") := nnet_xgb)
+  all_metrics <- lapply(combined[, c(1:7)], clinical_get_metrics, data = combined)
   
-  all <- rbind(rf_results$met, nnet_results$met, xgb_results$met, metrics_my)
-  all <- all %>% select(c(.metric, .estimate, model))
+  all_metrics_list <- Map(cbind, all_metrics, type = names(all_metrics))
+  all_metrics_list <- data.frame(rbindlist(all_metrics_list))
+  all <- all_metrics_list %>% select(c(.metric, .estimate, type))
   all_wide <- all %>% pivot_wider(names_from = .metric, values_from = .estimate)
   return(list(met = all_wide, pred = combined))
 }
 
-chao_microbiome_only <- get_results_microbiome(cohort = "chao")
-tsementzi_microbiome_only <- get_results_microbiome(cohort = "tsementzi")
-walsh_microbiome_only <- get_results_microbiome(cohort = "walsh")
+chao_clinical_training <- get_results_clinical(cohort = "chao",type = "training")
+chao_clinical_testing <- get_results_clinical(cohort = "chao",type = "testing")
 
-all <- chao_microbiome_only$pred %>%
-  left_join(tsementzi_microbiome_only$pred, by='sraID', copy = FALSE) %>% 
-  left_join(walsh_microbiome_only$pred, by = "sraID", copy = FALSE)
+tsementzi_clinical_training <- get_results_clinical(cohort = "tsementzi",type = "training")
+tsementzi_clinical_testing <- get_results_clinical(cohort = "tsementzi",type = "testing")
 
-all <- all[!endsWith(names(all), '.y')]
-all <- all[!endsWith(names(all), '.x')]
-all$labels <- factor(sample_data(Antonio1_solo_res$raw)$histology, levels = c("Benign", "EC"))
-all <-  all %>% relocate(sraID, .before = labels)      
-all <- all %>% select(-c(ECprob_voting, voting_pred))
-all <- all[!endsWith(names(all), 'xgb')]
+walsh_clinical_training <- get_results_clinical(cohort = "walsh",type = "training")
+walsh_clinical_testing <- get_results_clinical(cohort = "walsh",type = "testing")
 
-all$ECprob_voting <- rowSums(all[,-c(7:8)])/6
 
-all <- all %>% mutate(voting_pred = case_when((ECprob_voting) >=0.5 ~ "EC",
-                                              (ECprob_voting) < 0.5 ~ "Benign"))
-all$voting_pred <- factor(all$voting_pred, levels = c("Benign", "EC"))
-#predictions$final_predprob <- predictions$ECvotes/4
+all_clinical <- chao_clinical_testing$pred %>%
+  left_join(tsementzi_clinical_testing$pred, by='sraID', copy = FALSE) %>% 
+  left_join(walsh_clinical_testing$pred, by = "sraID", copy = FALSE)
+
+all_clinical <- all_clinical[!endsWith(names(all_clinical), '.y')]
+all_clinical <- all_clinical[!endsWith(names(all_clinical), '.x')]
+all_clinical <- all_clinical[, c('sraID', 'labels', 'chao_xgb', 'tsementzi_xgb', 'walsh_rf', 'walsh_nnet')]
+
+all_clinical$ensemble <- rowSums(all_clinical[,c(3:6)])/4
+
+all_clinical <- all_clinical %>% mutate(ensemble_pred = case_when((ensemble) >=0.5 ~ "EC",
+                                              (ensemble) < 0.5 ~ "Benign"))
+all_clinical$ensemble_pred <- factor(all_clinical$ensemble_pred, levels = c("Benign", "EC"))
+all_clinical$labels <- factor(sample_data(Antonio1_solo_res$raw)$histology, levels = c("Benign", "EC"))
+
 metric <- metric_set(f_meas, precision, recall, specificity, npv)
-metrics_my <- metric(all, truth = labels, estimate = voting_pred, event_level = "second")
-metrics_my[nrow(metrics_my) + 1,] <-  roc_auc(all, truth = labels, ECprob_voting, event_level = "second")
+metrics_my_clinical <- metric(all_clinical, truth = labels, estimate = ensemble_pred, event_level = "second")
+metrics_my_clinical[nrow(metrics_my_clinical) + 1,] <-  roc_auc(all_clinical, truth = labels, ensemble, event_level = "second")
 
+write.table(all_clinical, "~/Desktop/clinical_with_ph.csv", quote = F, sep = ",", row.names = F)
 

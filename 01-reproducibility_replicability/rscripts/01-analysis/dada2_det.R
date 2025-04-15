@@ -2,8 +2,8 @@
 library(ANCOMBC)
 library(tidyverse)
 library(DescTools)
-limit <- 2
-cohorts <- c("Antonio", "Chao", "Gressel", "Tsementzi", "Walsh")
+limit <- 5
+cohorts <- c("Antonio", "Gressel", "Chao", "Tsementzi", "Walsh")
 level <- "species"
 pipelines <- c("dada2")
 for(cohort in cohorts){
@@ -12,7 +12,7 @@ for(cohort in cohorts){
     if(cohort == "Antonio"){
       out = ancombc(data = phylo_use_raw, assay_name = "counts", 
                     tax_level =  level, 
-                    formula = "menopausal.status + age + BMI + pHRecoded + histology", 
+                    formula = "histology + BMI  + age", 
                     p_adj_method = "holm", prv_cut = 0.10, lib_cut = 1000, 
                     group = "histology", struc_zero = TRUE, neg_lb = TRUE, tol = 1e-5, 
                     max_iter = 100, conserve = TRUE, alpha = 0.05, global = TRUE,
@@ -21,7 +21,7 @@ for(cohort in cohorts){
     if(cohort == "Chao"){
       out = ancombc(data = phylo_use_raw, assay_name = "counts", 
                     tax_level =  level, 
-                    formula = "age + histology", 
+                    formula = "histology + age", 
                     p_adj_method = "holm", prv_cut = 0.10, lib_cut = 1000, 
                     group = "histology", struc_zero = TRUE, neg_lb = TRUE, tol = 1e-5, 
                     max_iter = 100, conserve = TRUE, alpha = 0.05, global = TRUE,
@@ -39,7 +39,7 @@ for(cohort in cohorts){
     if(cohort == "Tsementzi"){
       out = ancombc(data = phylo_use_raw, assay_name = "counts", 
                     tax_level =  level, 
-                    formula = "BMI + age + pHRecoded + histology + ethnicityRecode", 
+                    formula = "histology + bmi + age  + ethnicityRecode", 
                     p_adj_method = "holm", prv_cut = 0.10, lib_cut = 1000, 
                     group = "histology", struc_zero = TRUE, neg_lb = TRUE, tol = 1e-5, 
                     max_iter = 100, conserve = TRUE, alpha = 0.05, global = TRUE,
@@ -50,12 +50,12 @@ for(cohort in cohorts){
       sample_data <- data.frame(sample_data(phylo_use_raw))
       sample_data <- na.omit(sample_data)
       sample_data$age <- as.numeric(sample_data$age)
-      sample_data$BMI <- as.numeric(sample_data$BMI)
+      sample_data$BMI <- as.numeric(sample_data$bmi)
       sample_data$menopausal.status <- as.factor(sample_data$menopausal.status)
       phylo_use_raw <- phyloseq(otu_table(phylo_use_raw), tax_table(phylo_use_raw), sample_data(sample_data))
       out = ancombc(data = phylo_use_raw, assay_name = "counts", 
                     tax_level =  level, 
-                    formula = "menopausal.status + BMI + age + pHRecoded + histology + ethnicityRecoded", 
+                    formula = "histology + BMI + age + ethnicityRecode", 
                     p_adj_method = "holm", prv_cut = 0.10, lib_cut = 1000, 
                     group = "histology", struc_zero = TRUE, neg_lb = TRUE, tol = 1e-5, 
                     max_iter = 100, conserve = TRUE, alpha = 0.05, global = TRUE,
@@ -87,11 +87,12 @@ for(cohort in cohorts){
     diff_lfc$cohort <- cohort
     
     W_diff <- merge(tab_W, tab_diff, by = "taxon")
-   # W_diff <- W_diff %>% 
-  #    filter_at(vars(ends_with('.x')),  any_vars(abs(.) >=limit))
+    W_diff <- W_diff %>% 
+     filter_at(vars(ends_with('.x')),  any_vars(abs(.) >=limit))
     tab_diff <- tab_diff %>% filter(taxon %in% W_diff$taxon)
     assign(paste0(cohort, "_", pipeline, "_ancombc_res"), res_ancombc,.GlobalEnv)
     assign(paste0(cohort, "_", pipeline, "_networkplot"), diff_lfc,.GlobalEnv)
     
   }
 }
+

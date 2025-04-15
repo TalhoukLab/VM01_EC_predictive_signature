@@ -9,77 +9,83 @@ Marginal effects of terms
 Permutation: free
 Number of permutations: 100
 
-adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI + sample_data(phylo_to_use)$pHRecoded, permutations = 100, by = "margin", na.action = "na.omit")
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI, permutations = 100, by = "margin", na.action = "na.omit")
                                     Df SumOfSqs      R2      F Pr(>F)
-sample_data(phylo_to_use)$histology  1   0.5243 0.11167 1.5905 0.1089
-sample_data(phylo_to_use)$age        1   0.2062 0.04391 0.6254 0.7624
-sample_data(phylo_to_use)$BMI        1   0.1602 0.03412 0.4860 0.8119
-sample_data(phylo_to_use)$pHRecoded  1   0.6219 0.13244 1.8865 0.1188
-Residual                             8   2.6371 0.56166              
+sample_data(phylo_to_use)$histology  1   0.6046 0.12877 1.6697 0.1485
+sample_data(phylo_to_use)$age        1   0.2089 0.04449 0.5769 0.7327
+sample_data(phylo_to_use)$BMI        1   0.1344 0.02862 0.3711 0.8713
+Residual                             9   3.2590 0.69410              
 Total                               12   4.6953 1.00000              
 [1] "Chao"
-phyloseq-null device 
-          1 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-RStudioGD 
-        2 
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1] "Antonio_level"
-[1] "Antonio_DESeq2"
-[1] "Chao_level"
-[1] "Chao_DESeq2"
-[1] "Gressel_level"
-[1] "Gressel_DESeq2"
-[1] "Tsementzi_level"
-[1] "Tsementzi_DESeq2"
-[1] "Walsh_level"
-[1] "Walsh_DESeq2"
-[1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m58.97MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m69.13MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m69.13MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m52.76MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m125.30MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [======================] [32m117.93MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m95.47MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1mindexing[0m [34mgenus_Tsementzipipeline_Antonio.res[0m [=======================] [32m66.83MB/s[0m, eta: [36m 0s[0m                                                                                                                             [1] "genus"
-[1] "genus"
-[1] "Antonio"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 836 taxa and 32 samples ]
+sample_data() Sample Data:       [ 32 samples by 6 sample variables ]
+tax_table()   Taxonomy Table:    [ 836 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 836 tips and 835 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.3584 0.04509 1.4093 0.1485
+sample_data(phylo_to_use)$age        1   0.2140 0.02693 0.8417 0.5941
+Residual                            29   7.3746 0.92795              
+Total                               31   7.9471 1.00000              
+[1] "Gressel"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 480 taxa and 29 samples ]
+sample_data() Sample Data:       [ 29 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 480 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 480 tips and 479 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1   0.1119 0.02849 0.7917 0.4851
+Residual                            27   3.8177 0.97151              
+Total                               28   3.9297 1.00000              
+[1] "Tsementzi"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 7321 taxa and 36 samples ]
+sample_data() Sample Data:       [ 36 samples by 13 sample variables ]
+tax_table()   Taxonomy Table:    [ 7321 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 7321 tips and 7320 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$bmi + as.factor(sample_data(phylo_to_use)$ethnicityRecode), permutations = 100, by = "margin", na.action = "na.omit")
+                                                     Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology                   1   0.1970 0.02943 1.0498 0.3168
+sample_data(phylo_to_use)$age                         1   0.1414 0.02112 0.7535 0.7624
+sample_data(phylo_to_use)$bmi                         1   0.1415 0.02113 0.7539 0.8020
+as.factor(sample_data(phylo_to_use)$ethnicityRecode)  3   0.7111 0.10620 1.2630 0.1782
+Residual                                             29   5.4424 0.81284              
+Total                                                35   6.6956 1.00000              
+[1] "Walsh"
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 481 taxa and 148 samples ]
+sample_data() Sample Data:       [ 148 samples by 13 sample variables ]
+tax_table()   Taxonomy Table:    [ 481 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 481 tips and 480 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + as.numeric(sample_data(phylo_to_use)$bmi) + as.factor(sample_data(phylo_to_use)$ethnicityRecode), permutations = 100, by = "margin", na.action = "na.omit")
+                                                      Df SumOfSqs      R2      F   Pr(>F)   
+sample_data(phylo_to_use)$histology                    1    0.949 0.01759 2.6887 0.009901 **
+sample_data(phylo_to_use)$age                          1    0.674 0.01249 1.9090 0.029703 * 
+as.numeric(sample_data(phylo_to_use)$bmi)              1    0.571 0.01059 1.6181 0.039604 * 
+as.factor(sample_data(phylo_to_use)$ethnicityRecode)   1    0.522 0.00967 1.4783 0.108911   
+Residual                                             142   50.113 0.92909                   
+Total                                                146   53.938 1.00000                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

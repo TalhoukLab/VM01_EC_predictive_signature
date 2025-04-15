@@ -7,9 +7,10 @@ mul_var_analysis <- function(dist, cohort, raw, normal){
     phylo_to_use <-  raw
   } else {
     phylo_to_use <- normal
+    phylo_to_use <- microbiome::transform(phylo_to_use, transform = "log")
   }
   dist_mat = phyloseq::distance(phylo_to_use, method = dist)
-  dist_mat <- as.matrix(dist_mat)
+ # dist_mat <- as.matrix(dist_mat)
   
   if(cohort == "Chao"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
@@ -19,27 +20,24 @@ mul_var_analysis <- function(dist, cohort, raw, normal){
   if(cohort == "Antonio"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
-                          sample_data(phylo_to_use)$BMI + 
-                          sample_data(phylo_to_use)$pHRecoded,
+                          sample_data(phylo_to_use)$BMI ,
                         permutations = 100, na.action = "na.omit", by = "margin")
   } 
   if(cohort == "Tsementzi"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
-                          sample_data(phylo_to_use)$BMI + 
-                          as.factor(sample_data(phylo_to_use)$pHRecoded) + 
-                          as.factor(sample_data(phylo_to_use)$ethnicity),
+                          sample_data(phylo_to_use)$bmi + 
+                          as.factor(sample_data(phylo_to_use)$ethnicityRecode),
                         permutations = 100, na.action = "na.omit", by = "margin")
   } 
   if(cohort == 'Walsh'){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology + 
                           sample_data(phylo_to_use)$age + 
-                          sample_data(phylo_to_use)$BMI + 
-                          as.factor(sample_data(phylo_to_use)$pHRecoded) + 
-                          as.factor(sample_data(phylo_to_use)$ethnicityRecoded),
-                        permutations = 10000, na.action = "na.omit", by = "margin")
+                          as.numeric(sample_data(phylo_to_use)$bmi) + 
+                          as.factor(sample_data(phylo_to_use)$ethnicityRecode), 
+                        permutations = 100, na.action = "na.omit", by = "margin")
   }
-  if(cohort == "Gressel" || cohort == "gutMicro"){
+  if(cohort == "Gressel"){
     test_mul <- adonis2(dist_mat ~ sample_data(phylo_to_use)$histology,
                         permutations = 100, na.action = "na.omit", by = "margin")
   }
@@ -53,27 +51,27 @@ colnames_list <- c("R2_bray", "p-value_bray", "R2_jaccard", "p-value_jaccard", "
 
 Walsh_mulvar <- data.frame(base::sapply(base::sapply(dists, mul_var_analysis, cohort = "Walsh", raw = Walsh_dada2phyloseq_tree_raw, normal = Walsh_dada2phyloseq_tree)[c(3, 5), ], cbind))
 colnames(Walsh_mulvar) <- colnames_list
-Walsh_mulvar$covariate <- c("histology", "age", "BMI", "pH", "ethnicity", "residual", "total")
+Walsh_mulvar$covariate <- c("Health condition", "Age", "BMI", "Ethnicity", "Residual", "total")
 Walsh_mulvar$cohort <- "Walsh"
 
 Tsementzi_mulvar <- data.frame(base::sapply(base::sapply(dists, mul_var_analysis, cohort = "Tsementzi", raw = Tsementzi_dada2phyloseq_tree_raw, normal = Tsementzi_dada2phyloseq_tree)[c(3, 5), ], cbind))
 colnames(Tsementzi_mulvar) <- colnames_list
-Tsementzi_mulvar$covariate <- c("histology", "age", "BMI", "pH", "ethnicity", "residual", "total")
+Tsementzi_mulvar$covariate <- c("Health condition", "Age", "BMI", "Ethnicity", "Residual", "total")
 Tsementzi_mulvar$cohort  <- "Tsementzi"
 
 Gressel_mulvar <- data.frame(base::sapply(base::sapply(dists, mul_var_analysis, cohort = "Gressel", raw = Gressel_dada2phyloseq_tree_raw, normal = Gressel_dada2phyloseq_tree)[c(3, 5), ], cbind))
 colnames(Gressel_mulvar) <- colnames_list
-Gressel_mulvar$covariate <- c("histology", "residual", "total")
+Gressel_mulvar$covariate <- c("Health condition", "Residual", "total")
 Gressel_mulvar$cohort <- "Gressel"
 
 Chao_mulvar <- data.frame(base::sapply(base::sapply(dists, mul_var_analysis, cohort = "Chao", raw = Chao_dada2phyloseq_tree_raw, normal = Chao_dada2phyloseq_tree)[c(3, 5), ], cbind))
 colnames(Chao_mulvar) <- colnames_list
-Chao_mulvar$covariate <- c("histology", "age", "residual", "total")
+Chao_mulvar$covariate <- c("Health condition", "Age", "Residual", "total")
 Chao_mulvar$cohort <- "Chao"
 
 Antonio_mulvar <- data.frame(base::sapply(base::sapply(dists, mul_var_analysis, cohort = "Antonio", raw = Antonio_dada2phyloseq_tree_raw, normal = Antonio_dada2phyloseq_tree)[c(3, 5), ], cbind))
 colnames(Antonio_mulvar) <-  colnames_list
-Antonio_mulvar$covariate <- c("histology", "age", "BMI", "pH", "residual", "total")
+Antonio_mulvar$covariate <- c("Health condition", "Age", "BMI", "Residual", "total")
 Antonio_mulvar$cohort <- "Antonio"
 
 all <- rbind(Walsh_mulvar, Tsementzi_mulvar, Gressel_mulvar, Chao_mulvar, Antonio_mulvar)
@@ -82,10 +80,10 @@ all_long <- separate(all_long, col = name, into = c("type", "distance"), sep = "
 all_long_wide <-pivot_wider(all_long, id_cols = c("covariate", "cohort", "distance"), names_from = "type", values_from = "value")
 all_long_wide <- unique(all_long_wide)
 
-all_long_wide <- all_long_wide %>% dplyr::filter(covariate %in% c("histology", "BMI", "pH", "age", "ethnicity"))
+all_long_wide <- all_long_wide %>% dplyr::filter(covariate %in% c("Health condition", "BMI", "Age", "Ethnicity"))
 all_long_wide$R2 <- round(all_long_wide$R2, 2)
 all_long_wide$sig <- ifelse(all_long_wide$`p-value` <=0.05, "Sig", "NS")
-all_long_wide$covariate <- factor(all_long_wide$covariate, levels = c("histology", "BMI", "pH", "age", "ethnicity"))
+all_long_wide$covariate <- factor(all_long_wide$covariate, levels = c("Health condition", "BMI", "Age", "Ethnicity"))
 all_long_wide$cohort <- factor(all_long_wide$cohort, levels = c("Antonio", "Walsh", "Tsementzi", "Gressel", "Chao"))
 all_long_wide$distance <- factor(all_long_wide$distance, levels = c("bray", "jaccard", "unifrac", "wunifrac", "jsd"),
                       labels = c("Bray", "Jaccard", "UniFrac", "wUniFrac", "JSD"))
@@ -105,7 +103,7 @@ beta <- ggplot(all_long_wide, aes(cohort, covariate, fill= R2)) +  geom_tile(aes
         legend.key.width = unit(1, 'cm'),
         legend.position = "bottom",
         legend.title = element_text(size=21),
-        legend.text = element_text(size=10), plot.title = element_text(size = 23, hjust = 0.5, face = "bold")) + ggtitle("Beta diversity")
+        legend.text = element_text(size=10), plot.title = element_text(size = 23, hjust = 0.5, face = "bold")) + ggtitle("DADA2 - Beta diversity")
 print(beta)
 dev.off()
 

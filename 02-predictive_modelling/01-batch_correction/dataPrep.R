@@ -17,8 +17,7 @@ library(gsubfn)
 library(dplyr)
 library(DrImpute)
 library(msa)
-library(rRDP)
-library(rRDPData)
+
 library(seqinr)
 
 dataPrep <- function(raw_otus, raw_tax, phylo_tree, feature_table){

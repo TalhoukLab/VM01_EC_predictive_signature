@@ -52,14 +52,29 @@ for (pipeline in pipelines){
     ps1.meta <- ps1.meta[to_keep,]
     ps1.meta$shannon <- as.data.frame(ev)$ev
     assign(paste0(cohort, "_", pipeline, "alphaDiversity"),ps1.meta,.GlobalEnv)
-    if(cohort=="Antonio" || cohort=="Walsh"){
+    if(cohort=="Antonio"){
+      #test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+      #                  as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) +
+      #                  as.factor(ps1.meta$menopausal.status))
+      
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
-                        as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded) +
-                        as.factor(ps1.meta$menopausal.status))
+                       as.numeric(ps1.meta$BMI) +
+                       as.factor(ps1.meta$menopausal.status))
+    } 
+    if(cohort=="Walsh" ){
+      #test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+      #                 as.numeric(ps1.meta$bmi) + as.factor(ps1.meta$pHRecoded) +
+      #                 as.factor(ps1.meta$menopausal.status))
+      test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+                       as.numeric(ps1.meta$bmi) +
+                       as.factor(ps1.meta$menopausal.status))
     }
     if(cohort == "Tsementzi"){
+      #test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
+      #                 as.numeric(ps1.meta$bmi) + as.factor(ps1.meta$pHRecoded))
+      
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
-                       as.numeric(ps1.meta$BMI) + as.factor(ps1.meta$pHRecoded))
+                       as.numeric(ps1.meta$bmi))
     }
     if(cohort == "Chao"){
       test.sig <- lm(ps1.meta$shannon ~ as.factor(ps1.meta$histology) +
@@ -74,10 +89,10 @@ for (pipeline in pipelines){
   
   
   all_cohorts <- plyr::rbind.fill(eval(parse(text = paste0('Antonio_', pipeline, 'alphaDiversity'))),
-                       eval(parse(text = paste0('Chao_', pipeline, 'alphaDiversity'))),
-                       eval(parse(text = paste0('Gressel_', pipeline, 'alphaDiversity'))),
-                       eval(parse(text = paste0('Tsementzi_', pipeline, 'alphaDiversity'))),
-                       eval(parse(text = paste0('Walsh_', pipeline, 'alphaDiversity'))))
+                                  eval(parse(text = paste0('Chao_', pipeline, 'alphaDiversity'))),
+                                  eval(parse(text = paste0('Gressel_', pipeline, 'alphaDiversity'))),
+                                  eval(parse(text = paste0('Tsementzi_', pipeline, 'alphaDiversity'))),
+                                  eval(parse(text = paste0('Walsh_', pipeline, 'alphaDiversity'))))
   
   pathology <- levels(as.factor(all_cohorts$histology))
   pathology.pairs <- combn(seq_along(pathology), 2, simplify = FALSE, FUN = function(i)pathology[i])
@@ -88,13 +103,15 @@ for (pipeline in pipelines){
   all_cohorts_long$cohort <- as.factor(all_cohorts_long$cohort)
   assign(paste0(pipeline, "alphaDiversity"),all_cohorts_long,.GlobalEnv)
   if(pipeline == "Gressel"){
-    anno_df = compare_means(value ~ histology, group.by = c("cohort", "metric"), data = all_cohorts_long, 
+    anno_df = compare_means(value ~ histology, group.by = c("cohort"), data = all_cohorts_long, 
                             method = "kruskal.test", p.adjust.method = "BH")
   } else {
     anno_df = compare_means(value ~ histology, group.by = c("cohort"), data = all_cohorts_long, 
                             method = "t.test", p.adjust.method = "BH")
   }
-  #print(pipeline)
+  #anno_df = compare_means(value ~ histology, group.by = c("cohort"), data = all_cohorts_long, 
+  #                                                 method = "kruskal.test", p.adjust.method = "BH")
+  print(pipeline)
   print(anno_df)
 }
 sink()

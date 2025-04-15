@@ -1,0 +1,88 @@
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 853 taxa and 15 samples ]
+sample_data() Sample Data:       [ 15 samples by 10 sample variables ]
+tax_table()   Taxonomy Table:    [ 853 taxa by 7 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 853 tips and 852 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$BMI, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df  SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1 0.0006263 0.03088 0.4307 0.8614
+sample_data(phylo_to_use)$age        1 0.0013338 0.06575 0.9172 0.4752
+sample_data(phylo_to_use)$BMI        1 0.0014738 0.07265 1.0134 0.3762
+Residual                            11 0.0159967 0.78861              
+Total                               14 0.0202848 1.00000              
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 860 taxa and 31 samples ]
+sample_data() Sample Data:       [ 31 samples by 6 sample variables ]
+tax_table()   Taxonomy Table:    [ 860 taxa by 7 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 860 tips and 859 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df SumOfSqs      R2      F   Pr(>F)   
+sample_data(phylo_to_use)$histology  1 0.017159 0.13922 4.6139 0.009901 **
+sample_data(phylo_to_use)$age        1 0.001980 0.01607 0.5324 0.683168   
+Residual                            28 0.104130 0.84486                   
+Total                               30 0.123252 1.00000                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 680 taxa and 28 samples ]
+sample_data() Sample Data:       [ 28 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 680 taxa by 7 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 680 tips and 679 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology, permutations = 100, by = "margin", na.action = "na.omit")
+                                    Df  SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology  1 0.0001170 0.01739 0.4602 0.6238
+Residual                            26 0.0066127 0.98261              
+Total                               27 0.0067297 1.00000              
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 658 taxa and 36 samples ]
+sample_data() Sample Data:       [ 36 samples by 13 sample variables ]
+tax_table()   Taxonomy Table:    [ 658 taxa by 7 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 658 tips and 657 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + sample_data(phylo_to_use)$bmi + as.factor(sample_data(phylo_to_use)$ethnicityRecode), permutations = 100, by = "margin", na.action = "na.omit")
+                                                     Df SumOfSqs      R2      F Pr(>F)
+sample_data(phylo_to_use)$histology                   1 0.001531 0.02179 0.7833 0.4752
+sample_data(phylo_to_use)$age                         1 0.002318 0.03299 1.1860 0.2673
+sample_data(phylo_to_use)$bmi                         1 0.001721 0.02449 0.8802 0.4554
+as.factor(sample_data(phylo_to_use)$ethnicityRecode)  3 0.007506 0.10682 1.2799 0.3069
+Residual                                             29 0.056693 0.80676              
+Total                                                35 0.070272 1.00000              
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 1894 taxa and 149 samples ]
+sample_data() Sample Data:       [ 149 samples by 13 sample variables ]
+tax_table()   Taxonomy Table:    [ 1894 taxa by 7 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 1894 tips and 1893 internal nodes ]
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 100
+
+adonis2(formula = dist_mat ~ sample_data(phylo_to_use)$histology + sample_data(phylo_to_use)$age + as.numeric(sample_data(phylo_to_use)$bmi) + as.factor(sample_data(phylo_to_use)$ethnicityRecode), permutations = 100, by = "margin", na.action = "na.omit")
+                                                      Df  SumOfSqs      R2      F   Pr(>F)   
+sample_data(phylo_to_use)$histology                    1 0.0000684 0.00865 1.3985 0.207921   
+sample_data(phylo_to_use)$age                          1 0.0002428 0.03069 4.9620 0.009901 **
+as.numeric(sample_data(phylo_to_use)$bmi)              1 0.0003026 0.03826 6.1846 0.009901 **
+as.factor(sample_data(phylo_to_use)$ethnicityRecode)   1 0.0000663 0.00838 1.3546 0.257426   
+Residual                                             143 0.0069965 0.88458                   
+Total                                                147 0.0079094 1.00000                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
