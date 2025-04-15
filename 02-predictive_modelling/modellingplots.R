@@ -2,14 +2,14 @@ library(yardstick)
 library(ggplot2)
 library(patchwork)
 
-Antonio_FT <- read.csv("~/Desktop/thesis/VM01_reproducibility_replicability/00-helperfiles/Antonio1FT.csv")
-raw_models <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/raw.csv")
-combat_models <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/combat.csv")
-microbiome_only_models <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/microbiome_only.csv")
-clinical_with_ph <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/clinical_with_ph.csv")
-clinical_without_ph <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/clinical_without_ph.csv")
-clinical_with_ph_micro <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/clinical_with_ph_micro.csv")
-clinical_without_ph_micro <- read.csv("~/Desktop/thesis/VM01_EC_predictive_signature/02-predictive_modelling/clinical_no_ph_micro.csv")
+Antonio_FT <- read.csv("00-helperfiles/Antonio1FT.csv")
+raw_models <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/raw.csv")
+combat_models <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/combat.csv")
+microbiome_only_models <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/microbiome_only.csv")
+clinical_with_ph <- read.csv("M01_EC_predictive_signature/02-predictive_modelling/clinical_with_ph.csv")
+clinical_without_ph <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/clinical_without_ph.csv")
+clinical_with_ph_micro <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/clinical_with_ph_micro.csv")
+clinical_without_ph_micro <- read.csv("VM01_EC_predictive_signature/02-predictive_modelling/clinical_no_ph_micro.csv")
 
 
 ## raw 
